@@ -56,6 +56,22 @@ python3 -m http.server 3000
 
 - [ ] 替换 AI 占位图为真实摄影 / 插画（数字人、县域山水、好物）
 - [ ] 咨询表单对接真实后端或邮件
-- [ ] 绑定自定义域名（如 mvp.hxfz-group.com）
+- [x] 绑定自定义域名（mvp.hxfz-group.com → 已在 GitHub Pages 设置 cname，待 DNS 生效）
 - [ ] SEO / 分享卡片（OG 图、favicon）
 - [ ] 埋点统计
+
+## 自定义域名配置（mvp.hxfz-group.com）
+
+已在 GitHub Pages 设置自定义域名 `mvp.hxfz-group.com`（仓库 Settings → Pages → Custom domain）。
+要使域名真正可访问，需在你的域名 DNS 服务商（阿里云 / 腾讯云 DNSPod / Cloudflare 等）添加以下记录：
+
+| 记录类型 | 主机记录 | 记录值（目标） | TTL |
+|----------|----------|----------------|-----|
+| CNAME    | mvp      | j18287061781-sys.github.io | 600（或默认） |
+
+添加后 GitHub 会自动检测并签发 SSL 证书（强制 HTTPS）。DNS 全球生效通常需 5 分钟～24 小时，
+生效前可继续用默认地址：https://j18287061781-sys.github.io/huaxiang_future_web/
+
+> ⚠️ 冲突提示：`mvp.hxfz-group.com` 此前计划用于华享未来 MVP 后端。若它当前已服务于其他服务，
+> 复用会使原服务失效。如需保留 MVP，请改用新子域名（如 `web.hxfz-group.com`、`www.hxfz-group.com`），
+> 并在 GitHub Pages 改设对应 cname 后重新添加 DNS 记录。
