@@ -3,624 +3,543 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>华享未来 · 四川县域 AI 数字文化与产业服务平台</title>
-<meta name="description" content="华享未来以 AI 数字人为引擎，连接四川县域的文化、好物与旅行，为居民与游客提供有温度、可信赖的本地化服务。" />
+<title>华享未来 — 四川县域 AI 数字文化平台</title>
+<meta name="description" content="华享未来以数字人为纽带，把四川县域的山水、非遗与烟火，讲给世界听。" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --red:#C8102E;
-    --red-dark:#A50E26;
     --ink:#1A1A1A;
-    --text:#333333;
-    --muted:#6B6B6B;
-    --line:#E4E4E1;
-    --bg:#FFFFFF;
-    --bg-soft:#F5F5F3;
-    --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,"Segoe UI",Roboto,sans-serif;
+    --ink-soft:#33312C;
+    --paper:#FAFAF8;
+    --paper-2:#F3F1EB;
+    --mute:#6F6B62;
+    --mute-2:#9C968B;
+    --line:#E4E1D9;
+    --line-strong:#D6D2C8;
+    --accent:#9A3B2E;       /* 克制的朱砂，仅作微弱点缀 */
+    --serif:"Noto Serif SC",serif;
+    --sans:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --maxw:1180px;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-  .wrap{max-width:1200px;margin:0 auto;padding:0 40px;}
-  a{color:inherit;text-decoration:none;}
-  .red{color:var(--red);}
-
-  /* ---------- Utility bar ---------- */
-  .util{background:var(--bg-soft);border-bottom:1px solid var(--line);font-size:13px;color:var(--muted);}
-  .util .wrap{display:flex;align-items:center;justify-content:space-between;height:40px;}
-  .util .u-right{display:flex;align-items:center;gap:18px;}
-  .util a:hover{color:var(--red);}
-  .util .sep{width:1px;height:14px;background:var(--line);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    font-weight:400;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--mute);font-weight:500;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--ink);letter-spacing:-.01em}
+  .serif{font-family:var(--serif)}
 
   /* ---------- Header ---------- */
-  header.site{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);transition:box-shadow .3s;}
-  header.site.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.06);}
-  .site-inner{display:flex;align-items:center;justify-content:space-between;height:74px;}
-  .brand{display:flex;align-items:center;gap:12px;}
-  .seal{width:34px;height:34px;border-radius:6px;background:var(--red);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:700;}
-  .brand .cn{font-size:19px;font-weight:700;letter-spacing:1px;line-height:1.1;color:var(--ink);}
-  .brand .en{font-size:9px;letter-spacing:2px;color:var(--muted);}
-  nav.main{display:flex;gap:30px;}
-  nav.main a{font-size:15px;color:var(--ink);font-weight:500;transition:color .2s;position:relative;padding:6px 0;}
-  nav.main a:hover{color:var(--red);}
-  nav.main a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--red);transition:width .25s;}
-  nav.main a:hover::after{width:100%;}
-  .head-right{display:flex;align-items:center;gap:18px;}
-  .head-right .login{font-size:14px;color:var(--ink);font-weight:500;}
-  .head-right .login:hover{color:var(--red);}
-  .dl-btn{background:var(--red);color:#fff;padding:11px 22px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:.5px;transition:background .2s,transform .2s;cursor:pointer;border:none;font-family:var(--sans);}
-  .dl-btn:hover{background:var(--red-dark);transform:translateY(-1px);}
-  .menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;}
-  .menu-toggle span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.3s;}
-  .menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-  .menu-toggle.open span:nth-child(2){opacity:0;}
-  .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-  .mobile-menu{position:fixed;top:114px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);transform:translateY(-120%);transition:transform .35s ease;z-index:55;padding:8px 24px 20px;box-shadow:0 12px 30px rgba(0,0,0,.08);}
-  .mobile-menu.open{transform:translateY(0);}
-  .mobile-menu a{display:block;padding:14px 4px;font-size:16px;color:var(--ink);border-bottom:1px solid var(--line);font-weight:500;}
-  .mobile-menu a:last-child{border-bottom:none;}
-  .mobile-menu .m-cta{margin-top:14px;display:inline-block;color:var(--red);font-weight:600;}
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,250,248,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  header.scrolled{border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{font-family:var(--serif);font-size:21px;font-weight:700;letter-spacing:.02em;display:flex;align-items:center;gap:9px}
+  .brand .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+  .nav-links{display:flex;align-items:center;gap:38px}
+  .nav-links a{font-size:14.5px;color:var(--ink-soft);font-weight:400;position:relative;padding:4px 0;transition:color .2s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .25s ease}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{font-size:14px;color:var(--ink);border:1px solid var(--line-strong);padding:9px 18px;border-radius:2px;transition:border-color .2s,background .2s}
+  .nav-cta:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+  .menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+  .menu-btn span{width:22px;height:1.5px;background:var(--ink);display:block;transition:.3s}
 
   /* ---------- Hero ---------- */
-  .hero{padding:84px 0 96px;background:linear-gradient(180deg,#FFFFFF 0%,#FCFBFA 100%);}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
-  .kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:2px;color:var(--red);font-weight:600;margin-bottom:20px;}
-  .kicker .rule{width:34px;height:2px;background:var(--red);}
-  .hero h1{font-size:50px;font-weight:700;line-height:1.22;letter-spacing:.5px;color:var(--ink);}
-  .hero-sub{font-size:17px;color:var(--muted);line-height:1.9;margin-top:22px;max-width:520px;}
-  .cta-row{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border-radius:6px;font-size:15px;font-weight:600;letter-spacing:.5px;transition:.2s;cursor:pointer;border:none;font-family:var(--sans);}
-  .btn.red{background:var(--red);color:#fff;}
-  .btn.red:hover{background:var(--red-dark);transform:translateY(-2px);}
-  .btn.line{background:#fff;color:var(--ink);border:1px solid #D2D2CE;}
-  .btn.line:hover{border-color:var(--red);color:var(--red);}
+  .hero{padding:128px 0 96px}
+  .hero h1{
+    font-size:clamp(38px,6vw,74px);line-height:1.08;font-weight:600;
+    margin:26px 0 28px;max-width:14ch;
+  }
+  .hero p.lead{font-size:18px;color:var(--mute);max-width:46ch;font-weight:300;line-height:1.85}
+  .hero-actions{display:flex;align-items:center;gap:26px;margin-top:42px;flex-wrap:wrap}
+  .btn{
+    font-family:var(--sans);font-size:15px;font-weight:500;cursor:pointer;
+    padding:14px 30px;border-radius:2px;border:1px solid var(--ink);
+    background:var(--ink);color:var(--paper);transition:opacity .2s,transform .2s;
+  }
+  .btn:hover{opacity:.88}
+  .link-arrow{font-size:15px;color:var(--ink);border-bottom:1px solid var(--line-strong);padding-bottom:3px;transition:border-color .2s}
+  .link-arrow:hover{border-color:var(--accent)}
 
-  .hero-stats{display:flex;gap:40px;margin-top:42px;padding-top:26px;border-top:1px solid var(--line);flex-wrap:wrap;}
-  .hstat .n{font-size:30px;font-weight:700;color:var(--ink);line-height:1;}
-  .hstat .n span{color:var(--red);}
-  .hstat .l{font-size:13px;color:var(--muted);margin-top:6px;}
-
-  /* hero right preview card */
-  .hero-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 20px 50px rgba(26,26,26,.08);}
-  .hc-head{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:var(--ink);padding-bottom:16px;border-bottom:1px solid var(--line);}
-  .hc-dot{width:8px;height:8px;border-radius:50%;background:#2FA36B;box-shadow:0 0 0 3px rgba(47,163,107,.18);}
-  .hc-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #F0F0EE;}
-  .hc-row:last-child{border-bottom:none;}
-  .hc-av{width:44px;height:44px;border-radius:50%;flex:0 0 44px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:600;}
-  .hc-info b{display:block;font-size:15px;color:var(--ink);font-weight:600;}
-  .hc-info span{font-size:12px;color:var(--muted);}
-  .hc-on{margin-left:auto;font-size:11px;color:#2FA36B;font-weight:600;}
+  /* ---------- Stat strip ---------- */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:84px}
+  .stats .wrap{display:flex;gap:0;flex-wrap:wrap}
+  .stat{flex:1;min-width:200px;padding:34px 28px 34px 0;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none;padding-right:0}
+  .stat .num{font-family:var(--serif);font-size:38px;font-weight:600;line-height:1}
+  .stat .lab{font-size:13.5px;color:var(--mute);margin-top:10px;letter-spacing:.02em}
 
   /* ---------- Section base ---------- */
-  section.block{padding:96px 0;}
-  .sec-head{margin-bottom:52px;}
-  .sec-label{font-size:13px;letter-spacing:2px;color:var(--red);font-weight:600;margin-bottom:14px;}
-  .sec-title{font-size:34px;font-weight:700;color:var(--ink);letter-spacing:.5px;line-height:1.3;}
-  .sec-desc{font-size:16px;color:var(--muted);line-height:1.85;margin-top:16px;max-width:700px;}
+  section.block{padding:116px 0}
+  .block.alt{background:var(--paper-2)}
+  .sec-head{max-width:60ch;margin-bottom:64px}
+  .sec-head h2{font-size:clamp(28px,4vw,44px);line-height:1.18;margin:20px 0 18px}
+  .sec-head p{color:var(--mute);font-size:16.5px;font-weight:300;max-width:52ch}
 
-  /* ---------- Core business ---------- */
-  .biz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
-  .biz{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 24px;transition:transform .25s,box-shadow .25s,border-color .25s;}
-  .biz:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(26,26,26,.08);border-color:#D9D2CF;}
-  .biz .ic{width:48px;height:48px;border-radius:10px;background:rgba(200,16,46,.08);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
-  .biz h3{font-size:18px;font-weight:700;color:var(--ink);}
-  .biz p{font-size:14px;color:var(--muted);line-height:1.7;margin-top:10px;}
-  .biz .more{display:inline-block;margin-top:16px;font-size:13px;font-weight:600;color:var(--red);}
-  .biz .more:hover{text-decoration:underline;}
+  /* ---------- What we do (editorial numbered) ---------- */
+  .pillars{border-top:1px solid var(--line)}
+  .pillar{display:grid;grid-template-columns:84px 1fr;gap:28px;padding:38px 0;border-bottom:1px solid var(--line);align-items:start}
+  .pillar .idx{font-family:var(--serif);font-size:20px;color:var(--mute-2);padding-top:4px}
+  .pillar h3{font-size:22px;margin-bottom:10px;font-weight:600}
+  .pillar p{color:var(--mute);font-size:15.5px;font-weight:300;max-width:60ch}
 
   /* ---------- Digital humans ---------- */
-  .dh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .dh{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 24px;transition:transform .25s,box-shadow .25s;}
-  .dh:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(26,26,26,.08);}
-  .dh-top{display:flex;align-items:center;gap:16px;}
-  .dh-av{width:56px;height:56px;border-radius:50%;flex:0 0 56px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:600;}
-  .dh-name{font-size:18px;font-weight:700;color:var(--ink);}
-  .dh-county{font-size:12px;color:var(--red);font-weight:600;letter-spacing:.5px;margin-top:3px;}
-  .dh-role{font-size:14px;color:var(--muted);line-height:1.7;margin-top:16px;}
+  .grid-people{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .person{background:var(--paper);padding:0;transition:background .25s}
+  .person:hover{background:var(--paper-2)}
+  .person .ph{aspect-ratio:4/3;background:linear-gradient(160deg,#EDEAE2,#E3DFD5);display:flex;align-items:flex-end;padding:18px;position:relative;overflow:hidden}
+  .person .ph .mono{font-family:var(--serif);font-size:46px;color:rgba(26,26,26,.10);font-weight:700;line-height:1}
+  .person .info{padding:22px 24px 26px}
+  .person .info h3{font-size:20px;font-weight:600;display:flex;align-items:baseline;gap:10px}
+  .person .info .role{font-size:12.5px;color:var(--accent);letter-spacing:.04em;font-weight:500}
+  .person .info p{font-size:13.5px;color:var(--mute);font-weight:300;margin-top:12px;line-height:1.65}
 
   /* ---------- Counties ---------- */
-  .co-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .co{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .25s,box-shadow .25s;}
-  .co:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(26,26,26,.08);}
-  .co-banner{height:120px;position:relative;display:flex;align-items:flex-end;padding:16px;color:#fff;}
-  .co-num{position:absolute;top:14px;left:16px;font-size:12px;font-weight:700;letter-spacing:2px;opacity:.85;}
-  .co-name{font-size:26px;font-weight:700;letter-spacing:2px;line-height:1;}
-  .co-body{padding:20px 22px 24px;}
-  .co-tag{font-size:13px;color:var(--red);font-weight:600;margin-bottom:10px;}
-  .co-desc{font-size:14px;color:var(--muted);line-height:1.75;}
-  .co-guide{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--ink);font-weight:500;}
-  .co-guide b{color:var(--red);}
+  .county{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+  .county:last-child{border-bottom:1px solid var(--line)}
+  .county .visual{background:linear-gradient(150deg,#EDEAE2,#E0DCD2);min-height:300px;position:relative;overflow:hidden}
+  .county .visual .cap{position:absolute;left:24px;bottom:22px;font-family:var(--serif);font-size:30px;color:rgba(26,26,26,.16);font-weight:700}
+  .county .body{padding:52px 56px;display:flex;flex-direction:column;justify-content:center}
+  .county:nth-child(even) .visual{order:2}
+  .county .body .tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute-2)}
+  .county .body h3{font-size:28px;margin:14px 0 14px;font-weight:600}
+  .county .body p{color:var(--mute);font-size:15.5px;font-weight:300;max-width:42ch}
+  .county .body .more{margin-top:22px;font-size:14px;color:var(--ink);border-bottom:1px solid var(--line-strong);padding-bottom:3px;align-self:flex-start}
 
-  /* ---------- Partner band (red) ---------- */
-  .partner-band{background:var(--red);color:#fff;}
-  .partner-band .sec-label{color:rgba(255,255,255,.85);}
-  .partner-band .sec-title{color:#fff;}
-  .partner-band .sec-desc{color:rgba(255,255,255,.9);}
-  .pb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:14px;}
-  .pb-item{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:26px 24px;}
-  .pb-item .n{font-size:13px;font-weight:700;opacity:.7;letter-spacing:1px;}
-  .pb-item h4{font-size:18px;font-weight:700;margin:8px 0 10px;}
-  .pb-item p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.9);}
-  .pb-cta{margin-top:40px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
-  .btn.white{background:#fff;color:var(--red);}
-  .btn.white:hover{background:#f3f3f3;transform:translateY(-2px);}
-  .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6);}
-  .btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+  /* ---------- Goods & Study ---------- */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .two-col .cell{background:var(--paper);padding:54px 48px}
+  .two-col .cell .k{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute-2)}
+  .two-col .cell h3{font-size:26px;margin:16px 0 14px;font-weight:600}
+  .two-col .cell p{color:var(--mute);font-weight:300;font-size:15.5px;max-width:40ch}
+  .two-col .cell .line{margin-top:24px;height:1px;background:var(--line);width:48px}
+
+  /* ---------- B2B dark band ---------- */
+  .b2b{background:var(--ink);color:var(--paper);padding:110px 0}
+  .b2b .eyebrow{color:rgba(250,250,248,.6)}
+  .b2b .eyebrow::before{background:var(--accent)}
+  .b2b h2{color:var(--paper);font-size:clamp(28px,4vw,44px);line-height:1.2;margin:22px 0 22px;max-width:18ch}
+  .b2b p{color:rgba(250,250,248,.66);font-weight:300;max-width:54ch;font-size:16px}
+  .b2b .acts{margin-top:38px;display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+  .b2b .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .b2b .btn:hover{opacity:.85}
+  .b2b .link-arrow{color:var(--paper);border-color:rgba(250,250,248,.3)}
+  .b2b .link-arrow:hover{border-color:var(--accent)}
 
   /* ---------- Download ---------- */
-  .dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
-  .dl-store{display:flex;gap:16px;margin-top:28px;flex-wrap:wrap;}
-  .store-btn{display:inline-flex;align-items:center;gap:12px;padding:14px 24px;border-radius:8px;background:var(--ink);color:#fff;transition:.2s;cursor:pointer;border:none;font-family:var(--sans);}
-  .store-btn:hover{transform:translateY(-2px);background:#000;}
-  .store-btn .s-ic{font-size:22px;line-height:1;}
-  .store-btn .s-tx{text-align:left;}
-  .store-btn .s-tx small{display:block;font-size:11px;opacity:.7;letter-spacing:1px;}
-  .store-btn .s-tx b{font-size:15px;font-weight:600;font-family:var(--sans);}
-  .qr-box{width:200px;height:200px;border:1px solid var(--line);border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;text-align:center;margin:0 auto;box-shadow:0 12px 30px rgba(26,26,26,.06);}
+  .download{text-align:center;padding:120px 0}
+  .download h2{font-size:clamp(28px,4vw,46px);line-height:1.18;margin:20px auto 22px;max-width:16ch}
+  .download p{color:var(--mute);font-weight:300;max-width:44ch;margin:0 auto 38px;font-size:16px}
+
+  /* ---------- About ---------- */
+  .about{border-top:1px solid var(--line);padding:96px 0}
+  .about .grid{display:grid;grid-template-columns:1fr 1.4fr;gap:56px}
+  .about h2{font-size:clamp(26px,3.4vw,38px);line-height:1.22}
+  .about p{color:var(--mute);font-weight:300;font-size:16px;margin-bottom:18px}
+  .about p:last-child{margin-bottom:0}
 
   /* ---------- Footer ---------- */
-  footer.site{background:var(--ink);color:#A8A8A5;padding:68px 0 36px;}
-  .foot-top{display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap;}
-  .foot-brand{flex:0 0 300px;}
-  .foot-brand .seal{margin-bottom:18px;}
-  .foot-brand .f-name{font-size:22px;color:#fff;font-weight:700;letter-spacing:1px;margin-bottom:12px;}
-  .foot-brand .f-slogan{font-size:14px;line-height:1.7;max-width:280px;}
-  .foot-nav{display:flex;gap:64px;flex-wrap:wrap;}
-  .foot-col h4{font-size:14px;color:#fff;font-weight:600;letter-spacing:1px;margin-bottom:14px;}
-  .foot-col a{display:block;font-size:14px;color:#A8A8A5;padding:6px 0;transition:color .2s;cursor:pointer;}
-  .foot-col a:hover{color:#fff;}
-  .foot-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:24px;margin-top:48px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;flex-wrap:wrap;color:#8C8C89;}
-
-  /* ---------- Reveal ---------- */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
-  .reveal.show{opacity:1;transform:none;}
+  footer{background:var(--paper-2);border-top:1px solid var(--line);padding:64px 0 40px}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid var(--line)}
+  .foot-brand{font-family:var(--serif);font-size:20px;font-weight:700;display:flex;align-items:center;gap:9px}
+  .foot-brand .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+  .foot-col h4{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-2);margin-bottom:16px;font-weight:500}
+  .foot-col a{display:block;font-size:14.5px;color:var(--ink-soft);margin-bottom:11px;font-weight:300;transition:color .2s}
+  .foot-col a:hover{color:var(--accent)}
+  .foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;font-size:13px;color:var(--mute-2)}
 
   /* ---------- Modal ---------- */
-  .modal-mask{position:fixed;inset:0;background:rgba(26,26,26,.55);backdrop-filter:blur(3px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s;}
-  .modal-mask.open{opacity:1;pointer-events:auto;}
-  .modal{background:#fff;width:100%;max-width:460px;border-radius:14px;padding:34px 32px;position:relative;transform:translateY(16px);transition:transform .3s;max-height:90vh;overflow:auto;}
-  .modal-mask.open .modal{transform:none;}
-  .modal h3{font-size:23px;font-weight:700;letter-spacing:.5px;margin-bottom:6px;color:var(--ink);}
-  .modal p.m-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
-  .modal .close{position:absolute;top:16px;right:18px;font-size:24px;color:var(--muted);cursor:pointer;line-height:1;background:none;border:none;}
-  .field{margin-bottom:16px;}
-  .field label{display:block;font-size:13px;color:var(--text);margin-bottom:7px;font-weight:500;}
-  .field input,.field textarea,.field select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;font-family:var(--sans);font-size:14px;color:var(--ink);transition:border-color .2s;}
-  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--red);}
-  .field textarea{resize:vertical;min-height:84px;}
-  .field .err{color:var(--red);font-size:12px;margin-top:5px;display:none;}
-  .field.invalid .err{display:block;}
-  .field.invalid input,.field.invalid textarea{border-color:var(--red);}
-  .modal .submit{width:100%;margin-top:8px;padding:14px;border-radius:8px;background:var(--red);color:#fff;font-size:15px;font-weight:600;letter-spacing:.5px;border:none;cursor:pointer;font-family:var(--sans);transition:.2s;}
-  .modal .submit:hover{background:var(--red-dark);}
-  .modal .success{text-align:center;padding:14px 0;}
-  .modal .success .ok{width:56px;height:56px;border-radius:50%;background:#2FA36B;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;margin:0 auto 18px;}
-  .modal .success h3{margin-bottom:8px;}
-  .modal .success p{font-size:14px;color:var(--muted);}
+  .overlay{position:fixed;inset:0;background:rgba(26,26,26,.42);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+  .overlay.show{display:flex}
+  .modal{background:var(--paper);width:100%;max-width:460px;border-radius:3px;padding:38px 36px;box-shadow:0 24px 70px rgba(0,0,0,.18);position:relative}
+  .modal h3{font-size:23px;margin-bottom:8px}
+  .modal .sub{color:var(--mute);font-size:14px;font-weight:300;margin-bottom:22px}
+  .modal label{display:block;font-size:13px;color:var(--mute);margin:14px 0 7px}
+  .modal input,.modal textarea{width:100%;border:1px solid var(--line-strong);background:var(--paper);padding:11px 13px;font-family:var(--sans);font-size:14px;color:var(--ink);border-radius:2px;outline:none;transition:border-color .2s}
+  .modal input:focus,.modal textarea:focus{border-color:var(--ink)}
+  .modal textarea{resize:vertical;min-height:84px}
+  .modal .submit{width:100%;margin-top:22px;padding:13px;border:none;background:var(--ink);color:var(--paper);font-size:15px;font-weight:500;border-radius:2px;cursor:pointer;transition:opacity .2s}
+  .modal .submit:hover{opacity:.88}
+  .modal .close{position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;color:var(--mute-2);cursor:pointer;line-height:1}
+  .modal .ok{text-align:center;padding:14px 0}
+  .modal .ok .mark{font-family:var(--serif);font-size:34px;color:var(--accent)}
+  .store-row{display:flex;gap:12px;margin-top:20px}
+  .store-btn{flex:1;text-align:center;border:1px solid var(--line-strong);padding:13px;border-radius:2px;font-size:14.5px;cursor:pointer;background:var(--paper);transition:border-color .2s,background .2s}
+  .store-btn:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
 
   /* ---------- Responsive ---------- */
-  @media(max-width:980px){
-    .wrap{padding:0 24px;}
-    nav.main,.head-right{display:none;}
-    .menu-toggle{display:flex;}
-    .hero-grid{grid-template-columns:1fr;gap:48px;}
-    .hero h1{font-size:38px;}
-    .biz-grid{grid-template-columns:repeat(2,1fr);}
-    .dh-grid{grid-template-columns:repeat(2,1fr);}
-    .co-grid{grid-template-columns:repeat(2,1fr);}
-    .pb-grid{grid-template-columns:1fr;}
-    .dl-grid{grid-template-columns:1fr;gap:32px;text-align:center;}
-    .dl-store{justify-content:center;}
-    .sec-title{font-size:28px;}
+  @media(max-width:880px){
+    .nav-links{display:none}
+    .menu-btn{display:flex}
+    .wrap{padding:0 20px}
+    .hero{padding:84px 0 64px}
+    .stats .wrap{flex-direction:column}
+    .stat{border-right:none;border-bottom:1px solid var(--line);padding:24px 0}
+    .stat:last-child{border-bottom:none}
+    section.block{padding:78px 0}
+    .grid-people{grid-template-columns:1fr 1fr}
+    .county{grid-template-columns:1fr}
+    .county .visual{min-height:200px;order:0!important}
+    .county .body{padding:38px 24px}
+    .two-col{grid-template-columns:1fr}
+    .about .grid{grid-template-columns:1fr;gap:24px}
+    .download{padding:84px 0}
   }
-  @media(max-width:560px){
-    .hero h1{font-size:30px;}
-    .biz-grid{grid-template-columns:1fr;}
-    .dh-grid{grid-template-columns:1fr;}
-    .co-grid{grid-template-columns:1fr;}
-    .hero-stats{gap:24px;}
-    .foot-nav{gap:36px;}
+  @media(max-width:520px){
+    .grid-people{grid-template-columns:1fr}
+    .hero-actions{gap:18px}
+    .btn,.link-arrow{width:100%;text-align:center}
   }
+
+  /* mobile menu panel */
+  .m-panel{position:fixed;inset:0;background:var(--paper);z-index:90;display:none;flex-direction:column;padding:28px 24px}
+  .m-panel.show{display:flex}
+  .m-panel .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
+  .m-panel a{font-family:var(--serif);font-size:26px;font-weight:600;padding:16px 0;border-bottom:1px solid var(--line)}
+  .m-panel .m-cta{margin-top:auto;border:1px solid var(--ink);padding:15px;text-align:center;border-radius:2px;font-size:15px}
 </style>
 </head>
 <body>
 
-<!-- Utility bar -->
-<div class="util">
-  <div class="wrap">
-    <div>华享未来 · 四川县域 AI 数字文化与产业服务平台</div>
-    <div class="u-right">
-      <a href="#top">中文</a><span class="sep"></span><a href="#top">EN</a>
-      <span class="sep"></span><a href="javascript:void(0)" onclick="openConsult()">登录</a>
-    </div>
-  </div>
-</div>
-
-<header class="site" id="top">
-  <div class="wrap site-inner">
-    <a class="brand" href="#top">
-      <div class="seal">華</div>
-      <div>
-        <div class="cn">华享未来</div>
-        <div class="en">HUAXIANG FUTURE</div>
-      </div>
-    </a>
-    <nav class="main">
-      <a href="#biz">业务板块</a>
-      <a href="#humans">数字人</a>
-      <a href="#counties">县域文化</a>
-      <a href="#partners">合作伙伴</a>
-      <a href="#about">关于我们</a>
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="brand"><span class="dot"></span>华享未来</a>
+    <nav class="nav-links">
+      <a href="#people">数字人</a>
+      <a href="#counties">县域</a>
+      <a href="#study">好物·研学</a>
+      <a href="#partner">合作</a>
+      <a href="#about">关于</a>
     </nav>
-    <div class="head-right">
-      <a class="login" href="javascript:void(0)" onclick="openConsult()">县域登录</a>
-      <button class="dl-btn" onclick="openDownload()">下载 APP</button>
-    </div>
-    <button class="menu-toggle" id="menuToggle" aria-label="菜单"><span></span><span></span><span></span></button>
+    <a href="#" class="nav-cta" onclick="openConsult();return false;">登录 / 合作</a>
+    <button class="menu-btn" id="menuBtn" aria-label="菜单"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#biz" onclick="closeMenu()">业务板块</a>
-  <a href="#humans" onclick="closeMenu()">数字人</a>
-  <a href="#counties" onclick="closeMenu()">县域文化</a>
-  <a href="#partners" onclick="closeMenu()">合作伙伴</a>
-  <a href="#about" onclick="closeMenu()">关于我们</a>
-  <a class="m-cta" href="javascript:void(0)" onclick="closeMenu();openConsult()">县域合作咨询 →</a>
+<div class="m-panel" id="mPanel">
+  <div class="top">
+    <span class="brand"><span class="dot"></span>华享未来</span>
+    <button class="menu-btn" id="mClose" aria-label="关闭"><span></span><span></span></button>
+  </div>
+  <a href="#people" onclick="closeMenu()">数字人</a>
+  <a href="#counties" onclick="closeMenu()">县域</a>
+  <a href="#study" onclick="closeMenu()">好物·研学</a>
+  <a href="#partner" onclick="closeMenu()">合作</a>
+  <a href="#about" onclick="closeMenu()">关于</a>
+  <a href="#" class="m-cta" onclick="openConsult();closeMenu();return false;">登录 / 合作</a>
 </div>
 
-<main>
+<main id="top">
+
   <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-left">
-        <div class="kicker"><span class="rule"></span>百县火炬计划 · 四川</div>
-        <h1>让每个县域<br>都有一张 <span class="red">AI 数字名片</span></h1>
-        <p class="hero-sub">华享未来以 AI 数字人为引擎，连接四川县域的文化、好物与旅行，为居民与游客提供有温度、可信赖的本地化服务。</p>
-        <div class="cta-row">
-          <button class="btn red" onclick="goStore('ios')">下载华享未来</button>
-          <button class="btn line" onclick="openConsult()">县域合作咨询</button>
-        </div>
-        <div class="hero-stats">
-          <div class="hstat"><div class="n" data-target="9">0</div><div class="l">位数字人 IP</div></div>
-          <div class="hstat"><div class="n" data-target="6">0</div><div class="l">个试点县域</div></div>
-          <div class="hstat"><div class="n" data-target="1866">0</div><div class="l">个县域蓝图</div></div>
-        </div>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">四川县域 · AI 数字文化平台</span>
+      <h1>让每一座县城，<br>都有自己的声音。</h1>
+      <p class="lead">华享未来用 9 位数字人，把四川县域的山水、非遗与烟火，讲给世界听。</p>
+      <div class="hero-actions">
+        <a href="#people" class="btn">认识数字人</a>
+        <a href="#counties" class="link-arrow">浏览县域 →</a>
       </div>
-      <div class="hero-right">
-        <div class="hero-card">
-          <div class="hc-head"><span class="hc-dot"></span>数字人矩阵 · 实时在线</div>
-          <div class="hc-row">
-            <span class="hc-av" style="background:linear-gradient(145deg,#9DAA90,#6E7A5F)">江</span>
-            <div class="hc-info"><b>江呦呦</b><span>屏山 · 文化使者</span></div>
-            <span class="hc-on">在线</span>
-          </div>
-          <div class="hc-row">
-            <span class="hc-av" style="background:linear-gradient(145deg,#7E8AA0,#4E5A72)">陈</span>
-            <div class="hc-info"><b>陈子昂</b><span>射洪 · 文化使者</span></div>
-            <span class="hc-on">在线</span>
-          </div>
-          <div class="hc-row">
-            <span class="hc-av" style="background:linear-gradient(145deg,#8FA98C,#5E7560)">杜</span>
-            <div class="hc-info"><b>杜仙仙</b><span>峨眉 · 文化使者</span></div>
-            <span class="hc-on">在线</span>
-          </div>
+
+      <div class="stats">
+        <div class="wrap" style="padding:0">
+          <div class="stat"><div class="num">9</div><div class="lab">位数字人，覆盖九座县城</div></div>
+          <div class="stat"><div class="num">6</div><div class="lab">个试点县域，逐步延展</div></div>
+          <div class="stat"><div class="num">1866</div><div class="lab">项非遗线索待被讲述</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CORE BUSINESS -->
-  <section class="block" id="biz" style="background:var(--bg)">
+  <!-- WHAT WE DO -->
+  <section class="block alt" id="what">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-label">业务板块</div>
-        <div class="sec-title">一个平台，连接县域的文化与产业</div>
-        <p class="sec-desc">从可对话的数字人，到地标好物与研学旅行，华享未来为县域提供一体化的数字文化服务入口。</p>
+        <span class="eyebrow">我们做什么</span>
+        <h2>把县城的文化，整理成可被看见、被带走的名片。</h2>
+        <p>不是又一个资讯聚合，而是让每座县城拥有自己的讲述者，让文化在对话里活起来。</p>
       </div>
-      <div class="biz-grid">
-        <div class="biz reveal">
-          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
-          <h3>AI 数字人</h3>
-          <p>可对话的县域文化引路人，为游客与居民提供讲解、导览与本地服务。</p>
-          <a class="more" href="#humans">了解更多 →</a>
-        </div>
-        <div class="biz reveal">
-          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
-          <h3>县域好物</h3>
-          <p>地标农特与非遗好物商城，让每一次消费都成为对县域文化的支持。</p>
-          <a class="more" href="#counties">了解更多 →</a>
-        </div>
-        <div class="biz reveal">
-          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="#C8102E" stroke="none"/></svg></div>
-          <h3>研学旅行</h3>
-          <p>文化研学路线与亲子营，把课堂搬进山河与遗址之间。</p>
-          <a class="more" href="#counties">了解更多 →</a>
-        </div>
-        <div class="biz reveal">
-          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
-          <h3>百县计划</h3>
-          <p>与地方政府、文化机构共建县域数字文化，打造专属数字人与产业入口。</p>
-          <a class="more" href="#partners">了解更多 →</a>
-        </div>
+      <div class="pillars reveal">
+        <div class="pillar"><div class="idx">01</div><div><h3>数字人名片</h3><p>每位数字人都是一座县城的讲述者，用方言与故事，建立人与地方之间的情感连接。</p></div></div>
+        <div class="pillar"><div class="idx">02</div><div><h3>县域文化橱窗</h3><p>把古镇、山水与在地风物，整理成可浏览、可带走的县城名片，沉淀为长期资产。</p></div></div>
+        <div class="pillar"><div class="idx">03</div><div><h3>研学与好物</h3><p>连接线下研学路线与县域好物，让文化既能体验，也能走进日常的消费。</p></div></div>
+        <div class="pillar"><div class="idx">04</div><div><h3>伙伴计划</h3><p>向县域、机构与品牌开放合作，共建一张覆盖百县的文化网络。</p></div></div>
       </div>
     </div>
   </section>
 
   <!-- DIGITAL HUMANS -->
-  <section class="block" id="humans" style="background:var(--bg-soft)">
+  <section class="block" id="people">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-label">数字人矩阵</div>
-        <div class="sec-title">九位文化伙伴，九种县域生命</div>
-        <p class="sec-desc">每一位数字人都诞生于真实的县域故事，是用户走进一座城时的讲述者与服务者。</p>
+        <span class="eyebrow">数字人矩阵</span>
+        <h2>九位数字人，九座县城的声音。</h2>
+        <p>他们不是虚拟主播，而是每座县城请来的讲述者——由在地文化喂养，替县城说话。</p>
       </div>
-      <div class="dh-grid" id="dhGrid"></div>
+      <div class="grid-people reveal" id="peopleGrid"></div>
     </div>
   </section>
 
   <!-- COUNTIES -->
-  <section class="block" id="counties" style="background:var(--bg)">
+  <section class="block alt" id="counties">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-label">县域文化</div>
-        <div class="sec-title">走进一座县城，像翻开一页县志</div>
-        <p class="sec-desc">华享未来用数字人、内容与本地服务，把每座县城的故事重新讲给世界听。</p>
+        <span class="eyebrow">县域文化</span>
+        <h2>从这几座县城开始。</h2>
+        <p>每一座都有说不完的山水与人事。先打开其中几扇门。</p>
       </div>
-      <div class="co-grid" id="coGrid"></div>
+      <div id="countyList" class="reveal"></div>
     </div>
   </section>
 
-  <!-- PARTNER BAND -->
-  <section class="block partner-band" id="partners">
+  <!-- GOODS & STUDY -->
+  <section class="block" id="study">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-label">合作伙伴</div>
-        <div class="sec-title">与华享未来共建县域数字文化</div>
-        <p class="sec-desc">如果你是县域政府、文旅机构或本地商家，欢迎加入百县火炬计划，共同打造可信赖的县域数字名片。</p>
+        <span class="eyebrow">好物 · 研学</span>
+        <h2>把文化带回家。</h2>
       </div>
-      <div class="pb-grid">
-        <div class="pb-item reveal"><div class="n">01</div><h4>专属数字人定制</h4><p>基于真实县域文化打造可对话的专属数字人，沉淀为长期数字资产。</p></div>
-        <div class="pb-item reveal"><div class="n">02</div><h4>内容矩阵共建</h4><p>联合生产图文、短视频与研学内容，形成可持续的县域文化传播力。</p></div>
-        <div class="pb-item reveal"><div class="n">03</div><h4>产业入口接入</h4><p>打通好物电商、研学报名与本地生活，让文化流量转化为产业增量。</p></div>
+      <div class="two-col reveal">
+        <div class="cell">
+          <div class="k">在地好物</div>
+          <h3>县域好物橱窗</h3>
+          <p>从非遗手作到山野风物，把好物背后的县城故事一并交到你手里。</p>
+          <div class="line"></div>
+        </div>
+        <div class="cell">
+          <div class="k">研学路线</div>
+          <h3>县域研学计划</h3>
+          <p>把课堂搬进古镇与山水之间，让青少年在行走中认识自己的家乡。</p>
+          <div class="line"></div>
+        </div>
       </div>
-      <div class="pb-cta">
-        <button class="btn white" onclick="openConsult()">申请县域合作</button>
-        <button class="btn ghost" onclick="openDownload()">了解 APP 详情</button>
+    </div>
+  </section>
+
+  <!-- B2B -->
+  <section class="b2b" id="partner">
+    <div class="wrap reveal">
+      <span class="eyebrow">伙伴计划</span>
+      <h2>与华享未来一起，把县城讲给更多人。</h2>
+      <p>无论你是县域文旅、文化机构，还是寻找真实中国故事的合作伙伴——我们都留出了一把椅子。</p>
+      <div class="acts">
+        <a href="#" class="btn" onclick="openConsult();return false;">成为合作伙伴</a>
+        <a href="#about" class="link-arrow">了解合作方式 →</a>
       </div>
     </div>
   </section>
 
   <!-- DOWNLOAD -->
-  <section class="block" id="download" style="background:var(--bg-soft)">
-    <div class="wrap dl-grid reveal">
-      <div>
-        <div class="sec-label">随身服务</div>
-        <div class="sec-title">把县域服务装进口袋</div>
-        <p class="sec-desc">下载华享未来，让九位文化伙伴陪你走进每一座四川县城。</p>
-        <div class="dl-store">
-          <button class="store-btn" onclick="goStore('ios')"><span class="s-ic">&#63743;</span><span class="s-tx"><small>下载于</small><b>App Store</b></span></button>
-          <button class="store-btn" onclick="goStore('android')"><span class="s-ic">&#9696;</span><span class="s-tx"><small>下载于</small><b>应用市场</b></span></button>
+  <section class="download" id="download">
+    <div class="wrap reveal">
+      <span class="eyebrow">移动端</span>
+      <h2>把华享未来，装进口袋。</h2>
+      <p>随时与你的县城数字人对话，听他讲家乡的清晨与黄昏。</p>
+      <a href="#" class="btn" onclick="openStore();return false;">下载 App</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="grid reveal">
+        <h2>关于华享未来</h2>
+        <div>
+          <p>华享未来是一个面向四川县域的 AI 数字文化与产业服务平台。我们相信，每一座县城都值得被认真地讲述——不是作为旅游目的地的标签，而是作为有温度、有记忆、有人情的地方。</p>
+          <p>我们用数字人作为纽带，连接县域的山水、非遗与烟火，也连接那些想认识真实中国的人。平台同时服务 C 端用户与 B 端合作伙伴，让文化在对话中产生价值。</p>
         </div>
       </div>
-      <div class="qr-box">扫码下载<br>（占位）</div>
     </div>
   </section>
 
-  <!-- ABOUT anchor -->
-  <section class="block" id="about" style="background:var(--bg);padding-top:0">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-label">关于华享未来</div>
-        <div class="sec-title">用 AI，让中国县域被看见</div>
-        <p class="sec-desc">华享未来隶属于华享创联科技（成都）集团有限公司，由华享未来（四川）科技有限公司运营，致力于以 AI 数字人连接县域的文化、产业与人群。</p>
-      </div>
-    </div>
-  </section>
 </main>
 
-<footer class="site">
+<footer>
   <div class="wrap">
     <div class="foot-top">
-      <div class="foot-brand">
-        <div class="seal">華</div>
-        <div class="f-name">华享未来</div>
-        <div class="f-slogan">让每个县域，都有一张 AI 数字名片。</div>
+      <div>
+        <div class="foot-brand"><span class="dot"></span>华享未来</div>
+        <p style="color:var(--mute);font-size:14px;font-weight:300;margin-top:14px;max-width:30ch">四川县域 AI 数字文化与产业服务平台</p>
       </div>
-      <div class="foot-nav">
+      <div class="foot-cols">
         <div class="foot-col">
           <h4>产品</h4>
-          <a href="#humans">AI 数字人</a>
-          <a href="#counties">县域好物</a>
-          <a href="#counties">研学旅行</a>
-          <a href="#biz">百县计划</a>
+          <a href="#people">数字人</a>
+          <a href="#counties">县域橱窗</a>
+          <a href="#study">好物·研学</a>
+          <a href="#download">下载 App</a>
         </div>
         <div class="foot-col">
           <h4>合作</h4>
-          <a href="javascript:void(0)" onclick="openConsult()">县域合作咨询</a>
-          <a href="javascript:void(0)" onclick="openConsult()">商家入驻</a>
-          <a href="javascript:void(0)" onclick="openConsult()">媒体联系</a>
+          <a href="#" onclick="openConsult();return false;">伙伴计划</a>
+          <a href="#about">关于我们</a>
+          <a href="#">媒体联系</a>
         </div>
         <div class="foot-col">
-          <h4>关于</h4>
-          <a href="#about">关于我们</a>
-          <a href="#about">品牌理念</a>
-          <a href="#top">隐私政策</a>
+          <h4>法律</h4>
+          <a href="#">隐私政策</a>
+          <a href="#">服务条款</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <div>© 2026 华享未来 / 华享创联 版权所有</div>
-      <div>蜀 ICP 备 XXXXXXXX 号</div>
+      <span>© 2026 华享未来（四川）科技有限公司</span>
+      <span>蜀 ICP 备 · 演示站点</span>
     </div>
   </div>
 </footer>
 
-<!-- 咨询弹窗 -->
-<div class="modal-mask" id="consultMask">
+<!-- Consult Modal -->
+<div class="overlay" id="consultOverlay">
   <div class="modal">
-    <button class="close" onclick="closeConsult()">&times;</button>
+    <button class="close" onclick="closeConsult()">×</button>
     <div id="consultForm">
       <h3>县域合作咨询</h3>
-      <p class="m-sub">留下联系方式，华享未来团队将在 1 个工作日内与你联系。</p>
-      <form onsubmit="return submitConsult(event)">
-        <div class="field" id="f-name">
-          <label>称呼 *</label>
-          <input type="text" name="name" placeholder="如：李主任 / 张先生" />
-          <div class="err">请填写称呼</div>
-        </div>
-        <div class="field" id="f-org">
-          <label>单位 / 县域 *</label>
-          <input type="text" name="org" placeholder="如：屏山县文旅局 / 某文旅公司" />
-          <div class="err">请填写单位或县域</div>
-        </div>
-        <div class="field" id="f-contact">
-          <label>联系方式 *</label>
-          <input type="text" name="contact" placeholder="手机 / 微信 / 邮箱" />
-          <div class="err">请填写联系方式</div>
-        </div>
-        <div class="field">
-          <label>合作意向</label>
-          <select name="intent">
-            <option>百县火炬计划 · 县域入驻</option>
-            <option>文化伙伴数字人定制</option>
-            <option>县域好物 / 电商合作</option>
-            <option>研学线路共建</option>
-            <option>其他</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>补充说明</label>
-          <textarea name="note" placeholder="简单描述您的诉求（选填）"></textarea>
-        </div>
-        <button type="submit" class="submit">提交咨询</button>
-      </form>
+      <div class="sub">留下信息，我们会在一个工作日内与你联系。</div>
+      <label>称呼</label>
+      <input id="cName" type="text" placeholder="您的称呼" />
+      <label>机构 / 县域</label>
+      <input id="cOrg" type="text" placeholder="如：屏山县文旅局" />
+      <label>联系邮箱</label>
+      <input id="cMail" type="email" placeholder="name@example.com" />
+      <label>合作意向</label>
+      <textarea id="cMsg" placeholder="简单描述您的合作想法"></textarea>
+      <button class="submit" onclick="submitConsult()">提交咨询</button>
     </div>
-    <div class="success" id="consultSuccess" style="display:none">
-      <div class="ok">&#10003;</div>
-      <h3>已收到您的咨询</h3>
-      <p>我们会尽快与您联系。感谢对华享未来的关注。</p>
-      <button class="submit" style="margin-top:18px" onclick="closeConsult()">好的</button>
+    <div id="consultOk" class="ok" style="display:none">
+      <div class="mark">✓</div>
+      <h3 style="margin-top:10px">已收到</h3>
+      <p class="sub">我们会尽快与您联系。演示站点暂不发送真实邮件。</p>
     </div>
   </div>
 </div>
 
-<!-- 下载弹窗 -->
-<div class="modal-mask" id="downloadMask">
-  <div class="modal" style="max-width:420px">
-    <button class="close" onclick="closeDownload()">&times;</button>
+<!-- Store Modal -->
+<div class="overlay" id="storeOverlay">
+  <div class="modal">
+    <button class="close" onclick="closeStore()">×</button>
     <h3>下载华享未来</h3>
-    <p class="m-sub">选择您的设备，前往应用商店下载（演示环境暂未上架，正式链接上线后启用）。</p>
-    <div class="dl-store" style="flex-direction:column;align-items:stretch;margin-top:8px">
-      <button class="store-btn" onclick="goStore('ios')"><span class="s-ic">&#63743;</span><span class="s-tx"><small>下载于</small><b>App Store</b></span></button>
-      <button class="store-btn" onclick="goStore('android')"><span class="s-ic">&#9696;</span><span class="s-tx"><small>下载于</small><b>应用市场</b></span></button>
-    </div>
-    <div style="margin-top:18px;padding:14px;border-radius:10px;background:var(--bg-soft);font-size:13px;color:var(--muted);text-align:center">
-      扫码体验（占位）<br/>▦▦▦▦▦▦
+    <div class="sub">选择你的平台，演示版暂未上架应用市场。</div>
+    <div class="store-row">
+      <div class="store-btn" onclick="goStore('ios')">App Store</div>
+      <div class="store-btn" onclick="goStore('android')">应用市场</div>
     </div>
   </div>
 </div>
 
 <script>
-  // ---------- 数字人数据 ----------
-  const partners = [
-    {name:"江呦呦", county:"屏山文化使者", role:"金沙江畔的引路人，为你讲解屏山的古镇与山河。", g:["#9DAA90","#6E7A5F"]},
-    {name:"陈子昂", county:"射洪文化使者", role:"以诗为路，重新认识涪江畔的人文与风土。", g:["#7E8AA0","#4E5A72"]},
-    {name:"郭小沫", county:"沙湾文化使者", role:"大渡河谷的护卫者，带你领略铜河之春。", g:["#A89878","#7A6C4E"]},
-    {name:"杜仙仙", county:"峨眉文化使者", role:"仙山云海间的讲述者，识别传奇山水与寺庙。", g:["#8FA98C","#5E7560"]},
-    {name:"雪梨宝宝", county:"金川文化使者", role:"樱桃谷里的甜味使者，记录高原的生长与丰收。", g:["#C99BA0","#9A6E73"]},
-    {name:"巴小虎", county:"达州文化使者", role:"巴山渊水之间的卡通伴侣，讲述巴人的乐观与热烈。", g:["#C28A5E","#955F38"]},
-    {name:"遂小荷", county:"遂宁文化使者", role:"莲湖旁的纹样图腾，为你展开船山的历史。", g:["#B58FA8","#8A6780"]},
-    {name:"雪灵儿", county:"黑水文化使者", role:"达古冰川的守望者，声音里藏着高山雪。", g:["#9DB4C2","#6E899C"]},
-    {name:"文启", county:"富顺文化使者", role:"井盐文明的传承者，带你感受盐都的温度。", g:["#5E6E8A","#3E4E6A"]},
+  // ---- data ----
+  var people = [
+    {name:"江呦呦",role:"屏山文化使者",photo:"",desc:"金沙江畔的引路人，为你讲解屏山的古镇与山河。"},
+    {name:"陈子昂",role:"射洪文化使者",photo:"",desc:"涪江之畔的诗骨，带你走进子昂故里的文脉。"},
+    {name:"郭小沫",role:"沙湾文化使者",photo:"",desc:"沫水之滨的讲述者，串联沙湾的烟火与名人。"},
+    {name:"杜仙仙",role:"峨眉文化使者",photo:"",desc:"峨眉山下的灵秀之声，邀你共览禅意与风光。"},
+    {name:"雪梨宝宝",role:"金川文化使者",photo:"",desc:"雪梨花开的地方，陪你认识金川的山水人家。"},
+    {name:"巴小虎",role:"达州文化使者",photo:"",desc:"巴山渠水的热络伙伴，带你逛达州的市井与风味。"},
+    {name:"遂小荷",role:"遂宁文化使者",photo:"",desc:"涪江女儿，细说遂宁的莲城故事与静好。"},
+    {name:"雪灵儿",role:"达古冰川守望者",photo:"",desc:"达古冰川的守望者，讲述高原的纯净与传说。"},
+    {name:"文启",role:"富顺文化使者",photo:"",desc:"才子之乡的引路少年，带你看富顺的文风与豆香。"}
   ];
-  const dhGrid = document.getElementById("dhGrid");
-  partners.forEach(p=>{
-    const el=document.createElement("div");
-    el.className="dh reveal";
-    el.innerHTML=`<div class="dh-top"><span class="dh-av" style="background:linear-gradient(145deg,${p.g[0]},${p.g[1]})">${p.name[0]}</span>
-      <div><div class="dh-name">${p.name}</div><div class="dh-county">${p.county}</div></div></div>
-      <div class="dh-role">${p.role}</div>`;
-    dhGrid.appendChild(el);
+  var counties = [
+    {name:"屏山",tag:"PINGSHAN",desc:"金沙江畔的千年古镇，见证向家坝的浩渺与一方水土的乡愁。"},
+    {name:"沙湾",tag:"SHAWAN",desc:"沫水之滨，郭沫若故里，山水与文脉在此交汇。"},
+    {name:"射洪",tag:"SHEHONG",desc:"子昂故里，诗酒射洪，涪江之畔回响着盛唐的诗风。"},
+    {name:"兴文",tag:"XINGWEN",desc:"石海洞乡，僰人悬棺，喀斯特地貌之下藏着秘境。"},
+    {name:"崇州",tag:"CHONGZHOU",desc:"罨画池畔，街子古镇，川西坝子里的慢生活。"},
+    {name:"井研",tag:"JINGYAN",desc:"研溪湿地，竹园书香，才子之乡的田园清欢。"}
+  ];
+
+  // ---- render people ----
+  var pg = document.getElementById('peopleGrid');
+  people.forEach(function(p){
+    var d = document.createElement('div');
+    d.className = 'person';
+    d.innerHTML = '<div class="ph"><span class="mono">'+p.name.charAt(0)+'</span></div>'+
+      '<div class="info"><h3>'+p.name+' <span class="role">'+p.role+'</span></h3>'+
+      '<p>'+p.desc+'</p></div>';
+    pg.appendChild(d);
   });
 
-  // ---------- 县域数据 ----------
-  const counties = [
-    {num:"01", name:"屏山", tag:"金沙江畔的茶马记忆", guide:"江呦呦", tone:["#9DAA90","#6E7A5F"],
-     desc:"屏山县位于四川南缘，金沙江穿境而过。这里有古老的茶马古道、荔枝桂圆的甜味，也有江呦呦为你讲述的古镇往事。"},
-    {num:"02", name:"沙湾", tag:"大渡河谷的沫若故里", guide:"郭小沫", tone:["#A89878","#7A6C4E"],
-     desc:"沙湾区是郭沫若的故乡，大渡河在此切割出壮丽的峡谷。研学、戏剧与铜河文化，在这里汇成一条可体验的河流。"},
-    {num:"03", name:"射洪", tag:"诗酒之乡的当代回声", guide:"陈子昂", tone:["#7E8AA0","#4E5A72"],
-     desc:"射洪是陈子昂的故乡，也是舍得酒的发源地。数字人陈子昂将唐诗与当代生活重新连接，让诗酒之乡长出新的故事。"},
-    {num:"04", name:"兴文", tag:"石海天坑的亿年回响", guide:"杜仙仙", tone:["#9AA39A","#6E7A5F"],
-     desc:"兴文石海是世界地质公园，天坑、溶洞与苗乡风情共存。在这里，研学不仅课程，更是一场穿越亿年的地质对话。"},
-    {num:"05", name:"崇州", tag:"竹艺之城的田园诗意", guide:"文启", tone:["#5E6E8A","#3E4E6A"],
-     desc:"崇州竹艺村与非遗匠人闻名，街子古镇的慢生活与川西林盘相映成趣。华享未来把这份田园诗意讲给更多人。"},
-    {num:"06", name:"井研", tag:"研溪湿地的书画之乡", guide:"遂小荷", tone:["#B58FA8","#8A6780"],
-     desc:"井研研溪湿地水网纵横，农民画与雷氏民居承载乡愁。数字人遂小荷带你走进这座温润的书画之乡。"},
-  ];
-  const coGrid = document.getElementById("coGrid");
-  counties.forEach(c=>{
-    const el=document.createElement("div");
-    el.className="co reveal";
-    el.innerHTML=`<div class="co-banner" style="background:linear-gradient(135deg,${c.tone[0]},${c.tone[1]})">
-        <span class="co-num">${c.num}</span><span class="co-name">${c.name}</span></div>
-      <div class="co-body"><div class="co-tag">${c.tag}</div><div class="co-desc">${c.desc}</div>
-        <div class="co-guide">文化伙伴 · <b>${c.guide}</b></div></div>`;
-    coGrid.appendChild(el);
+  // ---- render counties ----
+  var cl = document.getElementById('countyList');
+  counties.forEach(function(c){
+    var d = document.createElement('div');
+    d.className = 'county';
+    d.innerHTML = '<div class="visual"><span class="cap">'+c.name+'</span></div>'+
+      '<div class="body"><div class="tag">'+c.tag+'</div><h3>'+c.name+'</h3>'+
+      '<p>'+c.desc+'</p><a href="#" class="more" onclick="return false;">了解 '+c.name+' →</a></div>';
+    cl.appendChild(d);
   });
 
-  // ---------- reveal ----------
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");io.unobserve(e.target);}});},{threshold:.12});
-  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+  // ---- header scroll ----
+  var hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 12) hdr.classList.add('scrolled'); else hdr.classList.remove('scrolled');
+  });
 
-  // ---------- count up ----------
-  function countUp(el){
-    const target=+el.dataset.target,dur=1500,start=performance.now();
-    (function tick(now){const p=Math.min((now-start)/dur,1),e=1-Math.pow(1-p,3);
-      el.textContent=Math.floor(e*target).toLocaleString();if(p<1)requestAnimationFrame(tick);})(performance.now());
-  }
-  const io3=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){countUp(e.target);io3.unobserve(e.target);}});},{threshold:.6});
-  document.querySelectorAll(".hstat .n").forEach(el=>io3.observe(el));
+  // ---- mobile menu ----
+  var mPanel = document.getElementById('mPanel');
+  document.getElementById('menuBtn').onclick = function(){ mPanel.classList.add('show'); };
+  document.getElementById('mClose').onclick = closeMenu;
+  function closeMenu(){ mPanel.classList.remove('show'); }
 
-  // ---------- header shadow ----------
-  const header=document.querySelector("header.site");
-  window.addEventListener("scroll",()=>header.classList.toggle("scrolled",window.scrollY>10));
-
-  // ---------- mobile menu ----------
-  const toggle=document.getElementById("menuToggle"),menu=document.getElementById("mobileMenu");
-  function closeMenu(){toggle.classList.remove("open");menu.classList.remove("open");}
-  toggle.addEventListener("click",()=>{const o=menu.classList.toggle("open");toggle.classList.toggle("open",o);});
-
-  // ---------- modals ----------
-  const consultMask=document.getElementById("consultMask"),downloadMask=document.getElementById("downloadMask");
-  function openConsult(){consultMask.classList.add("open");document.body.style.overflow="hidden";}
-  function closeConsult(){consultMask.classList.remove("open");document.body.style.overflow="";}
-  function openDownload(){downloadMask.classList.add("open");document.body.style.overflow="hidden";}
-  function closeDownload(){downloadMask.classList.remove("open");document.body.style.overflow="";}
-  [consultMask,downloadMask].forEach(m=>m.addEventListener("click",e=>{if(e.target===m){m.classList.remove("open");document.body.style.overflow="";}}));
-  document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeConsult();closeDownload();closeMenu();}});
-
-  function submitConsult(e){
-    e.preventDefault();const form=e.target;let ok=true;
-    [["f-name","name"],["f-org","org"],["f-contact","contact"]].forEach(([fid,key])=>{
-      const f=document.getElementById(fid),v=form[key].value.trim();
-      if(!v){f.classList.add("invalid");ok=false;}else{f.classList.remove("invalid");}
-    });
-    if(!ok)return false;
-    const data={name:form.name.value.trim(),org:form.org.value.trim(),contact:form.contact.value.trim(),intent:form.intent.value,note:form.note.value.trim(),at:new Date().toISOString()};
-    try{localStorage.setItem("hx_consult_"+Date.now(),JSON.stringify(data));}catch(_){}
-    document.getElementById("consultForm").style.display="none";
-    document.getElementById("consultSuccess").style.display="block";
-    return false;
-  }
+  // ---- modals ----
+  var cOv = document.getElementById('consultOverlay');
+  var sOv = document.getElementById('storeOverlay');
+  function openConsult(){ cOv.classList.add('show'); }
+  function closeConsult(){ cOv.classList.remove('show'); document.getElementById('consultOk').style.display='none'; document.getElementById('consultForm').style.display='block'; }
+  function openStore(){ sOv.classList.add('show'); }
+  function closeStore(){ sOv.classList.remove('show'); }
   function goStore(platform){
-    // 演示环境：正式上架后替换为真实商店链接
-    alert(platform==="ios"?"演示版：App Store 链接待上线":"演示版：应用市场链接待上线");
+    alert(platform==='ios' ? '演示版：App Store 链接待上线' : '演示版：应用市场链接待上线');
   }
+  function submitConsult(){
+    var name=document.getElementById('cName').value.trim();
+    var org=document.getElementById('cOrg').value.trim();
+    var mail=document.getElementById('cMail').value.trim();
+    if(!name||!mail){ alert('请填写称呼与邮箱'); return; }
+    try{ localStorage.setItem('hx_consult', JSON.stringify({name:name,org:org,mail:mail,t:Date.now()})); }catch(e){}
+    document.getElementById('consultForm').style.display='none';
+    document.getElementById('consultOk').style.display='block';
+  }
+  [cOv,sOv].forEach(function(ov){ ov.addEventListener('click', function(e){ if(e.target===ov) ov.classList.remove('show'); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ cOv.classList.remove('show'); sOv.classList.remove('show'); closeMenu(); } });
+
+  // ---- reveal ----
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 </script>
 </body>
 </html>
