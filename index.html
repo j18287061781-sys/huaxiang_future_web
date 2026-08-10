@@ -42,6 +42,31 @@
   .serif{font-family:var(--serif)}
   .en{font-family:var(--latin)}
 
+  /* ---------- Marquee ---------- */
+  .marquee{
+    position:relative;overflow:hidden;background:var(--paper-2);
+    border-bottom:1px solid var(--line);padding:14px 0;
+  }
+  .marquee-track{
+    display:flex;gap:14px;width:max-content;
+    animation:marquee 32s linear infinite;
+  }
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-item{
+    width:260px;height:160px;border-radius:2px;overflow:hidden;position:relative;flex-shrink:0;
+    border:1px solid var(--line);
+  }
+  .marquee-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(95%);transition:filter .4s}
+  .marquee-item:hover img{filter:grayscale(0%) contrast(100%)}
+  .marquee-item span{
+    position:absolute;left:12px;bottom:10px;font-family:var(--latin);font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--paper);background:rgba(26,26,26,.55);padding:4px 8px;border-radius:2px;
+  }
+  @keyframes marquee{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(-50%)}
+  }
+
   /* ---------- Topbar ---------- */
   .topbar{border-bottom:1px solid var(--line);background:var(--paper)}
   .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
@@ -59,12 +84,12 @@
   header.scrolled{border-bottom-color:var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
   .brand{display:flex;align-items:center;gap:11px}
-  .brand img.logo{height:34px;width:auto;display:block}
+  .brand .mark{height:34px;width:auto;display:block}
   .brand .txt{display:flex;flex-direction:column;line-height:1.05}
-  .brand .zh{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:.03em}
-  .brand .en2{font-family:var(--latin);font-size:9.5px;letter-spacing:.22em;color:var(--mute-2);margin-top:2px}
-  .nav-links{display:flex;align-items:center;gap:36px}
-  .nav-links a{font-size:14.5px;color:var(--ink-soft);font-weight:400;position:relative;padding:4px 0;transition:color .2s}
+  .brand .zh{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:.03em}
+  .brand .en2{font-family:var(--latin);font-size:9px;letter-spacing:.2em;color:var(--mute-2);margin-top:2px}
+  .nav-links{display:flex;align-items:center;gap:32px}
+  .nav-links a{font-size:14px;color:var(--ink-soft);font-weight:400;position:relative;padding:4px 0;transition:color .2s}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .25s ease}
   .nav-links a:hover{color:var(--ink)}
   .nav-links a:hover::after{width:100%}
@@ -74,7 +99,7 @@
   .menu-btn span{width:22px;height:1.5px;background:var(--ink);display:block;transition:.3s}
 
   /* ---------- Hero ---------- */
-  .hero{padding:120px 0 92px}
+  .hero{padding:110px 0 92px}
   .hero h1{font-size:clamp(38px,6vw,72px);line-height:1.1;font-weight:600;margin:26px 0 26px;max-width:15ch}
   .hero p.lead{font-size:18px;color:var(--mute);max-width:48ch;font-weight:300;line-height:1.85}
   .hero-actions{display:flex;align-items:center;gap:26px;margin-top:42px;flex-wrap:wrap}
@@ -133,8 +158,8 @@
   .county .body p{color:var(--mute);font-size:15.5px;font-weight:300;max-width:42ch;margin-top:14px}
   .county .body .more{margin-top:22px;font-size:14px;color:var(--ink);border-bottom:1px solid var(--line-strong);padding-bottom:3px;align-self:flex-start}
 
-  /* ---------- Goods & Study ---------- */
-  .goods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:1px}
+  /* ---------- Goods ---------- */
+  .goods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
   .good{background:var(--paper);padding:0;transition:background .25s}
   .good:hover{background:var(--paper-2)}
   .good .ph{aspect-ratio:1/1;background:var(--paper-2);overflow:hidden}
@@ -142,15 +167,30 @@
   .good .info{padding:18px 20px 22px}
   .good .info h3{font-size:17px;font-weight:600}
   .good .info .from{font-family:var(--latin);font-size:11.5px;letter-spacing:.04em;color:var(--accent);margin-top:7px}
-  .study-band{position:relative;min-height:340px;overflow:hidden;display:flex;align-items:flex-end;color:var(--paper)}
-  .study-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .study-band .mask{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,26,26,.72),rgba(26,26,26,.28));z-index:1}
-  .study-band .inner{position:relative;z-index:2;padding:48px 52px;max-width:60ch}
-  .study-band .eyebrow{color:rgba(250,250,248,.7)}
-  .study-band .eyebrow::before{background:var(--accent)}
-  .study-band h3{color:var(--paper);font-size:clamp(24px,3.4vw,34px);margin:16px 0 14px;font-weight:600}
-  .study-band p{color:rgba(250,250,248,.74);font-weight:300;font-size:15.5px;max-width:46ch}
-  .study-band .acts{margin-top:24px}
+
+  /* ---------- Study ---------- */
+  .study-parts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2px}
+  .study-part{background:var(--paper);padding:44px 48px}
+  .study-part .label{
+    font-family:var(--latin);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;
+    display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;
+  }
+  .study-part .label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .study-part h3{font-size:26px;margin-bottom:14px}
+  .study-part > p{color:var(--mute);font-size:15.5px;font-weight:300;max-width:46ch;margin-bottom:28px}
+  .study-list{display:flex;flex-direction:column;gap:22px}
+  .study-item{padding-bottom:22px;border-bottom:1px solid var(--line)}
+  .study-item:last-child{border-bottom:none;padding-bottom:0}
+  .study-item .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:6px;flex-wrap:wrap}
+  .study-item .name{font-family:var(--serif);font-size:19px;font-weight:600}
+  .study-item .tag{font-family:var(--latin);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line-strong);padding:3px 8px;border-radius:2px}
+  .study-item p{color:var(--mute);font-size:14px;font-weight:300;line-height:1.65}
+  .study-item .contact{font-family:var(--latin);font-size:12px;color:var(--mute-2);margin-top:8px;letter-spacing:.02em}
+  .study-card{border:1px solid var(--line);padding:22px 24px;border-radius:2px;margin-bottom:16px;transition:background .2s}
+  .study-card:hover{background:var(--paper-2)}
+  .study-card h4{font-size:16px;font-weight:600;margin-bottom:6px}
+  .study-card p{font-size:13.5px;color:var(--mute);font-weight:300;line-height:1.6}
+  .study-card .soon{font-family:var(--latin);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:10px}
 
   /* ---------- B2B dark band ---------- */
   .b2b{background:var(--ink);color:var(--paper);padding:108px 0}
@@ -184,8 +224,9 @@
   footer{background:var(--paper-2);border-top:1px solid var(--line);padding:64px 0 40px}
   .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid var(--line)}
   .foot-brand{display:flex;align-items:center;gap:11px}
-  .foot-brand img.logo{height:32px;width:auto}
+  .foot-brand .logo-mark{height:28px;width:auto}
   .foot-brand .zh{font-family:var(--serif);font-size:19px;font-weight:700}
+  .foot-brand .en2{font-family:var(--latin);font-size:8.5px;letter-spacing:.16em;color:var(--mute-2);margin-top:1px}
   .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
   .foot-col h4{font-family:var(--latin);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute-2);margin-bottom:16px;font-weight:600}
   .foot-col a{display:block;font-size:14.5px;color:var(--ink-soft);margin-bottom:11px;font-weight:300;transition:color .2s}
@@ -216,9 +257,13 @@
   .reveal.in{opacity:1;transform:none}
 
   /* ---------- Responsive ---------- */
-  @media(max-width:880px){
+  @media(max-width:980px){
     .nav-links{display:none}
     .menu-btn{display:flex}
+    .study-parts{grid-template-columns:1fr}
+    .study-part{padding:32px 24px}
+  }
+  @media(max-width:880px){
     .wrap{padding:0 20px}
     .hero{padding:78px 0 60px}
     .stats .wrap{flex-direction:column}
@@ -230,10 +275,9 @@
     .county{grid-template-columns:1fr}
     .county .visual{min-height:220px;order:0!important}
     .county .body{padding:38px 24px}
-    .study-band .inner{padding:34px 24px}
-    .two-col{grid-template-columns:1fr}
     .about .grid{grid-template-columns:1fr;gap:24px}
     .download{padding:80px 0}
+    .marquee-item{width:220px;height:136px}
   }
   @media(max-width:520px){
     .grid-people{grid-template-columns:1fr}
@@ -252,6 +296,11 @@
 </head>
 <body data-lang="zh">
 
+<!-- Marquee: featured county images -->
+<div class="marquee" aria-label="特色景点">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
 <!-- Topbar -->
 <div class="topbar">
   <div class="wrap">
@@ -267,13 +316,14 @@
 <header id="hdr">
   <div class="wrap nav">
     <a href="#top" class="brand">
-      <img class="logo" src="assets/logo-huaxiang.png" alt="華享未来" />
+      <img class="mark" src="assets/logo-mark.png" alt="華享未来" />
       <span class="txt"><span class="zh">華享未来</span><span class="en2">HUAXIANG FUTURE</span></span>
     </a>
     <nav class="nav-links">
       <a href="#people" data-zh="数字人" data-en="Digital Humans">数字人</a>
       <a href="#counties" data-zh="县域" data-en="Counties">县域</a>
-      <a href="#study" data-zh="好物 · 研学" data-en="Goods · Study">好物 · 研学</a>
+      <a href="#goods" data-zh="好物" data-en="Goods">好物</a>
+      <a href="#study" data-zh="研学" data-en="Study">研学</a>
       <a href="#partner" data-zh="合作" data-en="Partners">合作</a>
       <a href="#about" data-zh="关于" data-en="About">关于</a>
     </nav>
@@ -284,12 +334,13 @@
 
 <div class="m-panel" id="mPanel">
   <div class="top">
-    <span class="brand"><img class="logo" src="assets/logo-huaxiang.png" alt="華享未来" /><span class="txt"><span class="zh">華享未来</span></span></span>
+    <span class="brand"><img class="mark" src="assets/logo-mark.png" alt="華享未来" /><span class="txt"><span class="zh">華享未来</span></span></span>
     <button class="menu-btn" id="mClose" aria-label="关闭"><span></span><span></span></button>
   </div>
   <a href="#people" onclick="closeMenu()">数字人</a>
   <a href="#counties" onclick="closeMenu()">县域</a>
-  <a href="#study" onclick="closeMenu()">好物 · 研学</a>
+  <a href="#goods" onclick="closeMenu()">好物</a>
+  <a href="#study" onclick="closeMenu()">研学</a>
   <a href="#partner" onclick="closeMenu()">合作</a>
   <a href="#about" onclick="closeMenu()">关于</a>
   <a href="#" class="m-cta" onclick="openConsult();closeMenu();return false;">登录 / 合作</a>
@@ -354,26 +405,27 @@
     </div>
   </section>
 
-  <!-- GOODS & STUDY -->
-  <section class="block" id="study">
+  <!-- GOODS -->
+  <section class="block" id="goods">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="eyebrow">Goods · Study</span>
-        <h2 data-zh="把文化带回家。" data-en="Take the culture home.">把文化带回家。</h2>
+        <span class="eyebrow">Goods</span>
+        <h2 data-zh="把县域好物带回家。" data-en="Take county goods home.">把县域好物带回家。</h2>
+        <p data-zh="从沙湾的铜河系列开始，把地方的味觉与手艺，变成可触摸的纪念。" data-en="Starting with Shawan's Tonghe collection, turning local taste and craft into tangible memories.">从沙湾的铜河系列开始，把地方的味觉与手艺，变成可触摸的纪念。</p>
       </div>
       <div class="goods-grid reveal" id="goodsGrid"></div>
-      <div class="study-band reveal" id="studyBand">
-        <img src="assets/image4.jpeg" alt="研学" />
-        <div class="mask"></div>
-        <div class="inner">
-          <span class="eyebrow">Study Tours</span>
-          <h3 data-zh="把课堂搬进古镇与山水之间" data-en="Where the classroom meets old towns and mountains">把课堂搬进古镇与山水之间</h3>
-          <p data-zh="连接线下研学路线与线上课程，让青少年在行走中认识自己的家乡。" data-en="Linking on-site study routes with online courses, so young people get to know home by walking it.">连接线下研学路线与线上课程，让青少年在行走中认识自己的家乡。</p>
-          <div class="acts">
-            <a href="#" class="btn" onclick="openConsult();return false;" data-zh="了解研学路线" data-en="Explore study tours">了解研学路线</a>
-          </div>
-        </div>
+    </div>
+  </section>
+
+  <!-- STUDY -->
+  <section class="block alt" id="study">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Study</span>
+        <h2 data-zh="把课堂，搬进县城。" data-en="Bring the classroom into the county.">把课堂，搬进县城。</h2>
+        <p data-zh="研学不是走马观花。我们用「智进」沉淀真实活动，用「学出」连接线上课程与线下行走。" data-en="Study tours aren't sightseeing. 'In' records real activities; 'Out' links online courses with on-site walks.">研学不是走马观花。我们用「智进」沉淀真实活动，用「学出」连接线上课程与线下行走。</p>
       </div>
+      <div class="study-parts reveal" id="studyParts"></div>
     </div>
   </section>
 
@@ -425,7 +477,10 @@
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <div class="foot-brand"><img class="logo" src="assets/logo-huaxiang.png" alt="華享未来" /><span class="zh">華享未来</span></div>
+        <div class="foot-brand">
+          <img class="logo-mark" src="assets/logo-mark.png" alt="華享未来" />
+          <div><div class="zh">華享未来</div><div class="en2">HUAXIANG FUTURE</div></div>
+        </div>
         <p style="color:var(--mute);font-size:14px;font-weight:300;margin-top:14px;max-width:32ch" data-zh="四川县域 AI 数字文化与产业服务平台" data-en="Sichuan county AI cultural & industrial platform">四川县域 AI 数字文化与产业服务平台</p>
       </div>
       <div class="foot-cols">
@@ -433,7 +488,8 @@
           <h4 data-zh="产品" data-en="Product">产品</h4>
           <a href="#people">数字人</a>
           <a href="#counties">县域橱窗</a>
-          <a href="#study">好物 · 研学</a>
+          <a href="#goods">好物</a>
+          <a href="#study">研学</a>
           <a href="#download">下载 App</a>
         </div>
         <div class="foot-col">
@@ -498,6 +554,14 @@
   // ---- current language ----
   var LANG = 'zh';
 
+  // ---- marquee data ----
+  var marqueeItems = [
+    {src:'assets/image2.jpeg', cap:'Chongzhou'},
+    {src:'assets/image3.jpeg', cap:'Xingwen'},
+    {src:'assets/image4.jpeg', cap:'Shawan'},
+    {src:'assets/image14.png', cap:'Pingshan'}
+  ];
+
   // ---- data ----
   var pillars = [
     {idx:'01',zh:'数字人名片',en:'Digital Namecard',descZh:'每位数字人都是一座县城的讲述者，用方言与故事，建立人与地方之间的情感连接。',descEn:'Each digital human is a county\'s storyteller, using dialect and tales to build emotional ties between people and place.'},
@@ -513,7 +577,7 @@
     {zh:'杜仙仙',en:'Du Xianxian',roleZh:'峨眉文化使者',photo:'assets/image8.png',descZh:'峨眉山下的灵秀之声，邀你共览禅意与风光。',descEn:'A graceful voice beneath Mount Emei, inviting you to its Zen and scenery.'},
     {zh:'雪梨宝宝',en:'Xueli Baby',roleZh:'金川文化使者',photo:'assets/image9.png',descZh:'雪梨花开的地方，陪你认识金川的山水人家。',descEn:'Where pear blossoms open, accompanying you through Jinchuan\'s landscapes and homes.'},
     {zh:'巴小虎',en:'Ba Xiaohu',roleZh:'达州文化使者',photo:'assets/image10.png',descZh:'巴山渠水的热络伙伴，带你逛达州的市井与风味。',descEn:'A warm companion of the Bashan hills, showing you Dazhou\'s streets and flavors.'},
-    {zh:'遂小荷',en:'Sui Xiaohe',roleZh:'遂宁文化使者',photo:'assets/image11.png',descZh:'涪江女儿，细说遂宁的莲城故事与静好。',descEn:'Daughter of the Fujiang, telling Suining\'s lotus-city tales and quiet beauty.'},
+    {zh:'遂小荷',en:'Sui Xiaohe',roleZh:'遂宁文化使者',photo:'assets/image11.png',descZh:'涪江女儿，细说遂宁的莲城故事与静好。',descEn:'Daughter of the Fujiang, telling Suining\s lotus-city tales and quiet beauty.'},
     {zh:'雪灵儿',en:'Xue Linger',roleZh:'达古冰川守望者',photo:'assets/image12.png',descZh:'达古冰川的守望者，讲述高原的纯净与传说。',descEn:'Guardian of the Daggu Glacier, telling of the plateau\'s purity and legend.'},
     {zh:'文启',en:'Wen Qi',roleZh:'富顺文化使者',photo:'assets/image13.png',descZh:'才子之乡的引路少年，带你看富顺的文风与豆香。',descEn:'A young guide from the land of scholars, showing Fushun\'s literary air and bean aroma.'}
   ];
@@ -535,6 +599,31 @@
     {zh:'铜河青梅酒',en:'Tonghe Plum Wine',src:'assets/image19.png',fromZh:'沙湾',fromEn:'Shawan'},
     {zh:'佛手玫瑰红茶',en:'Rose Black Tea',src:'assets/image20.png',fromZh:'沙湾',fromEn:'Shawan'}
   ];
+
+  var studyIn = [
+    {zh:'沙湾沫若文化研学',en:'Shawan Moruo Culture Study',tag:'已开展',enTag:'Completed',descZh:'走进郭沫若故里，串联沫水文脉与铜河记忆。',contact:'contact@hxfz-group.com'},
+    {zh:'井研田园书香研学',en:'Jingyan Scholarly Countryside',tag:'已开展',enTag:'Completed',descZh:'研溪湿地、竹园古坊，在行走中读懂才子之乡。',contact:'contact@hxfz-group.com'},
+    {zh:'崇州街子古镇研学',en:'Chongzhou Jiezi Old Town',tag:'已开展',enTag:'Completed',descZh:'罨画池畔、川西坝子，体验慢下来的古镇日常。',contact:'contact@hxfz-group.com'},
+    {zh:'兴文喀斯特秘境研学',en:'Xingwen Karst Discovery',tag:'已开展',enTag:'Completed',descZh:'石海洞乡、僰人悬棺，在自然教室里探索地质与人文。',contact:'contact@hxfz-group.com'}
+  ];
+
+  var studyOut = [
+    {zh:'线上课程',en:'Online Courses',descZh:'县域文化、非遗技艺、自然科普系列课程，后续逐步上线。',descEn:'County culture, intangible heritage and nature courses coming online soon.',soon:'Coming soon'},
+    {zh:'线下研学',en:'On-site Study Tours',descZh:'以小程序预约入口承接，覆盖沙湾、井研、崇州、兴文等县域路线。',descEn:'Bookable via the mini-program, covering routes in Shawan, Jingyan, Chongzhou and Xingwen.',soon:'小程序预约'}
+  ];
+
+  // ---- render marquee ----
+  var mq = document.getElementById('marqueeTrack');
+  function renderMarquee(){
+    var html = '';
+    // duplicate for seamless loop
+    var list = marqueeItems.concat(marqueeItems);
+    list.forEach(function(m){
+      html += '<div class="marquee-item"><img src="'+m.src+'" alt="'+m.cap+'" loading="lazy"><span>'+m.cap+'</span></div>';
+    });
+    mq.innerHTML = html;
+  }
+  renderMarquee();
 
   // ---- render pillars ----
   var pl = document.getElementById('pillarList');
@@ -592,6 +681,37 @@
   }
   renderGoods();
 
+  // ---- render study ----
+  var sp = document.getElementById('studyParts');
+  function renderStudy(){
+    var inHtml = '<div class="label"><span class="t-zh">智进</span><span class="t-en" style="display:none">In</span></div>'+
+      '<h3 class="t-zh">活动沉淀</h3><h3 class="t-en" style="display:none">Past Activities</h3>'+
+      '<p class="t-zh">我们已开展的县域研学活动，每一条路线都有详细记录与联系方式。</p>'+
+      '<p class="t-en" style="display:none">Study tours we have run, each with detailed records and contact.</p>'+
+      '<div class="study-list">';
+    studyIn.forEach(function(s){
+      inHtml += '<div class="study-item">'+
+        '<div class="row"><span class="name t-zh">'+s.zh+'</span><span class="tag t-zh">'+s.tag+'</span></div>'+
+        '<p class="t-zh">'+s.descZh+'</p>'+
+        '<div class="contact">'+s.contact+'</div></div>';
+    });
+    inHtml += '</div>';
+
+    var outHtml = '<div class="label"><span class="t-zh">学出</span><span class="t-en" style="display:none">Out</span></div>'+
+      '<h3 class="t-zh">学习出口</h3><h3 class="t-en" style="display:none">Learning Outlets</h3>'+
+      '<p class="t-zh">连接线上课程与线下研学，让文化学习不止于一次行走。</p>'+
+      '<p class="t-en" style="display:none">Linking online courses with on-site study tours, so learning extends beyond a single walk.</p>';
+    studyOut.forEach(function(s){
+      outHtml += '<div class="study-card">'+
+        '<h4 class="t-zh">'+s.zh+'</h4><h4 class="t-en" style="display:none">'+s.en+'</h4>'+
+        '<p class="t-zh">'+s.descZh+'</p><p class="t-en" style="display:none">'+s.descEn+'</p>'+
+        '<div class="soon"><span class="t-zh">'+s.soon+'</span><span class="t-en" style="display:none">'+s.soon+'</span></div></div>';
+    });
+
+    sp.innerHTML = '<div class="study-part">'+inHtml+'</div><div class="study-part">'+outHtml+'</div>';
+  }
+  renderStudy();
+
   // ---- language switch ----
   function setLang(l){
     LANG = l;
@@ -599,11 +719,9 @@
     document.documentElement.lang = (l==='en'?'en':'zh-CN');
     document.getElementById('langZh').classList.toggle('active', l==='zh');
     document.getElementById('langEn').classList.toggle('active', l==='en');
-    // inline data-zh/data-en elements
     document.querySelectorAll('[data-zh]').forEach(function(el){
       el.innerHTML = (l==='en') ? el.getAttribute('data-en') : el.getAttribute('data-zh');
     });
-    // toggle .t-zh / .t-en blocks
     document.querySelectorAll('.t-zh').forEach(function(el){ el.style.display = (l==='en')?'none':''; });
     document.querySelectorAll('.t-en').forEach(function(el){ el.style.display = (l==='en')?'':'none'; });
   }
