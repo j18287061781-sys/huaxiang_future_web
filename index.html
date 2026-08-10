@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>华享未来 — 四川县域 AI 数字文化平台</title>
-<meta name="description" content="华享未来以数字人为纽带，把四川县域的山水、非遗与烟火，讲给世界听。" />
+<title>華享未来 — 四川县域 AI 数字文化平台</title>
+<meta name="description" content="華享未来以数字人为纽带，把四川县域的山水、非遗与烟火，讲给世界听。" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
     --ink:#1A1A1A;
@@ -18,75 +18,73 @@
     --mute-2:#9C968B;
     --line:#E4E1D9;
     --line-strong:#D6D2C8;
-    --accent:#9A3B2E;       /* 克制的朱砂，仅作微弱点缀 */
+    --accent:#9A3B2E;
     --serif:"Noto Serif SC",serif;
     --sans:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --latin:"Inter","Noto Sans SC",sans-serif;
     --maxw:1180px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
-    font-family:var(--sans);
-    font-weight:400;
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.7;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
+    font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--paper);
+    line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   }
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
   .eyebrow{
-    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--mute);font-weight:500;
-    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--latin);font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--mute);font-weight:500;display:inline-flex;align-items:center;gap:10px;
   }
   .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
   h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--ink);letter-spacing:-.01em}
   .serif{font-family:var(--serif)}
+  .en{font-family:var(--latin)}
+
+  /* ---------- Topbar ---------- */
+  .topbar{border-bottom:1px solid var(--line);background:var(--paper)}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+  .topbar span{font-family:var(--latin);font-size:11.5px;letter-spacing:.08em;color:var(--mute-2)}
+  .lang-switch{display:flex;gap:4px;align-items:center}
+  .lang-switch button{
+    font-family:var(--latin);font-size:12px;letter-spacing:.06em;background:none;border:none;
+    color:var(--mute-2);cursor:pointer;padding:4px 8px;border-radius:2px;transition:.2s;
+  }
+  .lang-switch button.active{color:var(--ink);background:var(--paper-2);font-weight:600}
+  .lang-switch .sep{width:1px;height:12px;background:var(--line-strong)}
 
   /* ---------- Header ---------- */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(250,250,248,.82);
-    backdrop-filter:saturate(140%) blur(10px);
-    border-bottom:1px solid transparent;
-    transition:border-color .3s ease, background .3s ease;
-  }
+  header{position:sticky;top:0;z-index:50;background:rgba(250,250,248,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid transparent;transition:border-color .3s ease,background .3s ease}
   header.scrolled{border-bottom-color:var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .brand{font-family:var(--serif);font-size:21px;font-weight:700;letter-spacing:.02em;display:flex;align-items:center;gap:9px}
-  .brand .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
-  .nav-links{display:flex;align-items:center;gap:38px}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img.logo{height:34px;width:auto;display:block}
+  .brand .txt{display:flex;flex-direction:column;line-height:1.05}
+  .brand .zh{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:.03em}
+  .brand .en2{font-family:var(--latin);font-size:9.5px;letter-spacing:.22em;color:var(--mute-2);margin-top:2px}
+  .nav-links{display:flex;align-items:center;gap:36px}
   .nav-links a{font-size:14.5px;color:var(--ink-soft);font-weight:400;position:relative;padding:4px 0;transition:color .2s}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .25s ease}
   .nav-links a:hover{color:var(--ink)}
   .nav-links a:hover::after{width:100%}
-  .nav-cta{font-size:14px;color:var(--ink);border:1px solid var(--line-strong);padding:9px 18px;border-radius:2px;transition:border-color .2s,background .2s}
+  .nav-cta{font-size:14px;color:var(--ink);border:1px solid var(--line-strong);padding:9px 18px;border-radius:2px;transition:border-color .2s,background .2s;white-space:nowrap}
   .nav-cta:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
   .menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
   .menu-btn span{width:22px;height:1.5px;background:var(--ink);display:block;transition:.3s}
 
   /* ---------- Hero ---------- */
-  .hero{padding:128px 0 96px}
-  .hero h1{
-    font-size:clamp(38px,6vw,74px);line-height:1.08;font-weight:600;
-    margin:26px 0 28px;max-width:14ch;
-  }
-  .hero p.lead{font-size:18px;color:var(--mute);max-width:46ch;font-weight:300;line-height:1.85}
+  .hero{padding:120px 0 92px}
+  .hero h1{font-size:clamp(38px,6vw,72px);line-height:1.1;font-weight:600;margin:26px 0 26px;max-width:15ch}
+  .hero p.lead{font-size:18px;color:var(--mute);max-width:48ch;font-weight:300;line-height:1.85}
   .hero-actions{display:flex;align-items:center;gap:26px;margin-top:42px;flex-wrap:wrap}
-  .btn{
-    font-family:var(--sans);font-size:15px;font-weight:500;cursor:pointer;
-    padding:14px 30px;border-radius:2px;border:1px solid var(--ink);
-    background:var(--ink);color:var(--paper);transition:opacity .2s,transform .2s;
-  }
+  .btn{font-family:var(--sans);font-size:15px;font-weight:500;cursor:pointer;padding:14px 30px;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);transition:opacity .2s,transform .2s}
   .btn:hover{opacity:.88}
   .link-arrow{font-size:15px;color:var(--ink);border-bottom:1px solid var(--line-strong);padding-bottom:3px;transition:border-color .2s}
   .link-arrow:hover{border-color:var(--accent)}
 
   /* ---------- Stat strip ---------- */
-  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:84px}
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:80px}
   .stats .wrap{display:flex;gap:0;flex-wrap:wrap}
   .stat{flex:1;min-width:200px;padding:34px 28px 34px 0;border-right:1px solid var(--line)}
   .stat:last-child{border-right:none;padding-right:0}
@@ -94,56 +92,72 @@
   .stat .lab{font-size:13.5px;color:var(--mute);margin-top:10px;letter-spacing:.02em}
 
   /* ---------- Section base ---------- */
-  section.block{padding:116px 0}
+  section.block{padding:112px 0}
   .block.alt{background:var(--paper-2)}
-  .sec-head{max-width:60ch;margin-bottom:64px}
-  .sec-head h2{font-size:clamp(28px,4vw,44px);line-height:1.18;margin:20px 0 18px}
-  .sec-head p{color:var(--mute);font-size:16.5px;font-weight:300;max-width:52ch}
+  .sec-head{max-width:62ch;margin-bottom:60px}
+  .sec-head h2{font-size:clamp(28px,4vw,44px);line-height:1.18;margin:20px 0 16px}
+  .sec-head p{color:var(--mute);font-size:16.5px;font-weight:300;max-width:54ch}
 
-  /* ---------- What we do (editorial numbered) ---------- */
+  /* ---------- What we do ---------- */
   .pillars{border-top:1px solid var(--line)}
-  .pillar{display:grid;grid-template-columns:84px 1fr;gap:28px;padding:38px 0;border-bottom:1px solid var(--line);align-items:start}
-  .pillar .idx{font-family:var(--serif);font-size:20px;color:var(--mute-2);padding-top:4px}
-  .pillar h3{font-size:22px;margin-bottom:10px;font-weight:600}
-  .pillar p{color:var(--mute);font-size:15.5px;font-weight:300;max-width:60ch}
+  .pillar{display:grid;grid-template-columns:96px 1fr;gap:28px;padding:38px 0;border-bottom:1px solid var(--line);align-items:start}
+  .pillar .idx{font-family:var(--latin);font-size:18px;color:var(--mute-2);padding-top:5px;letter-spacing:.05em}
+  .pillar h3{font-size:22px;margin-bottom:10px;font-weight:600;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .pillar h3 .h-en{font-family:var(--latin);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-2);font-weight:500}
+  .pillar p{color:var(--mute);font-size:15.5px;font-weight:300;max-width:62ch}
 
   /* ---------- Digital humans ---------- */
   .grid-people{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-  .person{background:var(--paper);padding:0;transition:background .25s}
+  .person{background:var(--paper);padding:0;transition:background .25s;display:flex;flex-direction:column}
   .person:hover{background:var(--paper-2)}
-  .person .ph{aspect-ratio:4/3;background:linear-gradient(160deg,#EDEAE2,#E3DFD5);display:flex;align-items:flex-end;padding:18px;position:relative;overflow:hidden}
-  .person .ph .mono{font-family:var(--serif);font-size:46px;color:rgba(26,26,26,.10);font-weight:700;line-height:1}
+  .person .ph{aspect-ratio:4/3;background:linear-gradient(160deg,#EDEAE2,#E3DFD5);position:relative;overflow:hidden}
+  .person .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .person .ph .mono{position:absolute;right:14px;bottom:10px;font-family:var(--serif);font-size:40px;color:rgba(250,250,248,.78);font-weight:700;line-height:1;text-shadow:0 1px 6px rgba(0,0,0,.35)}
   .person .info{padding:22px 24px 26px}
-  .person .info h3{font-size:20px;font-weight:600;display:flex;align-items:baseline;gap:10px}
-  .person .info .role{font-size:12.5px;color:var(--accent);letter-spacing:.04em;font-weight:500}
+  .person .info h3{font-size:20px;font-weight:600;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .person .info .role{font-family:var(--latin);font-size:11px;letter-spacing:.05em;color:var(--accent);font-weight:500}
+  .person .info .role-zh{font-size:12.5px;color:var(--accent);letter-spacing:.04em;font-weight:500}
   .person .info p{font-size:13.5px;color:var(--mute);font-weight:300;margin-top:12px;line-height:1.65}
 
   /* ---------- Counties ---------- */
   .county{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
   .county:last-child{border-bottom:1px solid var(--line)}
-  .county .visual{background:linear-gradient(150deg,#EDEAE2,#E0DCD2);min-height:300px;position:relative;overflow:hidden}
-  .county .visual .cap{position:absolute;left:24px;bottom:22px;font-family:var(--serif);font-size:30px;color:rgba(26,26,26,.16);font-weight:700}
+  .county .visual{background:linear-gradient(150deg,#EDEAE2,#E0DCD2);min-height:320px;position:relative;overflow:hidden}
+  .county .visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .county .visual .cap{position:absolute;left:24px;bottom:20px;font-family:var(--serif);font-size:30px;color:rgba(250,250,248,.86);font-weight:700;text-shadow:0 1px 8px rgba(0,0,0,.4)}
   .county .body{padding:52px 56px;display:flex;flex-direction:column;justify-content:center}
   .county:nth-child(even) .visual{order:2}
-  .county .body .tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute-2)}
-  .county .body h3{font-size:28px;margin:14px 0 14px;font-weight:600}
-  .county .body p{color:var(--mute);font-size:15.5px;font-weight:300;max-width:42ch}
+  .county .body .tag{font-family:var(--latin);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute-2)}
+  .county .body h3{font-size:28px;margin:14px 0 6px;font-weight:600}
+  .county .body .h-en{font-family:var(--latin);font-size:13px;letter-spacing:.1em;color:var(--mute-2);font-weight:500}
+  .county .body p{color:var(--mute);font-size:15.5px;font-weight:300;max-width:42ch;margin-top:14px}
   .county .body .more{margin-top:22px;font-size:14px;color:var(--ink);border-bottom:1px solid var(--line-strong);padding-bottom:3px;align-self:flex-start}
 
   /* ---------- Goods & Study ---------- */
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-  .two-col .cell{background:var(--paper);padding:54px 48px}
-  .two-col .cell .k{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute-2)}
-  .two-col .cell h3{font-size:26px;margin:16px 0 14px;font-weight:600}
-  .two-col .cell p{color:var(--mute);font-weight:300;font-size:15.5px;max-width:40ch}
-  .two-col .cell .line{margin-top:24px;height:1px;background:var(--line);width:48px}
+  .goods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:1px}
+  .good{background:var(--paper);padding:0;transition:background .25s}
+  .good:hover{background:var(--paper-2)}
+  .good .ph{aspect-ratio:1/1;background:var(--paper-2);overflow:hidden}
+  .good .ph img{width:100%;height:100%;object-fit:cover}
+  .good .info{padding:18px 20px 22px}
+  .good .info h3{font-size:17px;font-weight:600}
+  .good .info .from{font-family:var(--latin);font-size:11.5px;letter-spacing:.04em;color:var(--accent);margin-top:7px}
+  .study-band{position:relative;min-height:340px;overflow:hidden;display:flex;align-items:flex-end;color:var(--paper)}
+  .study-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .study-band .mask{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,26,26,.72),rgba(26,26,26,.28));z-index:1}
+  .study-band .inner{position:relative;z-index:2;padding:48px 52px;max-width:60ch}
+  .study-band .eyebrow{color:rgba(250,250,248,.7)}
+  .study-band .eyebrow::before{background:var(--accent)}
+  .study-band h3{color:var(--paper);font-size:clamp(24px,3.4vw,34px);margin:16px 0 14px;font-weight:600}
+  .study-band p{color:rgba(250,250,248,.74);font-weight:300;font-size:15.5px;max-width:46ch}
+  .study-band .acts{margin-top:24px}
 
   /* ---------- B2B dark band ---------- */
-  .b2b{background:var(--ink);color:var(--paper);padding:110px 0}
+  .b2b{background:var(--ink);color:var(--paper);padding:108px 0}
   .b2b .eyebrow{color:rgba(250,250,248,.6)}
   .b2b .eyebrow::before{background:var(--accent)}
   .b2b h2{color:var(--paper);font-size:clamp(28px,4vw,44px);line-height:1.2;margin:22px 0 22px;max-width:18ch}
-  .b2b p{color:rgba(250,250,248,.66);font-weight:300;max-width:54ch;font-size:16px}
+  .b2b p{color:rgba(250,250,248,.66);font-weight:300;max-width:56ch;font-size:16px}
   .b2b .acts{margin-top:38px;display:flex;gap:22px;flex-wrap:wrap;align-items:center}
   .b2b .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
   .b2b .btn:hover{opacity:.85}
@@ -151,9 +165,13 @@
   .b2b .link-arrow:hover{border-color:var(--accent)}
 
   /* ---------- Download ---------- */
-  .download{text-align:center;padding:120px 0}
-  .download h2{font-size:clamp(28px,4vw,46px);line-height:1.18;margin:20px auto 22px;max-width:16ch}
-  .download p{color:var(--mute);font-weight:300;max-width:44ch;margin:0 auto 38px;font-size:16px}
+  .download{text-align:center;padding:116px 0}
+  .download h2{font-size:clamp(28px,4vw,46px);line-height:1.18;margin:20px auto 18px;max-width:16ch}
+  .download p{color:var(--mute);font-weight:300;max-width:46ch;margin:0 auto 38px;font-size:16px}
+  .qr-row{display:flex;gap:40px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:38px}
+  .qr{width:148px;height:148px;border:1px solid var(--line-strong);padding:10px;background:#fff;border-radius:3px}
+  .qr img{width:100%;height:100%;object-fit:contain}
+  .qr-cap{font-family:var(--latin);font-size:11.5px;letter-spacing:.08em;color:var(--mute-2);margin-top:10px}
 
   /* ---------- About ---------- */
   .about{border-top:1px solid var(--line);padding:96px 0}
@@ -165,13 +183,14 @@
   /* ---------- Footer ---------- */
   footer{background:var(--paper-2);border-top:1px solid var(--line);padding:64px 0 40px}
   .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid var(--line)}
-  .foot-brand{font-family:var(--serif);font-size:20px;font-weight:700;display:flex;align-items:center;gap:9px}
-  .foot-brand .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  .foot-brand{display:flex;align-items:center;gap:11px}
+  .foot-brand img.logo{height:32px;width:auto}
+  .foot-brand .zh{font-family:var(--serif);font-size:19px;font-weight:700}
   .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
-  .foot-col h4{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-2);margin-bottom:16px;font-weight:500}
+  .foot-col h4{font-family:var(--latin);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute-2);margin-bottom:16px;font-weight:600}
   .foot-col a{display:block;font-size:14.5px;color:var(--ink-soft);margin-bottom:11px;font-weight:300;transition:color .2s}
   .foot-col a:hover{color:var(--accent)}
-  .foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;font-size:13px;color:var(--mute-2)}
+  .foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;font-family:var(--latin);font-size:12px;letter-spacing:.04em;color:var(--mute-2)}
 
   /* ---------- Modal ---------- */
   .overlay{position:fixed;inset:0;background:rgba(26,26,26,.42);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
@@ -201,21 +220,24 @@
     .nav-links{display:none}
     .menu-btn{display:flex}
     .wrap{padding:0 20px}
-    .hero{padding:84px 0 64px}
+    .hero{padding:78px 0 60px}
     .stats .wrap{flex-direction:column}
     .stat{border-right:none;border-bottom:1px solid var(--line);padding:24px 0}
     .stat:last-child{border-bottom:none}
-    section.block{padding:78px 0}
+    section.block{padding:74px 0}
     .grid-people{grid-template-columns:1fr 1fr}
+    .goods-grid{grid-template-columns:1fr 1fr}
     .county{grid-template-columns:1fr}
-    .county .visual{min-height:200px;order:0!important}
+    .county .visual{min-height:220px;order:0!important}
     .county .body{padding:38px 24px}
+    .study-band .inner{padding:34px 24px}
     .two-col{grid-template-columns:1fr}
     .about .grid{grid-template-columns:1fr;gap:24px}
-    .download{padding:84px 0}
+    .download{padding:80px 0}
   }
   @media(max-width:520px){
     .grid-people{grid-template-columns:1fr}
+    .goods-grid{grid-template-columns:1fr}
     .hero-actions{gap:18px}
     .btn,.link-arrow{width:100%;text-align:center}
   }
@@ -228,31 +250,46 @@
   .m-panel .m-cta{margin-top:auto;border:1px solid var(--ink);padding:15px;text-align:center;border-radius:2px;font-size:15px}
 </style>
 </head>
-<body>
+<body data-lang="zh">
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="wrap">
+    <span>HUAXIANG FUTURE · Sichuan County AI Cultural Platform</span>
+    <div class="lang-switch">
+      <button id="langZh" class="active" onclick="setLang('zh')">中</button>
+      <span class="sep"></span>
+      <button id="langEn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
 
 <header id="hdr">
   <div class="wrap nav">
-    <a href="#top" class="brand"><span class="dot"></span>华享未来</a>
+    <a href="#top" class="brand">
+      <img class="logo" src="assets/logo-huaxiang.png" alt="華享未来" />
+      <span class="txt"><span class="zh">華享未来</span><span class="en2">HUAXIANG FUTURE</span></span>
+    </a>
     <nav class="nav-links">
-      <a href="#people">数字人</a>
-      <a href="#counties">县域</a>
-      <a href="#study">好物·研学</a>
-      <a href="#partner">合作</a>
-      <a href="#about">关于</a>
+      <a href="#people" data-zh="数字人" data-en="Digital Humans">数字人</a>
+      <a href="#counties" data-zh="县域" data-en="Counties">县域</a>
+      <a href="#study" data-zh="好物 · 研学" data-en="Goods · Study">好物 · 研学</a>
+      <a href="#partner" data-zh="合作" data-en="Partners">合作</a>
+      <a href="#about" data-zh="关于" data-en="About">关于</a>
     </nav>
-    <a href="#" class="nav-cta" onclick="openConsult();return false;">登录 / 合作</a>
+    <a href="#" class="nav-cta" onclick="openConsult();return false;" data-zh="登录 / 合作" data-en="Sign in / Partner">登录 / 合作</a>
     <button class="menu-btn" id="menuBtn" aria-label="菜单"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <div class="m-panel" id="mPanel">
   <div class="top">
-    <span class="brand"><span class="dot"></span>华享未来</span>
+    <span class="brand"><img class="logo" src="assets/logo-huaxiang.png" alt="華享未来" /><span class="txt"><span class="zh">華享未来</span></span></span>
     <button class="menu-btn" id="mClose" aria-label="关闭"><span></span><span></span></button>
   </div>
   <a href="#people" onclick="closeMenu()">数字人</a>
   <a href="#counties" onclick="closeMenu()">县域</a>
-  <a href="#study" onclick="closeMenu()">好物·研学</a>
+  <a href="#study" onclick="closeMenu()">好物 · 研学</a>
   <a href="#partner" onclick="closeMenu()">合作</a>
   <a href="#about" onclick="closeMenu()">关于</a>
   <a href="#" class="m-cta" onclick="openConsult();closeMenu();return false;">登录 / 合作</a>
@@ -263,19 +300,19 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">四川县域 · AI 数字文化平台</span>
-      <h1>让每一座县城，<br>都有自己的声音。</h1>
-      <p class="lead">华享未来用 9 位数字人，把四川县域的山水、非遗与烟火，讲给世界听。</p>
+      <span class="eyebrow">Sichuan County · AI Cultural Platform</span>
+      <h1 data-zh="让每一座县城，<br>都有自己的声音。" data-en="Every county deserves<br>to be heard.">让每一座县城，<br>都有自己的声音。</h1>
+      <p class="lead" data-zh="華享未来用 9 位数字人，把四川县域的山水、非遗与烟火，讲给世界听。" data-en="Huaxiang Future uses 9 digital humans to tell the world about the landscapes, heritage and lives of Sichuan's counties.">華享未来用 9 位数字人，把四川县域的山水、非遗与烟火，讲给世界听。</p>
       <div class="hero-actions">
-        <a href="#people" class="btn">认识数字人</a>
-        <a href="#counties" class="link-arrow">浏览县域 →</a>
+        <a href="#people" class="btn" data-zh="认识数字人" data-en="Meet the humans">认识数字人</a>
+        <a href="#counties" class="link-arrow" data-zh="浏览县域 →" data-en="Explore counties →">浏览县域 →</a>
       </div>
 
       <div class="stats">
         <div class="wrap" style="padding:0">
-          <div class="stat"><div class="num">9</div><div class="lab">位数字人，覆盖九座县城</div></div>
-          <div class="stat"><div class="num">6</div><div class="lab">个试点县域，逐步延展</div></div>
-          <div class="stat"><div class="num">1866</div><div class="lab">项非遗线索待被讲述</div></div>
+          <div class="stat"><div class="num">9</div><div class="lab" data-zh="位数字人，覆盖九座县城" data-en="Digital humans across nine counties">位数字人，覆盖九座县城</div></div>
+          <div class="stat"><div class="num">6</div><div class="lab" data-zh="个试点县域，逐步延展" data-en="Pilot counties, steadily expanding">个试点县域，逐步延展</div></div>
+          <div class="stat"><div class="num">1866</div><div class="lab" data-zh="项非遗线索待被讲述" data-en="Intangible heritage threads to tell">项非遗线索待被讲述</div></div>
         </div>
       </div>
     </div>
@@ -285,16 +322,11 @@
   <section class="block alt" id="what">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="eyebrow">我们做什么</span>
-        <h2>把县城的文化，整理成可被看见、被带走的名片。</h2>
-        <p>不是又一个资讯聚合，而是让每座县城拥有自己的讲述者，让文化在对话里活起来。</p>
+        <span class="eyebrow">What We Do</span>
+        <h2 data-zh="把县城的文化，整理成可被看见、被带走的名片。" data-en="Turning local culture into a namecard the world can see and take home.">把县城的文化，整理成可被看见、被带走的名片。</h2>
+        <p data-zh="不是又一个资讯聚合，而是让每座县城拥有自己的讲述者，让文化在对话里活起来。" data-en="Not another news feed — but a storyteller for every county, so culture comes alive in conversation.">不是又一个资讯聚合，而是让每座县城拥有自己的讲述者，让文化在对话里活起来。</p>
       </div>
-      <div class="pillars reveal">
-        <div class="pillar"><div class="idx">01</div><div><h3>数字人名片</h3><p>每位数字人都是一座县城的讲述者，用方言与故事，建立人与地方之间的情感连接。</p></div></div>
-        <div class="pillar"><div class="idx">02</div><div><h3>县域文化橱窗</h3><p>把古镇、山水与在地风物，整理成可浏览、可带走的县城名片，沉淀为长期资产。</p></div></div>
-        <div class="pillar"><div class="idx">03</div><div><h3>研学与好物</h3><p>连接线下研学路线与县域好物，让文化既能体验，也能走进日常的消费。</p></div></div>
-        <div class="pillar"><div class="idx">04</div><div><h3>伙伴计划</h3><p>向县域、机构与品牌开放合作，共建一张覆盖百县的文化网络。</p></div></div>
-      </div>
+      <div class="pillars reveal" id="pillarList"></div>
     </div>
   </section>
 
@@ -302,9 +334,9 @@
   <section class="block" id="people">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="eyebrow">数字人矩阵</span>
-        <h2>九位数字人，九座县城的声音。</h2>
-        <p>他们不是虚拟主播，而是每座县城请来的讲述者——由在地文化喂养，替县城说话。</p>
+        <span class="eyebrow">Digital Humans</span>
+        <h2 data-zh="九位数字人，九座县城的声音。" data-en="Nine digital humans, nine county voices.">九位数字人，九座县城的声音。</h2>
+        <p data-zh="他们不是虚拟主播，而是每座县城请来的讲述者——由在地文化喂养，替县城说话。" data-en="Not virtual hosts, but storytellers invited by each county — raised on local culture, speaking for the place.">他们不是虚拟主播，而是每座县城请来的讲述者——由在地文化喂养，替县城说话。</p>
       </div>
       <div class="grid-people reveal" id="peopleGrid"></div>
     </div>
@@ -314,9 +346,9 @@
   <section class="block alt" id="counties">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="eyebrow">县域文化</span>
-        <h2>从这几座县城开始。</h2>
-        <p>每一座都有说不完的山水与人事。先打开其中几扇门。</p>
+        <span class="eyebrow">Counties</span>
+        <h2 data-zh="从这几座县城开始。" data-en="Starting with these counties.">从这几座县城开始。</h2>
+        <p data-zh="每一座都有说不完的山水与人事。先打开其中几扇门。" data-en="Each has endless landscapes and stories. Let's open a few of those doors.">每一座都有说不完的山水与人事。先打开其中几扇门。</p>
       </div>
       <div id="countyList" class="reveal"></div>
     </div>
@@ -326,21 +358,20 @@
   <section class="block" id="study">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="eyebrow">好物 · 研学</span>
-        <h2>把文化带回家。</h2>
+        <span class="eyebrow">Goods · Study</span>
+        <h2 data-zh="把文化带回家。" data-en="Take the culture home.">把文化带回家。</h2>
       </div>
-      <div class="two-col reveal">
-        <div class="cell">
-          <div class="k">在地好物</div>
-          <h3>县域好物橱窗</h3>
-          <p>从非遗手作到山野风物，把好物背后的县城故事一并交到你手里。</p>
-          <div class="line"></div>
-        </div>
-        <div class="cell">
-          <div class="k">研学路线</div>
-          <h3>县域研学计划</h3>
-          <p>把课堂搬进古镇与山水之间，让青少年在行走中认识自己的家乡。</p>
-          <div class="line"></div>
+      <div class="goods-grid reveal" id="goodsGrid"></div>
+      <div class="study-band reveal" id="studyBand">
+        <img src="assets/image4.jpeg" alt="研学" />
+        <div class="mask"></div>
+        <div class="inner">
+          <span class="eyebrow">Study Tours</span>
+          <h3 data-zh="把课堂搬进古镇与山水之间" data-en="Where the classroom meets old towns and mountains">把课堂搬进古镇与山水之间</h3>
+          <p data-zh="连接线下研学路线与线上课程，让青少年在行走中认识自己的家乡。" data-en="Linking on-site study routes with online courses, so young people get to know home by walking it.">连接线下研学路线与线上课程，让青少年在行走中认识自己的家乡。</p>
+          <div class="acts">
+            <a href="#" class="btn" onclick="openConsult();return false;" data-zh="了解研学路线" data-en="Explore study tours">了解研学路线</a>
+          </div>
         </div>
       </div>
     </div>
@@ -349,12 +380,12 @@
   <!-- B2B -->
   <section class="b2b" id="partner">
     <div class="wrap reveal">
-      <span class="eyebrow">伙伴计划</span>
-      <h2>与华享未来一起，把县城讲给更多人。</h2>
-      <p>无论你是县域文旅、文化机构，还是寻找真实中国故事的合作伙伴——我们都留出了一把椅子。</p>
+      <span class="eyebrow">Partner Program</span>
+      <h2 data-zh="与華享未来一起，把县城讲给更多人。" data-en="Join Huaxiang Future in telling counties to more people.">与華享未来一起，把县城讲给更多人。</h2>
+      <p data-zh="无论你是县域文旅、文化机构，还是寻找真实中国故事的合作伙伴——我们都留出了一把椅子。" data-en="Whether you are a county tourism board, a cultural institution, or a partner looking for authentic Chinese stories — we've kept a seat for you.">无论你是县域文旅、文化机构，还是寻找真实中国故事的合作伙伴——我们都留出了一把椅子。</p>
       <div class="acts">
-        <a href="#" class="btn" onclick="openConsult();return false;">成为合作伙伴</a>
-        <a href="#about" class="link-arrow">了解合作方式 →</a>
+        <a href="#" class="btn" onclick="openConsult();return false;" data-zh="成为合作伙伴" data-en="Become a partner">成为合作伙伴</a>
+        <a href="#about" class="link-arrow" data-zh="了解合作方式 →" data-en="How partnership works →">了解合作方式 →</a>
       </div>
     </div>
   </section>
@@ -362,10 +393,16 @@
   <!-- DOWNLOAD -->
   <section class="download" id="download">
     <div class="wrap reveal">
-      <span class="eyebrow">移动端</span>
-      <h2>把华享未来，装进口袋。</h2>
-      <p>随时与你的县城数字人对话，听他讲家乡的清晨与黄昏。</p>
-      <a href="#" class="btn" onclick="openStore();return false;">下载 App</a>
+      <span class="eyebrow">Mobile App</span>
+      <h2 data-zh="把華享未来，装进口袋。" data-en="Put Huaxiang Future in your pocket.">把華享未来，装进口袋。</h2>
+      <p data-zh="随时与你的县城数字人对话，听他讲家乡的清晨与黄昏。" data-en="Talk with your county's digital human anytime — hear them tell of home's mornings and dusks.">随时与你的县城数字人对话，听他讲家乡的清晨与黄昏。</p>
+      <div class="qr-row">
+        <div>
+          <div class="qr"><img src="assets/image21.png" alt="下载二维码" /></div>
+          <div class="qr-cap">Scan to download</div>
+        </div>
+      </div>
+      <a href="#" class="btn" onclick="openStore();return false;" data-zh="下载 App" data-en="Download App">下载 App</a>
     </div>
   </section>
 
@@ -373,10 +410,10 @@
   <section class="about" id="about">
     <div class="wrap">
       <div class="grid reveal">
-        <h2>关于华享未来</h2>
+        <h2 data-zh="关于華享未来" data-en="About Huaxiang Future">关于華享未来</h2>
         <div>
-          <p>华享未来是一个面向四川县域的 AI 数字文化与产业服务平台。我们相信，每一座县城都值得被认真地讲述——不是作为旅游目的地的标签，而是作为有温度、有记忆、有人情的地方。</p>
-          <p>我们用数字人作为纽带，连接县域的山水、非遗与烟火，也连接那些想认识真实中国的人。平台同时服务 C 端用户与 B 端合作伙伴，让文化在对话中产生价值。</p>
+          <p data-zh="華享未来是一个面向四川县域的 AI 数字文化与产业服务平台。我们相信，每一座县城都值得被认真地讲述——不是作为旅游目的地的标签，而是作为有温度、有记忆、有人情的地方。" data-en="Huaxiang Future is an AI-powered cultural and industrial service platform for Sichuan's counties. We believe every county deserves to be told properly — not as a travel label, but as a warm, remembered, human place.">華享未来是一个面向四川县域的 AI 数字文化与产业服务平台。我们相信，每一座县城都值得被认真地讲述——不是作为旅游目的地的标签，而是作为有温度、有记忆、有人情的地方。</p>
+          <p data-zh="我们用数字人作为纽带，连接县域的山水、非遗与烟火，也连接那些想认识真实中国的人。平台同时服务 C 端用户与 B 端合作伙伴，让文化在对话中产生价值。" data-en="We use digital humans as a thread — linking a county's landscapes, heritage and everyday life, and the people who want to know the real China. The platform serves both C-end users and B-end partners, turning culture into value through conversation.">我们用数字人作为纽带，连接县域的山水、非遗与烟火，也连接那些想认识真实中国的人。平台同时服务 C 端用户与 B 端合作伙伴，让文化在对话中产生价值。</p>
         </div>
       </div>
     </div>
@@ -388,33 +425,33 @@
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <div class="foot-brand"><span class="dot"></span>华享未来</div>
-        <p style="color:var(--mute);font-size:14px;font-weight:300;margin-top:14px;max-width:30ch">四川县域 AI 数字文化与产业服务平台</p>
+        <div class="foot-brand"><img class="logo" src="assets/logo-huaxiang.png" alt="華享未来" /><span class="zh">華享未来</span></div>
+        <p style="color:var(--mute);font-size:14px;font-weight:300;margin-top:14px;max-width:32ch" data-zh="四川县域 AI 数字文化与产业服务平台" data-en="Sichuan county AI cultural & industrial platform">四川县域 AI 数字文化与产业服务平台</p>
       </div>
       <div class="foot-cols">
         <div class="foot-col">
-          <h4>产品</h4>
+          <h4 data-zh="产品" data-en="Product">产品</h4>
           <a href="#people">数字人</a>
           <a href="#counties">县域橱窗</a>
-          <a href="#study">好物·研学</a>
+          <a href="#study">好物 · 研学</a>
           <a href="#download">下载 App</a>
         </div>
         <div class="foot-col">
-          <h4>合作</h4>
+          <h4 data-zh="合作" data-en="Partner">合作</h4>
           <a href="#" onclick="openConsult();return false;">伙伴计划</a>
           <a href="#about">关于我们</a>
           <a href="#">媒体联系</a>
         </div>
         <div class="foot-col">
-          <h4>法律</h4>
+          <h4 data-zh="法律" data-en="Legal">法律</h4>
           <a href="#">隐私政策</a>
           <a href="#">服务条款</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 华享未来（四川）科技有限公司</span>
-      <span>蜀 ICP 备 · 演示站点</span>
+      <span>© 2026 華享未来（四川）科技有限公司</span>
+      <span>HUAXIANG FUTURE · Demo Site</span>
     </div>
   </div>
 </footer>
@@ -424,22 +461,22 @@
   <div class="modal">
     <button class="close" onclick="closeConsult()">×</button>
     <div id="consultForm">
-      <h3>县域合作咨询</h3>
-      <div class="sub">留下信息，我们会在一个工作日内与你联系。</div>
-      <label>称呼</label>
+      <h3 data-zh="县域合作咨询" data-en="County Partnership">县域合作咨询</h3>
+      <div class="sub" data-zh="留下信息，我们会在一个工作日内与你联系。" data-en="Leave your details and we'll reach out within one business day.">留下信息，我们会在一个工作日内与你联系。</div>
+      <label data-zh="称呼" data-en="Name">称呼</label>
       <input id="cName" type="text" placeholder="您的称呼" />
-      <label>机构 / 县域</label>
+      <label data-zh="机构 / 县域" data-en="Organization / County">机构 / 县域</label>
       <input id="cOrg" type="text" placeholder="如：屏山县文旅局" />
-      <label>联系邮箱</label>
+      <label data-zh="联系邮箱" data-en="Email">联系邮箱</label>
       <input id="cMail" type="email" placeholder="name@example.com" />
-      <label>合作意向</label>
+      <label data-zh="合作意向" data-en="Intent">合作意向</label>
       <textarea id="cMsg" placeholder="简单描述您的合作想法"></textarea>
-      <button class="submit" onclick="submitConsult()">提交咨询</button>
+      <button class="submit" onclick="submitConsult()" data-zh="提交咨询" data-en="Submit">提交咨询</button>
     </div>
     <div id="consultOk" class="ok" style="display:none">
       <div class="mark">✓</div>
-      <h3 style="margin-top:10px">已收到</h3>
-      <p class="sub">我们会尽快与您联系。演示站点暂不发送真实邮件。</p>
+      <h3 style="margin-top:10px" data-zh="已收到" data-en="Received">已收到</h3>
+      <p class="sub" data-zh="我们会尽快与您联系。演示站点暂不发送真实邮件。" data-en="We'll be in touch soon. This demo does not send real emails.">我们会尽快与您联系。演示站点暂不发送真实邮件。</p>
     </div>
   </div>
 </div>
@@ -448,8 +485,8 @@
 <div class="overlay" id="storeOverlay">
   <div class="modal">
     <button class="close" onclick="closeStore()">×</button>
-    <h3>下载华享未来</h3>
-    <div class="sub">选择你的平台，演示版暂未上架应用市场。</div>
+    <h3 data-zh="下载華享未来" data-en="Download Huaxiang Future">下载華享未来</h3>
+    <div class="sub" data-zh="选择你的平台，演示版暂未上架应用市场。" data-en="Pick your platform. Demo is not yet on app stores.">选择你的平台，演示版暂未上架应用市场。</div>
     <div class="store-row">
       <div class="store-btn" onclick="goStore('ios')">App Store</div>
       <div class="store-btn" onclick="goStore('android')">应用市场</div>
@@ -458,48 +495,118 @@
 </div>
 
 <script>
+  // ---- current language ----
+  var LANG = 'zh';
+
   // ---- data ----
+  var pillars = [
+    {idx:'01',zh:'数字人名片',en:'Digital Namecard',descZh:'每位数字人都是一座县城的讲述者，用方言与故事，建立人与地方之间的情感连接。',descEn:'Each digital human is a county\'s storyteller, using dialect and tales to build emotional ties between people and place.'},
+    {idx:'02',zh:'县域文化橱窗',en:'County Showcase',descZh:'把古镇、山水与在地风物，整理成可浏览、可带走的县城名片，沉淀为长期资产。',descEn:'Curating old towns, landscapes and local goods into browsable, take-home namecards — long-term assets.'},
+    {idx:'03',zh:'研学与好物',en:'Study & Goods',descZh:'连接线下研学路线与县域好物，让文化既能体验，也能走进日常的消费。',descEn:'Linking on-site study routes with county goods, so culture is both experienced and consumed.'},
+    {idx:'04',zh:'伙伴计划',en:'Partner Program',descZh:'向县域、机构与品牌开放合作，共建一张覆盖百县的文化网络。',descEn:'Open partnership to counties, institutions and brands — building a cultural network across a hundred counties.'}
+  ];
+
   var people = [
-    {name:"江呦呦",role:"屏山文化使者",photo:"",desc:"金沙江畔的引路人，为你讲解屏山的古镇与山河。"},
-    {name:"陈子昂",role:"射洪文化使者",photo:"",desc:"涪江之畔的诗骨，带你走进子昂故里的文脉。"},
-    {name:"郭小沫",role:"沙湾文化使者",photo:"",desc:"沫水之滨的讲述者，串联沙湾的烟火与名人。"},
-    {name:"杜仙仙",role:"峨眉文化使者",photo:"",desc:"峨眉山下的灵秀之声，邀你共览禅意与风光。"},
-    {name:"雪梨宝宝",role:"金川文化使者",photo:"",desc:"雪梨花开的地方，陪你认识金川的山水人家。"},
-    {name:"巴小虎",role:"达州文化使者",photo:"",desc:"巴山渠水的热络伙伴，带你逛达州的市井与风味。"},
-    {name:"遂小荷",role:"遂宁文化使者",photo:"",desc:"涪江女儿，细说遂宁的莲城故事与静好。"},
-    {name:"雪灵儿",role:"达古冰川守望者",photo:"",desc:"达古冰川的守望者，讲述高原的纯净与传说。"},
-    {name:"文启",role:"富顺文化使者",photo:"",desc:"才子之乡的引路少年，带你看富顺的文风与豆香。"}
+    {zh:'陈子昂',en:'Chen Ziang',roleZh:'射洪文化使者',photo:'assets/image5.png',descZh:'涪江之畔的诗骨，带你走进子昂故里的文脉。',descEn:'The poet-soul of the Fujiang River, guiding you through the literary heritage of Shehong.'},
+    {zh:'江呦呦',en:'Jiang Youyou',roleZh:'屏山文化使者',photo:'assets/image6.png',descZh:'金沙江畔的引路人，为你讲解屏山的古镇与山河。',descEn:'Your guide along the Jinsha River, explaining Pingshan\'s old towns and mountains.'},
+    {zh:'郭小沫',en:'Guo Xiaomo',roleZh:'沙湾文化使者',photo:'assets/image7.png',descZh:'沫水之滨的讲述者，串联沙湾的烟火与名人。',descEn:'A storyteller by the Moshui River, weaving Shawan\'s life and luminaries together.'},
+    {zh:'杜仙仙',en:'Du Xianxian',roleZh:'峨眉文化使者',photo:'assets/image8.png',descZh:'峨眉山下的灵秀之声，邀你共览禅意与风光。',descEn:'A graceful voice beneath Mount Emei, inviting you to its Zen and scenery.'},
+    {zh:'雪梨宝宝',en:'Xueli Baby',roleZh:'金川文化使者',photo:'assets/image9.png',descZh:'雪梨花开的地方，陪你认识金川的山水人家。',descEn:'Where pear blossoms open, accompanying you through Jinchuan\'s landscapes and homes.'},
+    {zh:'巴小虎',en:'Ba Xiaohu',roleZh:'达州文化使者',photo:'assets/image10.png',descZh:'巴山渠水的热络伙伴，带你逛达州的市井与风味。',descEn:'A warm companion of the Bashan hills, showing you Dazhou\'s streets and flavors.'},
+    {zh:'遂小荷',en:'Sui Xiaohe',roleZh:'遂宁文化使者',photo:'assets/image11.png',descZh:'涪江女儿，细说遂宁的莲城故事与静好。',descEn:'Daughter of the Fujiang, telling Suining\'s lotus-city tales and quiet beauty.'},
+    {zh:'雪灵儿',en:'Xue Linger',roleZh:'达古冰川守望者',photo:'assets/image12.png',descZh:'达古冰川的守望者，讲述高原的纯净与传说。',descEn:'Guardian of the Daggu Glacier, telling of the plateau\'s purity and legend.'},
+    {zh:'文启',en:'Wen Qi',roleZh:'富顺文化使者',photo:'assets/image13.png',descZh:'才子之乡的引路少年，带你看富顺的文风与豆香。',descEn:'A young guide from the land of scholars, showing Fushun\'s literary air and bean aroma.'}
   ];
+
   var counties = [
-    {name:"屏山",tag:"PINGSHAN",desc:"金沙江畔的千年古镇，见证向家坝的浩渺与一方水土的乡愁。"},
-    {name:"沙湾",tag:"SHAWAN",desc:"沫水之滨，郭沫若故里，山水与文脉在此交汇。"},
-    {name:"射洪",tag:"SHEHONG",desc:"子昂故里，诗酒射洪，涪江之畔回响着盛唐的诗风。"},
-    {name:"兴文",tag:"XINGWEN",desc:"石海洞乡，僰人悬棺，喀斯特地貌之下藏着秘境。"},
-    {name:"崇州",tag:"CHONGZHOU",desc:"罨画池畔，街子古镇，川西坝子里的慢生活。"},
-    {name:"井研",tag:"JINGYAN",desc:"研溪湿地，竹园书香，才子之乡的田园清欢。"}
+    {zh:'屏山',en:'Pingshan',tag:'PINGSHAN',photo:'assets/image14.png',descZh:'金沙江畔的千年古镇，见证向家坝的浩渺与一方水土的乡愁。',descEn:'An ancient town by the Jinsha River, holding the vastness of Xiangjiaba and a homeland\'s longing.'},
+    {zh:'沙湾',en:'Shawan',tag:'SHAWAN',photo:'assets/image4.jpeg',descZh:'沫水之滨，郭沫若故里，山水与文脉在此交汇。',descEn:'By the Moshui River, hometown of Guo Moruo, where landscape meets literary heritage.'},
+    {zh:'射洪',en:'Shehong',tag:'SHEHONG',photo:'',descZh:'子昂故里，诗酒射洪，涪江之畔回响着盛唐的诗风。',descEn:'Hometown of Chen Ziang, city of poetry and wine, echoing Tang dynasty verse by the Fujiang.'},
+    {zh:'兴文',en:'Xingwen',tag:'XINGWEN',photo:'assets/image3.jpeg',descZh:'石海洞乡，僰人悬棺，喀斯特地貌之下藏着秘境。',descEn:'A stone-sea of caves and cliff coffins, hiding a wonderland beneath karst terrain.'},
+    {zh:'崇州',en:'Chongzhou',tag:'CHONGZHOU',photo:'assets/image2.jpeg',descZh:'罨画池畔，街子古镇，川西坝子里的慢生活。',descEn:'Beside the Yanhuachi pond and Jiezi old town — slow living in the western Sichuan plain.'},
+    {zh:'井研',en:'Jingyan',tag:'JINGYAN',photo:'',descZh:'研溪湿地，竹园书香，才子之乡的田园清欢。',descEn:'Yanxi wetlands and bamboo gardens — pastoral joy in the land of scholars.'}
   ];
+
+  var goods = [
+    {zh:'铜河沙琪玛',en:'Tonghe Crisp',src:'assets/image15.png',fromZh:'沙湾',fromEn:'Shawan'},
+    {zh:'佛手陈皮普洱茶',en:'Buddha-hand Pu-erh',src:'assets/image16.png',fromZh:'沙湾',fromEn:'Shawan'},
+    {zh:'干巴牛肉',en:'Dried Beef',src:'assets/image17.png',fromZh:'沙湾',fromEn:'Shawan'},
+    {zh:'铜河抽纸',en:'Tonghe Tissue',src:'assets/image18.png',fromZh:'沙湾',fromEn:'Shawan'},
+    {zh:'铜河青梅酒',en:'Tonghe Plum Wine',src:'assets/image19.png',fromZh:'沙湾',fromEn:'Shawan'},
+    {zh:'佛手玫瑰红茶',en:'Rose Black Tea',src:'assets/image20.png',fromZh:'沙湾',fromEn:'Shawan'}
+  ];
+
+  // ---- render pillars ----
+  var pl = document.getElementById('pillarList');
+  pillars.forEach(function(p){
+    var d = document.createElement('div');
+    d.className = 'pillar';
+    d.innerHTML = '<div class="idx">'+p.idx+'</div><div><h3><span class="t-zh">'+p.zh+'</span><span class="h-en t-en">'+p.en+'</span></h3><p class="t-zh">'+p.descZh+'</p><p class="t-en" style="display:none">'+p.descEn+'</p></div>';
+    pl.appendChild(d);
+  });
 
   // ---- render people ----
   var pg = document.getElementById('peopleGrid');
-  people.forEach(function(p){
-    var d = document.createElement('div');
-    d.className = 'person';
-    d.innerHTML = '<div class="ph"><span class="mono">'+p.name.charAt(0)+'</span></div>'+
-      '<div class="info"><h3>'+p.name+' <span class="role">'+p.role+'</span></h3>'+
-      '<p>'+p.desc+'</p></div>';
-    pg.appendChild(d);
-  });
+  function renderPeople(){
+    pg.innerHTML='';
+    people.forEach(function(p){
+      var d = document.createElement('div');
+      d.className='person';
+      var ph = p.photo ? '<img src="'+p.photo+'" alt="'+p.zh+'" loading="lazy">' : '';
+      d.innerHTML = '<div class="ph">'+ph+'<span class="mono">'+p.zh.charAt(0)+'</span></div>'+
+        '<div class="info"><h3><span class="t-zh">'+p.zh+'</span><span class="role-zh t-zh">'+p.roleZh+'</span></h3>'+
+        '<p class="t-zh">'+p.descZh+'</p></div>';
+      pg.appendChild(d);
+    });
+  }
+  renderPeople();
 
   // ---- render counties ----
   var cl = document.getElementById('countyList');
-  counties.forEach(function(c){
-    var d = document.createElement('div');
-    d.className = 'county';
-    d.innerHTML = '<div class="visual"><span class="cap">'+c.name+'</span></div>'+
-      '<div class="body"><div class="tag">'+c.tag+'</div><h3>'+c.name+'</h3>'+
-      '<p>'+c.desc+'</p><a href="#" class="more" onclick="return false;">了解 '+c.name+' →</a></div>';
-    cl.appendChild(d);
-  });
+  function renderCounties(){
+    cl.innerHTML='';
+    counties.forEach(function(c){
+      var vis = c.photo ? '<img src="'+c.photo+'" alt="'+c.zh+'" loading="lazy">' : '';
+      var d = document.createElement('div');
+      d.className='county';
+      d.innerHTML = '<div class="visual">'+vis+'<span class="cap">'+c.zh+'</span></div>'+
+        '<div class="body"><div class="tag">'+c.tag+'</div><h3><span class="t-zh">'+c.zh+'</span></h3>'+
+        '<div class="h-en t-en" style="display:none">'+c.en+'</div>'+
+        '<p class="t-zh">'+c.descZh+'</p><a href="#" class="more t-zh" onclick="return false;">了解 '+c.zh+' →</a></div>';
+      cl.appendChild(d);
+    });
+  }
+  renderCounties();
+
+  // ---- render goods ----
+  var gg = document.getElementById('goodsGrid');
+  function renderGoods(){
+    gg.innerHTML='';
+    goods.forEach(function(g){
+      var d = document.createElement('div');
+      d.className='good';
+      d.innerHTML = '<div class="ph"><img src="'+g.src+'" alt="'+g.zh+'" loading="lazy"></div>'+
+        '<div class="info"><h3 class="t-zh">'+g.zh+'</h3><div class="from t-zh">'+g.fromZh+' · '+g.en+'</div></div>';
+      gg.appendChild(d);
+    });
+  }
+  renderGoods();
+
+  // ---- language switch ----
+  function setLang(l){
+    LANG = l;
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.lang = (l==='en'?'en':'zh-CN');
+    document.getElementById('langZh').classList.toggle('active', l==='zh');
+    document.getElementById('langEn').classList.toggle('active', l==='en');
+    // inline data-zh/data-en elements
+    document.querySelectorAll('[data-zh]').forEach(function(el){
+      el.innerHTML = (l==='en') ? el.getAttribute('data-en') : el.getAttribute('data-zh');
+    });
+    // toggle .t-zh / .t-en blocks
+    document.querySelectorAll('.t-zh').forEach(function(el){ el.style.display = (l==='en')?'none':''; });
+    document.querySelectorAll('.t-en').forEach(function(el){ el.style.display = (l==='en')?'':'none'; });
+  }
 
   // ---- header scroll ----
   var hdr = document.getElementById('hdr');
@@ -525,10 +632,9 @@
   }
   function submitConsult(){
     var name=document.getElementById('cName').value.trim();
-    var org=document.getElementById('cOrg').value.trim();
     var mail=document.getElementById('cMail').value.trim();
     if(!name||!mail){ alert('请填写称呼与邮箱'); return; }
-    try{ localStorage.setItem('hx_consult', JSON.stringify({name:name,org:org,mail:mail,t:Date.now()})); }catch(e){}
+    try{ localStorage.setItem('hx_consult', JSON.stringify({name:name,mail:mail,t:Date.now()})); }catch(e){}
     document.getElementById('consultForm').style.display='none';
     document.getElementById('consultOk').style.display='block';
   }
