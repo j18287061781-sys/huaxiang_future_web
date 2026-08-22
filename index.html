@@ -3,10 +3,40 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>華享未来 — 四川县域 AI 数字文化平台</title>
-<meta name="description" content="華享未来以数字人为纽带，把四川县域的山水、非遗与烟火，讲给世界听。" />
+<title>華享未来 — 四川县域 AI 数字文化平台 | Huaxiang Future</title>
+<meta name="description" content="華享未来以数字人为纽带，把四川县域的山水、非遗与烟火，讲给世界听。Huaxiang Future tells the world about Sichuan's counties through digital humans." />
+<meta name="keywords" content="華享未来,数字人,四川,县域,文旅,非遗,Huaxiang Future,digital human,Sichuan,county" />
+<meta name="author" content="華享未来（四川）科技有限公司" />
+<link rel="icon" type="image/png" href="assets/logo-mark.png" />
+<link rel="apple-touch-icon" href="assets/logo-mark.png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="華享未来 — 四川县域 AI 数字文化平台" />
+<meta property="og:description" content="以数字人为纽带，把四川县域的山水、非遗与烟火，讲给世界听。" />
+<meta property="og:image" content="assets/logo-mark.png" />
+<meta property="og:url" content="https://mvp.hxfz-group.com" />
+<meta property="og:site_name" content="華享未来 Huaxiang Future" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="華享未来 — 四川县域 AI 数字文化平台" />
+<meta name="twitter:description" content="以数字人为纽带，把四川县域的山水、非遗与烟火，讲给世界听。" />
+<meta name="twitter:image" content="assets/logo-mark.png" />
+<link rel="canonical" href="https://mvp.hxfz-group.com" />
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"華享未来",
+  "alternateName":"Huaxiang Future",
+  "url":"https://mvp.hxfz-group.com",
+  "logo":"https://mvp.hxfz-group.com/assets/logo-mark.png",
+  "description":"四川县域 AI 数字文化与产业服务平台",
+  "address":{"@type":"PostalAddress","addressLocality":"成都","addressRegion":"四川","addressCountry":"CN"}
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
@@ -791,23 +821,23 @@
       <div class="foot-cols">
         <div class="foot-col">
           <h4 data-zh="产品" data-en="Product">产品</h4>
-          <a href="#people">数字人</a>
-          <a href="#counties">县域橱窗</a>
-          <a href="#services">文旅服务</a>
-          <a href="#study">研学</a>
-          <a href="#goods">好物</a>
-          <a href="#download">下载 App</a>
+          <a href="#people" data-zh="数字人" data-en="Digital Humans">数字人</a>
+          <a href="#counties" data-zh="县域橱窗" data-en="County Showcase">县域橱窗</a>
+          <a href="#services" data-zh="文旅服务" data-en="Tourism Services">文旅服务</a>
+          <a href="#study" data-zh="研学" data-en="Study">研学</a>
+          <a href="#goods" data-zh="好物" data-en="Goods">好物</a>
+          <a href="#download" data-zh="下载 App" data-en="Download App">下载 App</a>
         </div>
         <div class="foot-col">
           <h4 data-zh="合作" data-en="Partner">合作</h4>
-          <a href="#" onclick="openConsult();return false;">伙伴计划</a>
-          <a href="#about">关于我们</a>
-          <a href="#">媒体联系</a>
+          <a href="#" onclick="openConsult();return false;" data-zh="伙伴计划" data-en="Partner Program">伙伴计划</a>
+          <a href="#about" data-zh="关于我们" data-en="About Us">关于我们</a>
+          <a href="#" data-zh="媒体联系" data-en="Media Contact">媒体联系</a>
         </div>
         <div class="foot-col">
           <h4 data-zh="法律" data-en="Legal">法律</h4>
-          <a href="#">隐私政策</a>
-          <a href="#">服务条款</a>
+          <a href="#" data-zh="隐私政策" data-en="Privacy Policy">隐私政策</a>
+          <a href="#" data-zh="服务条款" data-en="Terms of Service">服务条款</a>
         </div>
       </div>
     </div>
@@ -874,15 +904,10 @@
   <div class="chat-body" id="chatBody">
     <div class="chat-msg bot">你好呀！我是江呦呦，屏山的文化使者。想了解屏山的什么？</div>
   </div>
-  <div class="chat-quick" id="chatQuick">
-    <span onclick="sendQuick('屏山有什么好玩的？')">屏山好玩的</span>
-    <span onclick="sendQuick('推荐屏山美食')">推荐美食</span>
-    <span onclick="sendQuick('屏山古镇怎么去？')">古镇怎么去</span>
-    <span onclick="sendQuick('屏山有什么非遗？')">非遗项目</span>
-  </div>
+  <div class="chat-quick" id="chatQuick"></div>
   <div class="chat-input">
     <input id="chatInput" type="text" placeholder="问我关于屏山的一切…" onkeydown="if(event.key==='Enter')sendChat()" />
-    <button onclick="sendChat()">发送</button>
+    <button onclick="sendChat()" data-zh="发送" data-en="Send">发送</button>
   </div>
 </div>
 
@@ -893,8 +918,8 @@
     <h3 data-zh="登录華享未来" data-en="Sign in">登录華享未来</h3>
     <div class="sub" data-zh="选择登录方式体验完整 Demo" data-en="Choose a method to try the full demo">选择登录方式体验完整 Demo</div>
     <div class="login-btns">
-      <button class="login-btn wechat" onclick="doLogin('wechat')">微信登录</button>
-      <button class="login-btn" onclick="doLogin('phone')">📱 手机号登录</button>
+      <button class="login-btn wechat" onclick="doLogin('wechat')" data-zh="微信登录" data-en="WeChat Sign-in">微信登录</button>
+      <button class="login-btn" onclick="doLogin('phone')" data-zh="手机号登录" data-en="Phone Sign-in">📱 手机号登录</button>
     </div>
     <div class="login-hint" data-zh="Demo 模式：点击即可体验，无需真实账号" data-en="Demo mode: click to try, no real account needed">Demo 模式：点击即可体验，无需真实账号</div>
   </div>
@@ -906,13 +931,13 @@
     <button class="close" onclick="closeProfile()">×</button>
     <div class="profile-head">
       <div class="avatar">张</div>
-      <div><h3>张明远</h3><div class="p-county">默认县域：屏山</div></div>
+      <div><h3 data-zh="张明远" data-en="Mingyuan Zhang">张明远</h3><div class="p-county" data-zh="默认县域：屏山" data-en="Default county: Pingshan">默认县域：屏山</div></div>
     </div>
     <div class="profile-tabs" id="profileTabs">
-      <button class="active" data-ptab="chats">我的对话</button>
-      <button data-ptab="orders">我的订单</button>
-      <button data-ptab="favorites">我的收藏</button>
-      <button data-ptab="coupons">我的优惠券</button>
+      <button class="active" data-ptab="chats" data-zh="我的对话" data-en="My Chats">我的对话</button>
+      <button data-ptab="orders" data-zh="我的订单" data-en="My Orders">我的订单</button>
+      <button data-ptab="favorites" data-zh="我的收藏" data-en="Favorites">我的收藏</button>
+      <button data-ptab="coupons" data-zh="我的优惠券" data-en="My Coupons">我的优惠券</button>
     </div>
     <div class="profile-body" id="profileBody"></div>
   </div>
@@ -923,7 +948,7 @@
   <div class="search-box">
     <div class="s-input">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 5 1.49-1.49-5-5zM9.5 14a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
-      <input type="text" id="searchInput" placeholder="搜索景点、好物、研学…" oninput="doSearch(this.value)" />
+      <input type="text" id="searchInput" data-zh-placeholder="搜索景点、好物、研学…" data-en-placeholder="Search attractions, goods, study…" placeholder="搜索景点、好物、研学…" oninput="doSearch(this.value)" />
     </div>
     <div class="s-results" id="searchResults"></div>
   </div>
@@ -933,15 +958,15 @@
 <div class="share-overlay" id="shareOverlay">
   <div class="share-panel">
     <button class="close" onclick="closeShare()">×</button>
-    <h3>分享</h3>
+    <h3 data-zh="分享" data-en="Share">分享</h3>
     <div class="share-channels">
-      <div class="share-ch" onclick="shareAction('wechat')"><div class="sc-ico" style="background:#07C160">微</div>微信</div>
-      <div class="share-ch" onclick="shareAction('moments')"><div class="sc-ico" style="background:#07C160">圈</div>朋友圈</div>
-      <div class="share-ch" onclick="shareAction('link')"><div class="sc-ico" style="background:var(--ink)">⎘</div>复制链接</div>
+      <div class="share-ch" onclick="shareAction('wechat')"><div class="sc-ico" style="background:#07C160">微</div><span data-zh="微信" data-en="WeChat">微信</span></div>
+      <div class="share-ch" onclick="shareAction('moments')"><div class="sc-ico" style="background:#07C160">圈</div><span data-zh="朋友圈" data-en="Moments">朋友圈</span></div>
+      <div class="share-ch" onclick="shareAction('link')"><div class="sc-ico" style="background:var(--ink)">⎘</div><span data-zh="复制链接" data-en="Copy Link">复制链接</span></div>
     </div>
     <div class="share-link-row">
       <input value="https://mvp.hxfz-group.com" readonly id="shareUrl" />
-      <button onclick="copyShareLink()">复制</button>
+      <button onclick="copyShareLink()" data-zh="复制" data-en="Copy">复制</button>
     </div>
   </div>
 </div>
@@ -950,16 +975,16 @@
 <div class="booking-overlay" id="bookingOverlay">
   <div class="booking-panel">
     <button class="close" onclick="closeBooking()">×</button>
-    <h3 id="bookingTitle">预订详情</h3>
-    <div class="b-sub" id="bookingSub">选择日期与数量，提交后 Demo 模拟下单</div>
-    <label>入住/使用日期</label>
+    <h3 id="bookingTitle" data-zh="预订详情" data-en="Booking Details">预订详情</h3>
+    <div class="b-sub" id="bookingSub" data-zh="选择日期与数量，提交后 Demo 模拟下单" data-en="Pick date & quantity. Demo simulates the order.">选择日期与数量，提交后 Demo 模拟下单</div>
+    <label data-zh="入住/使用日期" data-en="Check-in / Use date">入住/使用日期</label>
     <input type="date" id="bookingDate" />
-    <label>数量</label>
+    <label data-zh="数量" data-en="Quantity">数量</label>
     <select id="bookingQty"><option>1</option><option>2</option><option>3</option><option>4</option></select>
-    <label>联系电话</label>
+    <label data-zh="联系电话" data-en="Phone number">联系电话</label>
     <input type="tel" id="bookingPhone" placeholder="138****8602" />
     <div class="b-total" id="bookingTotal">¥0</div>
-    <button class="b-submit" onclick="submitBooking()">确认预订</button>
+    <button class="b-submit" onclick="submitBooking()" data-zh="确认预订" data-en="Confirm Booking">确认预订</button>
   </div>
 </div>
 
@@ -985,15 +1010,15 @@
   ];
 
   var people = [
-    {zh:'陈子昂',en:'Chen Ziang',roleZh:'射洪文化使者',alias:'诗酒射洪',accent:'#3D5B80',photo:'assets/image5.png',descZh:'涪江之畔的诗骨，带你走进子昂故里的文脉。',descEn:'The poet-soul of the Fujiang River, guiding you through the literary heritage of Shehong.',county:'射洪',goodsCount:6},
-    {zh:'江呦呦',en:'Jiang Youyou',roleZh:'屏山文化使者',alias:'金沙江畔',accent:'#2F6B6E',photo:'assets/image6.png',descZh:'金沙江畔的引路人，为你讲解屏山的古镇与山河。',descEn:'Your guide along the Jinsha River, explaining Pingshan\'s old towns and mountains.',county:'屏山',goodsCount:4},
-    {zh:'郭小沫',en:'Guo Xiaomo',roleZh:'沙湾文化使者',alias:'沫水之滨',accent:'#8B5E34',photo:'assets/image7.png',descZh:'沫水之滨的讲述者，串联沙湾的烟火与名人。',descEn:'A storyteller by the Moshui River, weaving Shawan\'s life and luminaries together.',county:'沙湾',goodsCount:5},
-    {zh:'杜仙仙',en:'Du Xianxian',roleZh:'峨眉文化使者',alias:'峨眉禅意',accent:'#5C6E3F',photo:'assets/image8.png',descZh:'峨眉山下的灵秀之声，邀你共览禅意与风光。',descEn:'A graceful voice beneath Mount Emei, inviting you to its Zen and scenery.',county:'峨眉',goodsCount:3},
-    {zh:'雪梨宝宝',en:'Xueli Baby',roleZh:'金川文化使者',alias:'雪梨之乡',accent:'#A85C4D',photo:'assets/image9.png',descZh:'雪梨花开的地方，陪你认识金川的山水人家。',descEn:'Where pear blossoms open, accompanying you through Jinchuan\'s landscapes and homes.',county:'金川',goodsCount:3},
-    {zh:'巴小虎',en:'Ba Xiaohu',roleZh:'达州文化使者',alias:'巴山渠水',accent:'#8E473B',photo:'assets/image10.png',descZh:'巴山渠水的热络伙伴，带你逛达州的市井与风味。',descEn:'A warm companion of the Bashan hills, showing you Dazhou\'s streets and flavors.',county:'达州',goodsCount:3},
-    {zh:'遂小荷',en:'Sui Xiaohe',roleZh:'遂宁文化使者',alias:'观音故里',accent:'#9C7156',photo:'assets/image11.png',descZh:'涪江女儿，细说遂宁的莲城故事与静好。',descEn:'Daughter of the Fujiang, telling Suining\'s lotus-city tales and quiet beauty.',county:'遂宁',goodsCount:3},
-    {zh:'雪灵儿',en:'Xue Linger',roleZh:'达古冰川守望者',alias:'高原守望',accent:'#4A6E8A',photo:'assets/image12.png',descZh:'达古冰川的守望者，讲述高原的纯净与传说。',descEn:'Guardian of the Daggu Glacier, telling of the plateau\'s purity and legend.',county:'黑水',goodsCount:3},
-    {zh:'文启',en:'Wen Qi',roleZh:'富顺文化使者',alias:'豆香才子',accent:'#776848',photo:'assets/image13.png',descZh:'才子之乡的引路少年，带你看富顺的文风与豆香。',descEn:'A young guide from the land of scholars, showing Fushun\'s literary air and bean aroma.',county:'富顺',goodsCount:3}
+    {zh:'陈子昂',en:'Chen Ziang',roleZh:'射洪文化使者',roleEn:'Shehong Cultural Envoy',enCounty:'Shehong',alias:'诗酒射洪',accent:'#3D5B80',photo:'assets/image5.png',descZh:'涪江之畔的诗骨，带你走进子昂故里的文脉。',descEn:'The poet-soul of the Fujiang River, guiding you through the literary heritage of Shehong.',county:'射洪',goodsCount:6},
+    {zh:'江呦呦',en:'Jiang Youyou',roleZh:'屏山文化使者',roleEn:'Pingshan Cultural Envoy',enCounty:'Pingshan',alias:'金沙江畔',accent:'#2F6B6E',photo:'assets/image6.png',descZh:'金沙江畔的引路人，为你讲解屏山的古镇与山河。',descEn:'Your guide along the Jinsha River, explaining Pingshan\'s old towns and mountains.',county:'屏山',goodsCount:4},
+    {zh:'郭小沫',en:'Guo Xiaomo',roleZh:'沙湾文化使者',roleEn:'Shawan Cultural Envoy',enCounty:'Shawan',alias:'沫水之滨',accent:'#8B5E34',photo:'assets/image7.png',descZh:'沫水之滨的讲述者，串联沙湾的烟火与名人。',descEn:'A storyteller by the Moshui River, weaving Shawan\'s life and luminaries together.',county:'沙湾',goodsCount:5},
+    {zh:'杜仙仙',en:'Du Xianxian',roleZh:'峨眉文化使者',roleEn:'Emei Cultural Envoy',enCounty:'Emei',alias:'峨眉禅意',accent:'#5C6E3F',photo:'assets/image8.png',descZh:'峨眉山下的灵秀之声，邀你共览禅意与风光。',descEn:'A graceful voice beneath Mount Emei, inviting you to its Zen and scenery.',county:'峨眉',goodsCount:3},
+    {zh:'雪梨宝宝',en:'Xueli Baby',roleZh:'金川文化使者',roleEn:'Jinchuan Cultural Envoy',enCounty:'Jinchuan',alias:'雪梨之乡',accent:'#A85C4D',photo:'assets/image9.png',descZh:'雪梨花开的地方，陪你认识金川的山水人家。',descEn:'Where pear blossoms open, accompanying you through Jinchuan\'s landscapes and homes.',county:'金川',goodsCount:3},
+    {zh:'巴小虎',en:'Ba Xiaohu',roleZh:'达州文化使者',roleEn:'Dazhou Cultural Envoy',enCounty:'Dazhou',alias:'巴山渠水',accent:'#8E473B',photo:'assets/image10.png',descZh:'巴山渠水的热络伙伴，带你逛达州的市井与风味。',descEn:'A warm companion of the Bashan hills, showing you Dazhou\'s streets and flavors.',county:'达州',goodsCount:3},
+    {zh:'遂小荷',en:'Sui Xiaohe',roleZh:'遂宁文化使者',roleEn:'Suining Cultural Envoy',enCounty:'Suining',alias:'观音故里',accent:'#9C7156',photo:'assets/image11.png',descZh:'涪江女儿，细说遂宁的莲城故事与静好。',descEn:'Daughter of the Fujiang, telling Suining\'s lotus-city tales and quiet beauty.',county:'遂宁',goodsCount:3},
+    {zh:'雪灵儿',en:'Xue Linger',roleZh:'达古冰川守望者',roleEn:'Daggu Glacier Guardian',enCounty:'Heishui',alias:'高原守望',accent:'#4A6E8A',photo:'assets/image12.png',descZh:'达古冰川的守望者，讲述高原的纯净与传说。',descEn:'Guardian of the Daggu Glacier, telling of the plateau\'s purity and legend.',county:'黑水',goodsCount:3},
+    {zh:'文启',en:'Wen Qi',roleZh:'富顺文化使者',roleEn:'Fushun Cultural Envoy',enCounty:'Fushun',alias:'豆香才子',accent:'#776848',photo:'assets/image13.png',descZh:'才子之乡的引路少年，带你看富顺的文风与豆香。',descEn:'A young guide from the land of scholars, showing Fushun\'s literary air and bean aroma.',county:'富顺',goodsCount:3}
   ];
 
   // 独立知识库 — 每人独立接口 (APP清单: 每个数字人有专属接口)
@@ -1104,59 +1129,59 @@
   // ---- Local Tourism Services Data (APP清单) ----
   var svcData = {
     hotel: [
-      {name:'屏山金沙江民宿',loc:'屏山',tag:'HOTEL',desc:'临江而建，推窗即见金沙江，体验千年古镇的宁静夜晚。',price:'¥268',priceNote:'/晚起',img:'assets/image14.png'},
-      {name:'沙湾铜河畔客栈',loc:'沙湾',tag:'HOTEL',desc:'沫水之滨，步行可达郭沫若故居，品味铜河烟火气。',price:'¥198',priceNote:'/晚起',img:'assets/image4.jpeg'},
-      {name:'崇州街子古镇山居',loc:'崇州',tag:'HOTEL',desc:'藏于古镇深巷，推门即是千年街巷，背靠凤栖山。',price:'¥328',priceNote:'/晚起',img:'assets/image2.jpeg'},
-      {name:'兴文石海星空帐篷',loc:'兴文',tag:'HOTEL',desc:'喀斯特石海之上，星空帐篷营地，体验洞穴与天穹。',price:'¥458',priceNote:'/晚起',img:'assets/image3.jpeg'},
-      {name:'射洪涪江江景酒店',loc:'射洪',tag:'HOTEL',desc:'涪江畔星级江景房，俯瞰诗酒射洪的黄昏。',price:'¥388',priceNote:'/晚起',img:''},
-      {name:'井研田园农家乐',loc:'井研',tag:'HOTEL',desc:'竹园深处，农家柴火饭，体验才子之乡的田园生活。',price:'¥128',priceNote:'/晚起',img:''}
+      {name:'屏山金沙江民宿',nameEn:'Pingshan Jinsha Riverside Inn',loc:'屏山',locEn:'Pingshan',tag:'HOTEL',desc:'临江而建，推窗即见金沙江，体验千年古镇的宁静夜晚。',descEn:'Riverside rooms with Jinsha River views; a quiet night in a millennium-old town.',price:'¥268',priceNote:'/晚起',img:'assets/image14.png'},
+      {name:'沙湾铜河畔客栈',nameEn:'Shawan Tonghe Riverside Inn',loc:'沙湾',locEn:'Shawan',tag:'HOTEL',desc:'沫水之滨，步行可达郭沫若故居，品味铜河烟火气。',descEn:'By the Moshui, walking distance to Guo Moruo\'s home; taste Tonghe\'s lively spirit.',price:'¥198',priceNote:'/晚起',img:'assets/image4.jpeg'},
+      {name:'崇州街子古镇山居',nameEn:'Chongzhou Jiezi Mountain Lodge',loc:'崇州',locEn:'Chongzhou',tag:'HOTEL',desc:'藏于古镇深巷，推门即是千年街巷，背靠凤栖山。',descEn:'Hidden in old-town alleys, doorstep to a thousand-year street, backed by Fengqi Hill.',price:'¥328',priceNote:'/晚起',img:'assets/image2.jpeg'},
+      {name:'兴文石海星空帐篷',nameEn:'Xingwen Stone-sea Stargazer Tent',loc:'兴文',locEn:'Xingwen',tag:'HOTEL',desc:'喀斯特石海之上，星空帐篷营地，体验洞穴与天穹。',descEn:'Above the karst stone sea — a stargazer tent camp between caves and the sky.',price:'¥458',priceNote:'/晚起',img:'assets/image3.jpeg'},
+      {name:'射洪涪江江景酒店',nameEn:'Shehong Fujiang Riverview Hotel',loc:'射洪',locEn:'Shehong',tag:'HOTEL',desc:'涪江畔星级江景房，俯瞰诗酒射洪的黄昏。',descEn:'Star-rated rooms by the Fujiang, overlooking the poetry-and-wine dusk of Shehong.',price:'¥388',priceNote:'/晚起',img:''},
+      {name:'井研田园农家乐',nameEn:'Jingyan Pastoral Farmhouse',loc:'井研',locEn:'Jingyan',tag:'HOTEL',desc:'竹园深处，农家柴火饭，体验才子之乡的田园生活。',descEn:'Deep in bamboo gardens, farmhouse wood-fire meals — pastoral life in the land of scholars.',price:'¥128',priceNote:'/晚起',img:''}
     ],
     food: [
-      {name:'屏山豆花饭',loc:'屏山',tag:'FOOD',desc:'金沙江畔的老店，石磨豆花配农家蘸水，一绝。',price:'¥25',priceNote:'/人',img:'assets/image14.png'},
-      {name:'沙湾干巴牛肉',loc:'沙湾',tag:'FOOD',desc:'铜河名菜，秘制风干，麻辣鲜香，佐酒绝佳。',price:'¥68',priceNote:'/份',img:'assets/image17.png'},
-      {name:'崇州叶儿粑',loc:'崇州',tag:'FOOD',desc:'糯米裹馅，芭蕉叶包裹蒸制，街子古镇的招牌小吃。',price:'¥15',priceNote:'/个',img:'assets/image2.jpeg'},
-      {name:'兴文黑猪肉烧烤',loc:'兴文',tag:'FOOD',desc:'石海景区特色，本地黑猪肉炭火烤制，配僰人蘸料。',price:'¥58',priceNote:'/人',img:'assets/image3.jpeg'},
-      {name:'射洪沱牌酒家',loc:'射洪',tag:'FOOD',desc:'诗酒之乡的酒家，沱牌配射洪凉粉，醇厚清辣。',price:'¥88',priceNote:'/人',img:''},
-      {name:'井研井溪鱼',loc:'井研',tag:'FOOD',desc:'研溪湿地的河鲜，清蒸井溪鱼，鲜甜嫩滑。',price:'¥48',priceNote:'/份',img:''}
+      {name:'屏山豆花饭',nameEn:'Pingshan Tofu Rice',loc:'屏山',locEn:'Pingshan',tag:'FOOD',desc:'金沙江畔的老店，石磨豆花配农家蘸水，一绝。',descEn:'Old shop by the Jinsha — stone-ground tofu with house dip, unforgettable.',price:'¥25',priceNote:'/人',img:'assets/image14.png'},
+      {name:'沙湾干巴牛肉',nameEn:'Shawan Dried Beef',loc:'沙湾',locEn:'Shawan',tag:'FOOD',desc:'铜河名菜，秘制风干，麻辣鲜香，佐酒绝佳。',descEn:'Tonghe signature — air-dried, spicy and savory; the perfect pairing with wine.',price:'¥68',priceNote:'/份',img:'assets/image17.png'},
+      {name:'崇州叶儿粑',nameEn:'Chongzhou Ye\'erba Cake',loc:'崇州',locEn:'Chongzhou',tag:'FOOD',desc:'糯米裹馅，芭蕉叶包裹蒸制，街子古镇的招牌小吃。',descEn:'Sticky rice with filling, steamed in banana leaves — Jiezi old town\'s signature snack.',price:'¥15',priceNote:'/个',img:'assets/image2.jpeg'},
+      {name:'兴文黑猪肉烧烤',nameEn:'Xingwen Black Pork BBQ',loc:'兴文',locEn:'Xingwen',tag:'FOOD',desc:'石海景区特色，本地黑猪肉炭火烤制，配僰人蘸料。',descEn:'Stone-sea specialty — local black pork over charcoal with Bo dipping sauce.',price:'¥58',priceNote:'/人',img:'assets/image3.jpeg'},
+      {name:'射洪沱牌酒家',nameEn:'Shehong Tuopai Tavern',loc:'射洪',locEn:'Shehong',tag:'FOOD',desc:'诗酒之乡的酒家，沱牌配射洪凉粉，醇厚清辣。',descEn:'Poetry-and-wine tavern — Tuopai paired with Shehong cold jelly, rich and crisp.',price:'¥88',priceNote:'/人',img:''},
+      {name:'井研井溪鱼',nameEn:'Jingyan Jingxi Stream Fish',loc:'井研',locEn:'Jingyan',tag:'FOOD',desc:'研溪湿地的河鲜，清蒸井溪鱼，鲜甜嫩滑。',descEn:'Freshwater catch from Yanxi wetlands — steamed Jingxi fish, sweet and tender.',price:'¥48',priceNote:'/份',img:''}
     ],
     ticket: [
-      {name:'屏山古镇景区通票',loc:'屏山',tag:'TICKET',desc:'含龙华古镇、向家坝观景台、老君山步道三大核心景点。',price:'¥98',priceNote:'/人',img:'assets/image14.png',badge:'团购优惠'},
-      {name:'兴文石海 + 僰人悬棺联票',loc:'兴文',tag:'TICKET',desc:'世界地质公园核心景区联票，含洞穴探秘与悬棺观景。',price:'¥168',priceNote:'/人',img:'assets/image3.jpeg',badge:'热销'},
-      {name:'崇州街子古镇套票',loc:'崇州',tag:'TICKET',desc:'含光严禅院、凤栖山步道、古镇游船，家庭套票更划算。',price:'¥128',priceNote:'/家庭',img:'assets/image2.jpeg'},
-      {name:'沙湾郭沫若故居 + 铜河记忆',loc:'沙湾',tag:'TICKET',desc:'郭沫若故居纪念馆 + 铜河记忆文化体验馆双馆联票。',price:'¥68',priceNote:'/人',img:'assets/image4.jpeg',badge:'团购优惠'},
-      {name:'射洪子昂故里文化游',loc:'射洪',tag:'TICKET',desc:'陈子昂读书台 + 金华山道观 + 涪江夜游综合套票。',price:'¥88',priceNote:'/人',img:''},
-      {name:'井研竹园研学体验券',loc:'井研',tag:'TICKET',desc:'竹编手作体验 + 研溪湿地导览 + 农家午餐一日套餐。',price:'¥128',priceNote:'/人',img:'',badge:'研学特惠'}
+      {name:'屏山古镇景区通票',nameEn:'Pingshan Old Town Pass',loc:'屏山',locEn:'Pingshan',tag:'TICKET',desc:'含龙华古镇、向家坝观景台、老君山步道三大核心景点。',descEn:'Covers Longhua old town, Xiangjiaba viewpoint and Laojun Mountain trail.',price:'¥98',priceNote:'/人',img:'assets/image14.png',badge:'团购优惠',badgeEn:'Group Deal'},
+      {name:'兴文石海 + 僰人悬棺联票',nameEn:'Xingwen Stone Sea + Bo Cliff Coffins',loc:'兴文',locEn:'Xingwen',tag:'TICKET',desc:'世界地质公园核心景区联票，含洞穴探秘与悬棺观景。',descEn:'UNESCO geopark combo — cave adventure plus cliff-coffin viewpoints.',price:'¥168',priceNote:'/人',img:'assets/image3.jpeg',badge:'热销',badgeEn:'Hot'},
+      {name:'崇州街子古镇套票',nameEn:'Chongzhou Jiezi Family Pack',loc:'崇州',locEn:'Chongzhou',tag:'TICKET',desc:'含光严禅院、凤栖山步道、古镇游船，家庭套票更划算。',descEn:'Guangyan Temple + Fengqi trail + boat ride; best value for families.',price:'¥128',priceNote:'/家庭',img:'assets/image2.jpeg'},
+      {name:'沙湾郭沫若故居 + 铜河记忆',nameEn:'Shawan Guo Moruo Home + Tonghe Memory',loc:'沙湾',locEn:'Shawan',tag:'TICKET',desc:'郭沫若故居纪念馆 + 铜河记忆文化体验馆双馆联票。',descEn:'Guo Moruo Memorial + Tonghe Memory Culture Museum dual ticket.',price:'¥68',priceNote:'/人',img:'assets/image4.jpeg',badge:'团购优惠',badgeEn:'Group Deal'},
+      {name:'射洪子昂故里文化游',nameEn:'Shehong Ziang Hometown Culture Pass',loc:'射洪',locEn:'Shehong',tag:'TICKET',desc:'陈子昂读书台 + 金华山道观 + 涪江夜游综合套票。',descEn:'Chen Ziang Reading Terrace + Jinhua Daoist Temple + Fujiang night cruise combo.',price:'¥88',priceNote:'/人',img:''},
+      {name:'井研竹园研学体验券',nameEn:'Jingyan Bamboo Workshop Study Voucher',loc:'井研',locEn:'Jingyan',tag:'TICKET',desc:'竹编手作体验 + 研溪湿地导览 + 农家午餐一日套餐。',descEn:'Bamboo-weaving workshop + Yanxi wetlands tour + farmhouse lunch — full day.',price:'¥128',priceNote:'/人',img:'',badge:'研学特惠',badgeEn:'Study Deal'}
     ],
     guide: [
-      {name:'屏山两日深度游攻略',loc:'屏山',tag:'GUIDE',desc:'Day1 龙华古镇→向家坝→老君山，Day2 金沙江漂流→豆花饭打卡，含住宿推荐与交通路线。',price:'免费',priceNote:'',img:'assets/image14.png'},
-      {name:'沙湾文脉寻踪攻略',loc:'沙湾',tag:'GUIDE',desc:'郭沫若故居→铜河记忆馆→干巴牛肉老店→沫水夜游，一条线串起沙湾的文与味。',price:'免费',priceNote:'',img:'assets/image4.jpeg'},
-      {name:'兴文地质奇观攻略',loc:'兴文',tag:'GUIDE',desc:'石海→大漏斗→僰人悬棺→洞穴探秘，附安全须知与最佳拍照点标注。',price:'免费',priceNote:'',img:'assets/image3.jpeg'},
-      {name:'崇州慢生活攻略',loc:'崇州',tag:'GUIDE',desc:'街子古镇→罨画池→凤栖山→元通古镇，两天三镇，泡一杯盖碗茶过一下午。',price:'免费',priceNote:'',img:'assets/image2.jpeg'},
-      {name:'射洪诗酒之旅攻略',loc:'射洪',tag:'GUIDE',desc:'陈子昂读书台→沱牌酒厂参观→涪江夜市，感受诗与酒的碰撞。',price:'免费',priceNote:'',img:''},
-      {name:'井研田园研学攻略',loc:'井研',tag:'GUIDE',desc:'研溪湿地→竹编工坊→雷氏民居→农家乐，适合亲子研学周末。',price:'免费',priceNote:'',img:''}
+      {name:'屏山两日深度游攻略',nameEn:'Pingshan 2-Day Deep Dive',loc:'屏山',locEn:'Pingshan',tag:'GUIDE',desc:'Day1 龙华古镇→向家坝→老君山，Day2 金沙江漂流→豆花饭打卡，含住宿推荐与交通路线。',descEn:'Day 1 Longhua → Xiangjiaba → Laojun Mountain; Day 2 Jinsha rafting → tofu-rice spot. With stay & transit tips.',price:'免费',priceNote:'Free',img:'assets/image14.png'},
+      {name:'沙湾文脉寻踪攻略',nameEn:'Shawan Literary Trail Guide',loc:'沙湾',locEn:'Shawan',tag:'GUIDE',desc:'郭沫若故居→铜河记忆馆→干巴牛肉老店→沫水夜游，一条线串起沙湾的文与味。',descEn:'Guo Moruo Home → Tonghe Memory → dried-beef shop → Moshui night cruise — culture and flavor in one line.',price:'免费',priceNote:'Free',img:'assets/image4.jpeg'},
+      {name:'兴文地质奇观攻略',nameEn:'Xingwen Geological Wonders Guide',loc:'兴文',locEn:'Xingwen',tag:'GUIDE',desc:'石海→大漏斗→僰人悬棺→洞穴探秘，附安全须知与最佳拍照点标注。',descEn:'Stone sea → great doline → Bo cliff coffins → cave exploration. Safety tips & photo spots included.',price:'免费',priceNote:'Free',img:'assets/image3.jpeg'},
+      {name:'崇州慢生活攻略',nameEn:'Chongzhou Slow Living Guide',loc:'崇州',locEn:'Chongzhou',tag:'GUIDE',desc:'街子古镇→罨画池→凤栖山→元通古镇，两天三镇，泡一杯盖碗茶过一下午。',descEn:'Jiezi → Yanhuachi → Fengqi → Yuantong. Two days, three towns, a covered-bowl tea for the afternoon.',price:'免费',priceNote:'Free',img:'assets/image2.jpeg'},
+      {name:'射洪诗酒之旅攻略',nameEn:'Shehong Poetry & Wine Trail',loc:'射洪',locEn:'Shehong',tag:'GUIDE',desc:'陈子昂读书台→沱牌酒厂参观→涪江夜市，感受诗与酒的碰撞。',descEn:'Ziang Reading Terrace → Tuopai distillery tour → Fujiang night market. Where poetry meets wine.',price:'免费',priceNote:'Free',img:''},
+      {name:'井研田园研学攻略',nameEn:'Jingyan Pastoral Study Guide',loc:'井研',locEn:'Jingyan',tag:'GUIDE',desc:'研溪湿地→竹编工坊→雷氏民居→农家乐，适合亲子研学周末。',descEn:'Yanxi wetlands → bamboo workshop → Lei family residence → farmhouse. Perfect parent-child weekend.',price:'免费',priceNote:'Free',img:''}
     ]
   };
 
   var goods = [
-    {zh:'铜河沙琪玛',en:'Tonghe Crisp',src:'assets/image15.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥38',origPrice:'¥58',coupon:'满50减10',person:'郭小沫'},
-    {zh:'佛手陈皮普洱茶',en:'Buddha-hand Pu-erh',src:'assets/image16.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥128',origPrice:'¥168',coupon:'新品9折',person:'郭小沫'},
-    {zh:'干巴牛肉',en:'Dried Beef',src:'assets/image17.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥68',origPrice:'¥88',coupon:'',person:'郭小沫'},
-    {zh:'屏山腊肉礼盒',en:'Pingshan Cured Meat',src:'assets/image18.png',fromZh:'屏山',fromEn:'Pingshan',price:'¥138',origPrice:'¥168',coupon:'满100减20',person:'江呦呦'},
-    {zh:'屏山竹编工艺品',en:'Pingshan Bamboo Weave',src:'assets/image19.png',fromZh:'屏山',fromEn:'Pingshan',price:'¥89',origPrice:'',coupon:'',person:'江呦呦'},
-    {zh:'沱牌曲酒·子昂典藏',en:'Tuopai Heritage',src:'assets/image20.png',fromZh:'射洪',fromEn:'Shehong',price:'¥298',origPrice:'¥388',coupon:'满300减50',person:'陈子昂'},
-    {zh:'金川雪梨膏',en:'Jinchuan Pear Paste',src:'assets/image15.png',fromZh:'金川',fromEn:'Jinchuan',price:'¥68',origPrice:'¥88',coupon:'买2送1',person:'雪梨宝宝'},
-    {zh:'达州灯影牛肉礼盒',en:'Dazhou Shadow Beef',src:'assets/image16.png',fromZh:'达州',fromEn:'Dazhou',price:'¥168',origPrice:'¥198',coupon:'',person:'巴小虎'},
-    {zh:'峨眉雪芽茶',en:'Emei Snow Bud Tea',src:'assets/image17.png',fromZh:'峨眉',fromEn:'Emei',price:'¥98',origPrice:'¥128',coupon:'满150减20',person:'杜仙仙'},
-    {zh:'遂宁观音素饼',en:'Suining Veg Cake',src:'assets/image18.png',fromZh:'遂宁',fromEn:'Suining',price:'¥36',origPrice:'¥48',coupon:'',person:'遂小荷'},
-    {zh:'富顺豆花蘸水礼盒',en:'Fushun Tofu Sauce',src:'assets/image19.png',fromZh:'富顺',fromEn:'Fushun',price:'¥45',origPrice:'',coupon:'新品8折',person:'文启'},
-    {zh:'铜河青梅酒',en:'Tonghe Plum Wine',src:'assets/image20.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥88',origPrice:'¥118',coupon:'满100减20',person:'郭小沫'}
+    {zh:'铜河沙琪玛',en:'Tonghe Crisp',src:'assets/image15.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥38',origPrice:'¥58',coupon:'满50减10',person:'郭小沫',enPerson:'Guo Xiaomo'},
+    {zh:'佛手陈皮普洱茶',en:'Buddha-hand Pu-erh',src:'assets/image16.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥128',origPrice:'¥168',coupon:'新品9折',person:'郭小沫',enPerson:'Guo Xiaomo'},
+    {zh:'干巴牛肉',en:'Dried Beef',src:'assets/image17.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥68',origPrice:'¥88',coupon:'',person:'郭小沫',enPerson:'Guo Xiaomo'},
+    {zh:'屏山腊肉礼盒',en:'Pingshan Cured Meat',src:'assets/image18.png',fromZh:'屏山',fromEn:'Pingshan',price:'¥138',origPrice:'¥168',coupon:'满100减20',person:'江呦呦',enPerson:'Jiang Youyou'},
+    {zh:'屏山竹编工艺品',en:'Pingshan Bamboo Weave',src:'assets/image19.png',fromZh:'屏山',fromEn:'Pingshan',price:'¥89',origPrice:'',coupon:'',person:'江呦呦',enPerson:'Jiang Youyou'},
+    {zh:'沱牌曲酒·子昂典藏',en:'Tuopai Heritage',src:'assets/image20.png',fromZh:'射洪',fromEn:'Shehong',price:'¥298',origPrice:'¥388',coupon:'满300减50',person:'陈子昂',enPerson:'Chen Ziang'},
+    {zh:'金川雪梨膏',en:'Jinchuan Pear Paste',src:'assets/image15.png',fromZh:'金川',fromEn:'Jinchuan',price:'¥68',origPrice:'¥88',coupon:'买2送1',person:'雪梨宝宝',enPerson:'Xueli Baby'},
+    {zh:'达州灯影牛肉礼盒',en:'Dazhou Shadow Beef',src:'assets/image16.png',fromZh:'达州',fromEn:'Dazhou',price:'¥168',origPrice:'¥198',coupon:'',person:'巴小虎',enPerson:'Ba Xiaohu'},
+    {zh:'峨眉雪芽茶',en:'Emei Snow Bud Tea',src:'assets/image17.png',fromZh:'峨眉',fromEn:'Emei',price:'¥98',origPrice:'¥128',coupon:'满150减20',person:'杜仙仙',enPerson:'Du Xianxian'},
+    {zh:'遂宁观音素饼',en:'Suining Veg Cake',src:'assets/image18.png',fromZh:'遂宁',fromEn:'Suining',price:'¥36',origPrice:'¥48',coupon:'',person:'遂小荷',enPerson:'Sui Xiaohe'},
+    {zh:'富顺豆花蘸水礼盒',en:'Fushun Tofu Sauce',src:'assets/image19.png',fromZh:'富顺',fromEn:'Fushun',price:'¥45',origPrice:'',coupon:'新品8折',person:'文启',enPerson:'Wen Qi'},
+    {zh:'铜河青梅酒',en:'Tonghe Plum Wine',src:'assets/image20.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥88',origPrice:'¥118',coupon:'满100减20',person:'郭小沫',enPerson:'Guo Xiaomo'}
   ];
 
   var studyIn = [
-    {zh:'沙湾沫若文化研学',en:'Shawan Moruo Culture Study',tag:'已开展',enTag:'Completed',descZh:'走进郭沫若故里，串联沫水文脉与铜河记忆。',contact:'联系邮箱：study@hxfuture.cn'},
-    {zh:'井研田园书香研学',en:'Jingyan Scholarly Countryside',tag:'已开展',enTag:'Completed',descZh:'研溪湿地、竹园古坊，在行走中读懂才子之乡。',contact:'联系邮箱：study@hxfuture.cn'},
-    {zh:'崇州街子古镇研学',en:'Chongzhou Jiezi Old Town',tag:'已开展',enTag:'Completed',descZh:'罨画池畔、川西坝子，体验慢下来的古镇日常。',contact:'联系邮箱：study@hxfuture.cn'},
-    {zh:'兴文喀斯特秘境研学',en:'Xingwen Karst Discovery',tag:'已开展',enTag:'Completed',descZh:'石海洞乡、僰人悬棺，在自然教室里探索地质与人文。',contact:'联系邮箱：study@hxfuture.cn'}
+    {zh:'沙湾沫若文化研学',en:'Shawan Moruo Culture Study',tag:'已开展',enTag:'Completed',descZh:'走进郭沫若故里，串联沫水文脉与铜河记忆。',descEn:'Visit Guo Moruo\'s hometown, linking Moshui literary heritage with Tonghe memories.',contact:'联系邮箱：study@hxfuture.cn'},
+    {zh:'井研田园书香研学',en:'Jingyan Scholarly Countryside',tag:'已开展',enTag:'Completed',descZh:'研溪湿地、竹园古坊，在行走中读懂才子之乡。',descEn:'Yanxi wetlands and bamboo workshops — reading the land of scholars on foot.',contact:'联系邮箱：study@hxfuture.cn'},
+    {zh:'崇州街子古镇研学',en:'Chongzhou Jiezi Old Town',tag:'已开展',enTag:'Completed',descZh:'罨画池畔、川西坝子，体验慢下来的古镇日常。',descEn:'By Yanhuachi pond in the western Sichuan plain — slow living in an old town.',contact:'联系邮箱：study@hxfuture.cn'},
+    {zh:'兴文喀斯特秘境研学',en:'Xingwen Karst Discovery',tag:'已开展',enTag:'Completed',descZh:'石海洞乡、僰人悬棺，在自然教室里探索地质与人文。',descEn:'Stone seas, caves and cliff coffins — exploring geology and culture in nature\'s classroom.',contact:'联系邮箱：study@hxfuture.cn'}
   ];
 
   var studyOut = [
@@ -1220,17 +1245,21 @@
   var pg = document.getElementById('peopleGrid');
   function renderPeople(){
     pg.innerHTML='';
+    var isEn = LANG==='en';
     people.forEach(function(p,i){
       var d = document.createElement('div');
       d.className='person';
       d.setAttribute('data-accent', p.accent);
       var ph = p.photo ? '<img src="'+p.photo+'" alt="'+p.zh+'" loading="lazy">' : '';
-      d.innerHTML = '<div class="ph" style="border-top:3px solid '+p.accent+'">'+ph+'<span class="mono" style="color:'+p.accent+'">'+p.zh.charAt(0)+'</span></div>'+
-        '<div class="info"><h3><span class="t-zh">'+p.zh+'</span></h3>'+
+      d.innerHTML = '<div class="ph" style="border-top:3px solid '+p.accent+'">'+ph+'<span class="mono" style="color:'+p.accent+'">'+(isEn?p.en.charAt(0):p.zh.charAt(0))+'</span></div>'+
+        '<div class="info"><h3><span class="t-zh">'+p.zh+'</span><span class="t-en" style="'+(isEn?'':'display:none')+'">'+p.en+'</span></h3>'+
         '<div class="role-line t-zh"><span class="alias" style="color:'+p.accent+'">'+p.alias+'</span><span class="dot">·</span><span class="county">'+p.county+'</span></div>'+
+        '<div class="role-line t-en" style="'+(isEn?'':'display:none')+'"><span class="alias" style="color:'+p.accent+'">'+p.en+'</span><span class="dot">·</span><span class="county">'+p.enCounty+'</span></div>'+
         '<p class="t-zh">'+p.descZh+'</p>'+
+        '<p class="t-en" style="'+(isEn?'':'display:none')+'">'+p.descEn+'</p>'+
         '<div class="goods-hint t-zh">推荐 '+p.goodsCount+' 款好物 · 独立知识库已就绪</div>'+
-        '<div class="chat-btn" onclick="openChatWith('+i+')">💬 和 '+p.zh+' 对话</div></div>';
+        '<div class="goods-hint t-en" style="'+(isEn?'':'display:none')+'">'+p.goodsCount+' recommended goods · Knowledge base ready</div>'+
+        '<div class="chat-btn" onclick="openChatWith('+i+')">'+(isEn?'Chat with '+p.en:'💬 和 '+p.zh+' 对话')+'</div></div>';
       pg.appendChild(d);
     });
   }
@@ -1238,20 +1267,23 @@
 
   // ---- render counties (enhanced with tags + map) ----
   var cl = document.getElementById('countyList');
+  var tagEnMap = {'景点':'Sights','酒店':'Hotels','美食':'Food','非遗':'Heritage','好物':'Goods','门票':'Tickets','研学':'Study'};
   function renderCounties(){
     cl.innerHTML='';
+    var isEn = LANG==='en';
     counties.forEach(function(c){
       var vis = c.photo ? '<img src="'+c.photo+'" alt="'+c.zh+'" loading="lazy">' : '';
-      var tagsHtml = (c.tags||[]).map(function(t){ return '<span>'+t+'</span>'; }).join('');
+      var tagsHtml = (c.tags||[]).map(function(t){ return '<span>'+(isEn?(tagEnMap[t]||t):t)+'</span>'; }).join('');
       var d = document.createElement('div');
       d.className='county';
-      d.innerHTML = '<div class="visual">'+vis+'<span class="cap">'+c.zh+'</span></div>'+
-        '<div class="body"><div class="tag">'+c.tag+'</div><h3><span class="t-zh">'+c.zh+'</span></h3>'+
-        '<div class="h-en t-en" style="display:none">'+c.en+'</div>'+
+      d.innerHTML = '<div class="visual">'+vis+'<span class="cap t-zh">'+c.zh+'</span><span class="cap t-en" style="'+(isEn?'':'display:none')+'">'+c.en+'</span></div>'+
+        '<div class="body"><div class="tag">'+c.tag+'</div><h3><span class="t-zh">'+c.zh+'</span><span class="t-en" style="'+(isEn?'':'display:none')+'">'+c.en+'</span></h3>'+
         '<p class="t-zh">'+c.descZh+'</p>'+
+        '<p class="t-en" style="'+(isEn?'':'display:none')+'">'+c.descEn+'</p>'+
         '<div class="county-tags">'+tagsHtml+'</div>'+
-        '<a class="map-link" href="https://uri.amap.com/search?keyword='+encodeURIComponent(c.mapKeyword||c.zh)+'" target="_blank" rel="noopener">📍 地图导航</a>'+
-        '<a href="#" class="more t-zh" onclick="return false;">了解 '+c.zh+' →</a></div>';
+        '<a class="map-link" href="https://uri.amap.com/search?keyword='+encodeURIComponent(c.mapKeyword||c.zh)+'" target="_blank" rel="noopener">'+(isEn?'📍 Map':'📍 地图导航')+'</a>'+
+        '<a href="#" class="more t-zh" onclick="return false;">了解 '+c.zh+' →</a>'+
+        '<a href="#" class="more t-en" style="'+(isEn?'':'display:none')+'" onclick="return false;">Explore '+c.en+' →</a></div>';
       cl.appendChild(d);
     });
   }
@@ -1264,22 +1296,23 @@
   function renderSvcGrid(tab){
     currentSvcTab = tab;
     var items = svcData[tab] || [];
+    var isEn = LANG==='en';
     svcGrid.innerHTML = '';
     items.forEach(function(s){
       var ph = s.img ? '<img src="'+s.img+'" alt="'+s.name+'" loading="lazy">' : '';
-      var badge = s.badge ? '<div class="svc-tag">'+s.badge+'</div>' : '';
-      var priceHtml = s.price ? '<div class="svc-price">'+s.price+' <small>'+s.priceNote+'</small></div>' : '';
+      var badge = s.badge ? '<div class="svc-tag">'+(isEn?(s.badgeEn||s.badge):s.badge)+'</div>' : '';
+      var priceHtml = s.price ? '<div class="svc-price">'+s.price+' <small>'+(isEn?(s.priceNote||''):s.priceNote)+'</small></div>' : '';
       var rating = tab!=='guide' ? '<div class="star-row"><span class="stars">★★★★'+(Math.random()>.5?'★':'☆')+'</span><span class="star-count">'+(4.5+Math.random()*.4).toFixed(1)+'</span></div>' : '';
-      var btnText = tab==='guide' ? '查看攻略' : (tab==='ticket' ? '立即预订' : '查看详情');
-      var merchant = (tab==='hotel'||tab==='food') ? '<div style="font-size:10.5px;color:var(--mute-2);margin-top:4px">✓ 商家已入驻</div>' : '';
+      var btnText = isEn ? (tab==='guide'?'View Guide':(tab==='ticket'?'Book Now':'Details')) : (tab==='guide'?'查看攻略':(tab==='ticket'?'立即预订':'查看详情'));
+      var merchant = (tab==='hotel'||tab==='food') ? '<div style="font-size:10.5px;color:var(--mute-2);margin-top:4px">'+(isEn?'✓ Verified merchant':'✓ 商家已入驻')+'</div>' : '';
       var d = document.createElement('div');
       d.className='svc-card';
       d.innerHTML = '<div class="svc-ph" style="position:relative">'+ph+badge+
         '<div class="share-ico" onclick="openShare(\''+s.name+'\')">⤴</div></div>'+
-        '<div class="svc-info"><h3 class="t-zh">'+s.name+'</h3><div class="svc-loc">'+s.loc+'</div>'+
-        '<p class="t-zh">'+s.desc+'</p>'+rating+merchant+priceHtml+
+        '<div class="svc-info"><h3 class="t-zh">'+s.name+'</h3>'+(s.nameEn?'<h3 class="t-en" style="'+(isEn?'':'display:none')+'">'+s.nameEn+'</h3>':'')+'<div class="svc-loc">'+(isEn?(s.locEn||s.loc):s.loc)+'</div>'+
+        '<p class="t-zh">'+s.desc+'</p>'+(s.descEn?'<p class="t-en" style="'+(isEn?'':'display:none')+'">'+s.descEn+'</p>':'')+rating+merchant+priceHtml+
         '<div class="svc-btns"><button class="btn btn-sm" onclick="svcAction(\''+s.name+'\',\''+s.price+'\',\''+tab+'\')">'+btnText+'</button>'+
-        (tab!=='guide'?'<button class="btn btn-sm btn-outline" onclick="svcFav(\''+s.name+'\')">收藏</button>':'')+
+        (tab!=='guide'?'<button class="btn btn-sm btn-outline" onclick="svcFav(\''+s.name+'\')">'+(isEn?'Save':'收藏')+'</button>':'')+
         '</div></div>';
       svcGrid.appendChild(d);
     });
@@ -1296,11 +1329,11 @@
   });
 
   function svcAction(name, price, tab){
-    if(tab==='guide'){ showToast('攻略已打开，祝你旅途愉快！'); return; }
+    if(tab==='guide'){ showToast(LANG==='en'?'Guide opened, enjoy your trip!':'攻略已打开，祝你旅途愉快！'); return; }
     openBooking(name, price);
   }
   function svcFav(name){
-    showToast('已收藏：'+name);
+    showToast((LANG==='en'?'Saved: ':'已收藏：')+name);
   }
 
   // ---- render goods (enhanced with price/buy/coupon/share) ----
@@ -1308,18 +1341,20 @@
   var gg = document.getElementById('goodsGrid');
   function renderGoods(){
     gg.innerHTML='';
+    var isEn = LANG==='en';
     goods.forEach(function(g){
       var couponBadge = g.coupon ? '<div class="coupon-badge">'+g.coupon+'</div>' : '';
       var origPrice = g.origPrice ? '<small>'+g.origPrice+'</small>' : '';
-      var personTag = g.person ? '<div style="font-size:11px;color:var(--accent);margin-top:4px">'+g.person+' 推荐</div>' : '';
+      var personTag = g.person ? '<div style="font-size:11px;color:var(--accent);margin-top:4px">'+(isEn?g.enPerson+' recommends':g.person+' 推荐')+'</div>' : '';
       var d = document.createElement('div');
       d.className='good';
       d.innerHTML = '<div class="ph" style="position:relative"><img src="'+g.src+'" alt="'+g.zh+'" loading="lazy">'+couponBadge+
         '<div class="share-ico" onclick="openShare(\''+g.zh+'\')">⤴</div></div>'+
-        '<div class="info"><h3 class="t-zh">'+g.zh+'</h3><div class="from t-zh">'+g.fromZh+' · '+g.en+'</div>'+personTag+
+        '<div class="info"><h3 class="t-zh">'+g.zh+'</h3><h3 class="t-en" style="'+(isEn?'':'display:none')+'">'+g.en+'</h3><div class="from t-zh">'+g.fromZh+' · '+g.en+'</div>'+
+        '<div class="from t-en" style="'+(isEn?'':'display:none')+'">'+g.fromEn+'</div>'+personTag+
         '<div class="price">'+g.price+origPrice+'</div>'+
-        '<div class="good-btns"><button class="btn btn-sm" onclick="addToCart(\''+g.zh+'\')">加入购物车</button>'+
-        (g.coupon?'<button class="btn btn-sm btn-outline" onclick="couponDemo(\''+g.coupon+'\')">领券</button>':'')+
+        '<div class="good-btns"><button class="btn btn-sm" onclick="addToCart(\''+g.zh+'\')">'+(isEn?'Add to Cart':'加入购物车')+'</button>'+
+        (g.coupon?'<button class="btn btn-sm btn-outline" onclick="couponDemo(\''+g.coupon+'\')">'+(isEn?'Get Coupon':'领券')+'</button>':'')+
         '</div></div>';
       gg.appendChild(d);
     });
@@ -1329,7 +1364,7 @@
   function addToCart(name){
     cartCount++;
     updateCartBadge();
-    showToast('已加入购物车：'+name);
+    showToast((LANG==='en'?'Added to cart: ':'已加入购物车：')+name);
   }
   function updateCartBadge(){
     var badge = document.querySelector('.ub-cart');
@@ -1339,7 +1374,7 @@
     addToCart(name);
   }
   function couponDemo(coupon){
-    showToast('优惠券「'+coupon+'」已领取，结算时自动抵扣');
+    showToast(LANG==='en' ? 'Coupon "'+coupon+'" claimed, auto-applied at checkout' : '优惠券「'+coupon+'」已领取，结算时自动抵扣');
   }
   function showToast(msg){
     var t = document.createElement('div');
@@ -1352,28 +1387,30 @@
   // ---- render study ----
   var sp = document.getElementById('studyParts');
   function renderStudy(){
-    var inHtml = '<div class="label"><span class="t-zh">智进</span><span class="t-en" style="display:none">In</span></div>'+
-      '<h3 class="t-zh">活动沉淀</h3><h3 class="t-en" style="display:none">Past Activities</h3>'+
+    var isEn = LANG==='en';
+    var inHtml = '<div class="label"><span class="t-zh">智进</span><span class="t-en" style="'+(isEn?'':'display:none')+'">In</span></div>'+
+      '<h3 class="t-zh">活动沉淀</h3><h3 class="t-en" style="'+(isEn?'':'display:none')+'">Past Activities</h3>'+
       '<p class="t-zh">我们已开展的县域研学活动，每一条路线都有详细记录。</p>'+
-      '<p class="t-en" style="display:none">Study tours we have run, each with detailed records.</p>'+
+      '<p class="t-en" style="'+(isEn?'':'display:none')+'">Study tours we have run, each with detailed records.</p>'+
       '<div class="study-list">';
     studyIn.forEach(function(s){
       inHtml += '<div class="study-item">'+
-        '<div class="row"><span class="name t-zh">'+s.zh+'</span><span class="tag t-zh">'+s.tag+'</span></div>'+
+        '<div class="row"><span class="name t-zh">'+s.zh+'</span><span class="name t-en" style="'+(isEn?'':'display:none')+'">'+s.en+'</span><span class="tag t-zh">'+s.tag+'</span><span class="tag t-en" style="'+(isEn?'':'display:none')+'">'+s.enTag+'</span></div>'+
         '<p class="t-zh">'+s.descZh+'</p>'+
+        '<p class="t-en" style="'+(isEn?'':'display:none')+'">'+s.descEn+'</p>'+
         (s.contact ? '<div class="contact">'+s.contact+'</div>' : '')+'</div>';
     });
     inHtml += '</div>';
 
-    var outHtml = '<div class="label"><span class="t-zh">学出</span><span class="t-en" style="display:none">Out</span></div>'+
-      '<h3 class="t-zh">学习出口</h3><h3 class="t-en" style="display:none">Learning Outlets</h3>'+
+    var outHtml = '<div class="label"><span class="t-zh">学出</span><span class="t-en" style="'+(isEn?'':'display:none')+'">Out</span></div>'+
+      '<h3 class="t-zh">学习出口</h3><h3 class="t-en" style="'+(isEn?'':'display:none')+'">Learning Outlets</h3>'+
       '<p class="t-zh">连接线上课程与线下研学，让文化学习不止于一次行走。</p>'+
-      '<p class="t-en" style="display:none">Linking online courses with on-site study tours, so learning extends beyond a single walk.</p>';
+      '<p class="t-en" style="'+(isEn?'':'display:none')+'">Linking online courses with on-site study tours, so learning extends beyond a single walk.</p>';
     studyOut.forEach(function(s){
       outHtml += '<div class="study-card">'+
-        '<h4 class="t-zh">'+s.zh+'</h4><h4 class="t-en" style="display:none">'+s.en+'</h4>'+
-        '<p class="t-zh">'+s.descZh+'</p><p class="t-en" style="display:none">'+s.descEn+'</p>'+
-        '<div class="soon"><span class="t-zh">'+s.soon+'</span><span class="t-en" style="display:none">'+s.soon+'</span></div></div>';
+        '<h4 class="t-zh">'+s.zh+'</h4><h4 class="t-en" style="'+(isEn?'':'display:none')+'">'+s.en+'</h4>'+
+        '<p class="t-zh">'+s.descZh+'</p><p class="t-en" style="'+(isEn?'':'display:none')+'">'+s.descEn+'</p>'+
+        '<div class="soon"><span class="t-zh">'+s.soon+'</span><span class="t-en" style="'+(isEn?'':'display:none')+'">'+s.soon+'</span></div></div>';
     });
 
     sp.innerHTML = '<div class="study-part">'+inHtml+'</div><div class="study-part">'+outHtml+'</div>';
@@ -1391,13 +1428,14 @@
   function openChatWith(idx){
     currentChatPerson = people[idx] || people[1];
     var p = currentChatPerson;
+    var isEn = LANG==='en';
     var pc = peopleChat[p.zh] || {};
     document.getElementById('chatAvatar').src = p.photo || 'assets/image6.png';
-    document.getElementById('chatName').textContent = p.zh;
-    document.getElementById('chatRole').textContent = p.roleZh;
+    document.getElementById('chatName').textContent = isEn ? p.en : p.zh;
+    document.getElementById('chatRole').textContent = isEn ? p.enRole : p.roleZh;
     // accent stripe on chat panel
     document.getElementById('chatPanel').style.borderTop = '3px solid '+p.accent;
-    document.getElementById('chatInput').placeholder = '问 '+p.zh+' 关于 '+p.county+' 的一切…';
+    document.getElementById('chatInput').placeholder = isEn ? 'Ask '+p.en+' anything about '+p.enCounty+'…' : '问 '+p.zh+' 关于 '+p.county+' 的一切…';
     var body = document.getElementById('chatBody');
     body.innerHTML = '<div class="chat-msg bot">'+pc.greeting+'</div>';
     // render quick chips
@@ -1462,6 +1500,23 @@
     });
     document.querySelectorAll('.t-zh').forEach(function(el){ el.style.display = (l==='en')?'none':''; });
     document.querySelectorAll('.t-en').forEach(function(el){ el.style.display = (l==='en')?'':'none'; });
+    // dynamic placeholders
+    document.querySelectorAll('[data-zh-placeholder]').forEach(function(el){
+      el.placeholder = (l==='en') ? el.getAttribute('data-en-placeholder') : el.getAttribute('data-zh-placeholder');
+    });
+    // re-render JS-driven content
+    renderPeople(); renderCounties(); renderGoods(); renderSvcGrid(currentSvcTab); renderStudy();
+    // page title
+    document.title = (l==='en') ? 'Huaxiang Future — AI Cultural Platform for Sichuan Counties' : '華享未来 — 四川县域 AI 数字文化平台';
+    // user state re-render (keeps login state but updates labels)
+    renderUserState();
+    // update chat input placeholder
+    if(chatOpen && currentChatPerson){
+      var cp = currentChatPerson;
+      document.getElementById('chatInput').placeholder = (l==='en') ? 'Ask '+cp.en+' anything about '+cp.enCounty+'…' : '问 '+cp.zh+' 关于 '+cp.county+' 的一切…';
+      document.getElementById('chatName').textContent = (l==='en') ? cp.en : cp.zh;
+      document.getElementById('chatRole').textContent = (l==='en') ? cp.enRole : cp.roleZh;
+    }
   }
 
   // ---- header scroll ----
@@ -1484,12 +1539,12 @@
   function openStore(){ sOv.classList.add('show'); }
   function closeStore(){ sOv.classList.remove('show'); }
   function goStore(platform){
-    alert(platform==='ios' ? '演示版：App Store 链接待上线' : '演示版：应用市场链接待上线');
+    showToast(LANG==='en'?(platform==='ios'?'App Store link coming soon':'Google Play link coming soon'):(platform==='ios'?'App Store 链接待上线':'应用市场链接待上线'));
   }
   function submitConsult(){
     var name=document.getElementById('cName').value.trim();
     var mail=document.getElementById('cMail').value.trim();
-    if(!name||!mail){ alert('请填写称呼与邮箱'); return; }
+    if(!name||!mail){ showToast('请填写称呼与邮箱'); return; }
     try{ localStorage.setItem('hx_consult', JSON.stringify({name:name,mail:mail,t:Date.now()})); }catch(e){}
     document.getElementById('consultForm').style.display='none';
     document.getElementById('consultOk').style.display='block';
@@ -1511,10 +1566,11 @@
   var isLoggedIn = false;
   function renderUserState(){
     var el = document.getElementById('userState');
+    var isEn = LANG==='en';
     if(isLoggedIn){
-      el.innerHTML = '<span class="user-badge" onclick="openProfile()"><span class="ub-av">张</span>我的<span class="ub-cart" style="display:'+(cartCount>0?'inline':'none')+'">'+cartCount+'</span></span>';
+      el.innerHTML = '<span class="user-badge" onclick="openProfile()"><span class="ub-av">'+(isEn?'M':'张')+'</span>'+(isEn?'My Account':'我的')+'<span class="ub-cart" style="display:'+(cartCount>0?'inline':'none')+'">'+cartCount+'</span></span>';
     } else {
-      el.innerHTML = '<a href="#" class="nav-cta" onclick="openLogin();return false;" data-zh="登录 / 合作" data-en="Sign in / Partner">登录 / 合作</a>';
+      el.innerHTML = '<a href="#" class="nav-cta" onclick="openLogin();return false;" data-zh="登录 / 合作" data-en="Sign in / Partner">'+(isEn?'Sign in / Partner':'登录 / 合作')+'</a>';
     }
   }
   renderUserState();
@@ -1525,7 +1581,7 @@
     isLoggedIn = true;
     closeLogin();
     renderUserState();
-    showToast(method==='wechat'?'微信登录成功（Demo）':'手机号登录成功（Demo）');
+    showToast(method==='wechat'?(LANG==='en'?'WeChat sign-in successful (Demo)':'微信登录成功（Demo）'):(LANG==='en'?'Phone sign-in successful (Demo)':'手机号登录成功（Demo）'));
   }
 
   // ---- Personal Center ----
@@ -1592,25 +1648,27 @@
   document.getElementById('searchOverlay').addEventListener('click',function(e){ if(e.target===this) closeSearch(); });
   function doSearch(q){
     var res = document.getElementById('searchResults');
+    var isEn = LANG==='en';
     if(!q||q.length<1){ res.innerHTML=''; return; }
     var results = [];
+    var catMap = {'文旅服务':'Tourism','好物':'Goods','研学':'Study'};
     // search services
     ['hotel','food','ticket','guide'].forEach(function(tab){
       (svcData[tab]||[]).forEach(function(s){
-        if(s.name.indexOf(q)>-1||s.desc.indexOf(q)>-1||s.loc.indexOf(q)>-1) results.push({cat:'文旅服务',name:s.name,loc:s.loc,icon:'🏨'});
+        if(s.name.indexOf(q)>-1||s.desc.indexOf(q)>-1||s.loc.indexOf(q)>-1) results.push({cat:isEn?'Tourism':'文旅服务',name:s.name,loc:s.loc,icon:'🏨'});
       });
     });
     // search goods
     goods.forEach(function(g){
-      if(g.zh.indexOf(q)>-1||g.fromZh.indexOf(q)>-1) results.push({cat:'好物',name:g.zh,loc:g.fromZh,icon:'🛒'});
+      if(g.zh.indexOf(q)>-1||g.fromZh.indexOf(q)>-1||g.en.toLowerCase().indexOf(q.toLowerCase())>-1) results.push({cat:isEn?'Goods':'好物',name:isEn?g.en:g.zh,loc:isEn?g.fromEn:g.fromZh,icon:'🛒'});
     });
     // search study
     studyIn.forEach(function(s){
-      if(s.zh.indexOf(q)>-1||s.descZh.indexOf(q)>-1) results.push({cat:'研学',name:s.zh,loc:'',icon:'📚'});
+      if(s.zh.indexOf(q)>-1||s.descZh.indexOf(q)>-1) results.push({cat:isEn?'Study':'研学',name:isEn?s.en:s.zh,loc:'',icon:'📚'});
     });
     var html = '';
     if(results.length===0){
-      html = '<div class="s-empty">未找到「'+q+'」相关结果</div>';
+      html = '<div class="s-empty">'+(isEn?'No results for "'+q+'"':'未找到「'+q+'」相关结果')+'</div>';
     } else {
       var lastCat = '';
       results.slice(0,12).forEach(function(r){
@@ -1627,15 +1685,17 @@
   }
   function closeShare(){ document.getElementById('shareOverlay').classList.remove('show'); }
   function shareAction(ch){
-    var names = {wechat:'微信好友',moments:'朋友圈',link:'剪贴板'};
-    showToast('已分享到'+names[ch]+'（Demo）');
+    var namesZh = {wechat:'微信好友',moments:'朋友圈',link:'剪贴板'};
+    var namesEn = {wechat:'WeChat',moments:'Moments',link:'clipboard'};
+    var name = LANG==='en' ? namesEn[ch] : namesZh[ch];
+    showToast((LANG==='en'?'Shared to ':'已分享到')+name+(LANG==='en'?' (Demo)':'（Demo）'));
     closeShare();
   }
   function copyShareLink(){
     var el = document.getElementById('shareUrl');
     el.select();
     try{ document.execCommand('copy'); }catch(e){}
-    showToast('链接已复制');
+    showToast(LANG==='en'?'Link copied':'链接已复制');
     closeShare();
   }
 
@@ -1654,7 +1714,7 @@
     var qty = parseInt(document.getElementById('bookingQty').value)||1;
     var total = currentBookingPrice * qty;
     closeBooking();
-    showToast('预订成功！合计 ¥'+total+'（Demo 模拟下单）');
+    showToast(LANG==='en'?'Booking confirmed! Total ¥'+total+' (Demo)':'预订成功！合计 ¥'+total+'（Demo 模拟下单）');
   }
 
   // ---- Escape key for new overlays ----
