@@ -376,23 +376,115 @@
   }
   .chat-fab:hover{transform:scale(1.06)}
 
-  /* ---------- Data Dashboard ---------- */
-  .dash-overlay{position:fixed;inset:0;background:rgba(26,26,26,.5);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:110;padding:20px}
-  .dash-overlay.show{display:flex}
-  .dash-panel{background:var(--paper);width:100%;max-width:680px;border-radius:4px;padding:36px;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
-  .dash-panel .close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;color:var(--mute-2);cursor:pointer}
-  .dash-panel h3{font-size:22px;margin-bottom:6px}
-  .dash-panel .sub{color:var(--mute);font-size:13px;margin-bottom:24px}
-  .dash-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
-  .dash-stat{border:1px solid var(--line);border-radius:3px;padding:20px;text-align:center}
-  .dash-stat .d-num{font-family:var(--serif);font-size:32px;font-weight:600;color:var(--accent)}
-  .dash-stat .d-lab{font-size:12px;color:var(--mute);margin-top:6px}
-  .dash-bars{display:flex;flex-direction:column;gap:10px}
-  .dash-bar{display:flex;align-items:center;gap:12px}
-  .dash-bar .bar-label{width:60px;font-size:12px;color:var(--mute);text-align:right;flex-shrink:0}
-  .dash-bar .bar-track{flex:1;height:20px;background:var(--paper-2);border-radius:2px;overflow:hidden;position:relative}
-  .dash-bar .bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .8s ease}
-  .dash-bar .bar-val{font-family:var(--latin);font-size:11px;color:var(--mute-2);width:40px;flex-shrink:0}
+  /* ---------- Mock Login ---------- */
+  .login-overlay{position:fixed;inset:0;background:rgba(26,26,26,.5);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:110;padding:20px}
+  .login-overlay.show{display:flex}
+  .login-panel{background:var(--paper);width:100%;max-width:400px;border-radius:4px;padding:40px 36px;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
+  .login-panel .close{position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;color:var(--mute-2);cursor:pointer}
+  .login-panel h3{font-size:24px;margin-bottom:6px}
+  .login-panel .sub{color:var(--mute);font-size:13px;margin-bottom:24px}
+  .login-btns{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+  .login-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border:1px solid var(--line-strong);border-radius:3px;font-size:15px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--paper);font-family:var(--sans)}
+  .login-btn:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+  .login-btn.wechat{background:#07C160;color:#fff;border-color:#07C160}
+  .login-btn.wechat:hover{opacity:.85;background:#06ad56}
+  .login-hint{text-align:center;font-size:12px;color:var(--mute-2);margin-top:16px}
+
+  /* ---------- Personal Center ---------- */
+  .profile-overlay{position:fixed;inset:0;background:rgba(26,26,26,.5);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:110;padding:20px}
+  .profile-overlay.show{display:flex}
+  .profile-panel{background:var(--paper);width:100%;max-width:560px;border-radius:4px;padding:0;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative;max-height:80vh;overflow:hidden;display:flex;flex-direction:column}
+  .profile-panel .close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;color:var(--mute-2);cursor:pointer;z-index:2}
+  .profile-head{padding:36px 36px 20px;display:flex;align-items:center;gap:18px;border-bottom:1px solid var(--line)}
+  .profile-head .avatar{width:56px;height:56px;border-radius:50%;background:var(--accent);color:var(--paper);display:flex;align-items:center;justify-content:center;font-size:24px;font-family:var(--serif);font-weight:700;flex-shrink:0}
+  .profile-head h3{font-size:20px;margin-bottom:2px}
+  .profile-head .p-county{font-size:13px;color:var(--accent)}
+  .profile-tabs{display:flex;border-bottom:1px solid var(--line);padding:0 36px}
+  .profile-tabs button{font-size:13.5px;color:var(--mute);padding:14px 18px;background:none;border:none;border-bottom:2px solid transparent;font-weight:500;cursor:pointer}
+  .profile-tabs button:hover{color:var(--ink)}
+  .profile-tabs button.active{color:var(--accent);border-bottom-color:var(--accent)}
+  .profile-body{flex:1;overflow-y:auto;padding:24px 36px 36px}
+  .profile-item{padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px}
+  .profile-item:last-child{border-bottom:none}
+  .profile-item .pi-l{min-width:0;flex:1}
+  .profile-item .pi-name{font-size:15px;font-weight:500}
+  .profile-item .pi-sub{font-size:12px;color:var(--mute);margin-top:3px}
+  .profile-item .pi-r{font-size:13px;color:var(--accent);font-weight:500;white-space:nowrap}
+  .profile-item .pi-status{font-family:var(--latin);font-size:10.5px;padding:3px 8px;border-radius:2px;letter-spacing:.04em;font-weight:500}
+  .profile-item .pi-status.done{background:var(--paper-2);color:var(--mute)}
+  .profile-item .pi-status.pending{background:var(--accent);color:var(--paper)}
+  .coupon-card{border:1px dashed var(--line-strong);border-radius:3px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .coupon-card .cc-val{font-family:var(--serif);font-size:22px;color:var(--accent);font-weight:600}
+  .coupon-card .cc-info{font-size:13px;color:var(--mute)}
+  .coupon-card .cc-cond{font-size:12px;color:var(--mute-2);margin-top:3px}
+  .coupon-card .cc-status{font-size:11px;color:var(--accent);font-weight:500}
+
+  /* ---------- Site Search ---------- */
+  .search-overlay{position:fixed;inset:0;background:rgba(26,26,26,.42);backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;z-index:100;padding:80px 20px 20px}
+  .search-overlay.show{display:flex}
+  .search-box{background:var(--paper);width:100%;max-width:600px;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.2);overflow:hidden}
+  .search-box .s-input{display:flex;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);gap:12px}
+  .search-box .s-input svg{width:20px;height:20px;color:var(--mute-2);flex-shrink:0}
+  .search-box .s-input input{flex:1;border:none;font-size:16px;outline:none;font-family:var(--sans);background:transparent}
+  .search-box .s-results{max-height:360px;overflow-y:auto;padding:8px 0}
+  .search-box .s-cat{font-size:11px;color:var(--mute-2);padding:10px 20px 6px;letter-spacing:.1em;text-transform:uppercase;font-family:var(--latin)}
+  .search-box .s-item{padding:10px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background .15s}
+  .search-box .s-item:hover{background:var(--paper-2)}
+  .search-box .s-item .s-ico{width:32px;height:32px;border-radius:4px;background:var(--paper-2);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--accent);flex-shrink:0}
+  .search-box .s-item .s-t{font-size:14px;color:var(--ink)}
+  .search-box .s-item .s-loc{font-size:11px;color:var(--mute-2)}
+  .search-box .s-empty{padding:40px 20px;text-align:center;color:var(--mute-2);font-size:14px}
+
+  /* ---------- Share ---------- */
+  .share-overlay{position:fixed;inset:0;background:rgba(26,26,26,.42);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:110;padding:20px}
+  .share-overlay.show{display:flex}
+  .share-panel{background:var(--paper);width:100%;max-width:360px;border-radius:4px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative;text-align:center}
+  .share-panel .close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;color:var(--mute-2);cursor:pointer}
+  .share-panel h3{font-size:18px;margin-bottom:18px}
+  .share-channels{display:flex;justify-content:center;gap:20px;margin-bottom:20px}
+  .share-ch{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;font-size:12px;color:var(--mute)}
+  .share-ch .sc-ico{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff}
+  .share-ch:hover .sc-ico{opacity:.85}
+  .share-link-row{display:flex;gap:8px;margin-top:16px}
+  .share-link-row input{flex:1;border:1px solid var(--line-strong);padding:10px 12px;border-radius:2px;font-size:13px;font-family:var(--latin);color:var(--mute);background:var(--paper-2)}
+  .share-link-row button{border:1px solid var(--ink);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:2px;font-size:13px;cursor:pointer;white-space:nowrap}
+
+  /* ---------- Booking Detail ---------- */
+  .booking-overlay{position:fixed;inset:0;background:rgba(26,26,26,.42);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:110;padding:20px}
+  .booking-overlay.show{display:flex}
+  .booking-panel{background:var(--paper);width:100%;max-width:440px;border-radius:4px;padding:36px;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
+  .booking-panel .close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;color:var(--mute-2);cursor:pointer}
+  .booking-panel h3{font-size:20px;margin-bottom:6px}
+  .booking-panel .b-sub{color:var(--mute);font-size:13px;margin-bottom:20px}
+  .booking-panel label{display:block;font-size:13px;color:var(--mute);margin:14px 0 7px}
+  .booking-panel input,.booking-panel select{width:100%;border:1px solid var(--line-strong);background:var(--paper);padding:11px 13px;font-family:var(--sans);font-size:14px;color:var(--ink);border-radius:2px;outline:none}
+  .booking-panel .b-total{font-family:var(--serif);font-size:22px;color:var(--accent);margin-top:18px;font-weight:600}
+  .booking-panel .b-submit{width:100%;margin-top:22px;padding:13px;border:none;background:var(--ink);color:var(--paper);font-size:15px;font-weight:500;border-radius:2px;cursor:pointer}
+
+  /* ---------- Star Rating ---------- */
+  .star-row{display:flex;align-items:center;gap:4px;margin-top:6px}
+  .star-row .stars{color:var(--accent);font-size:13px;letter-spacing:1px}
+  .star-row .star-count{font-size:12px;color:var(--mute-2);margin-left:4px}
+
+  /* ---------- User badge in header ---------- */
+  .user-badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--accent);padding:9px 14px;border-radius:2px;cursor:pointer;transition:background .2s;white-space:nowrap}
+  .user-badge:hover{background:var(--paper-2)}
+  .user-badge .ub-av{width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--paper);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+  .user-badge .ub-cart{background:var(--accent);color:var(--paper);font-size:10px;padding:1px 6px;border-radius:8px;font-weight:600;margin-left:2px}
+
+  /* ---------- Search icon in nav ---------- */
+  .nav-search{width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%;transition:background .2s;color:var(--ink-soft)}
+  .nav-search:hover{background:var(--paper-2);color:var(--ink)}
+  .nav-search svg{width:18px;height:18px}
+
+  /* ---------- Share icon on cards ---------- */
+  .share-ico{position:absolute;top:10px;left:10px;width:28px;height:28px;border-radius:50%;background:rgba(250,250,248,.85);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--mute);opacity:0;transition:opacity .2s}
+  .svc-card:hover .share-ico,.good:hover .share-ico{opacity:1}
+  .share-ico:hover{color:var(--accent);background:var(--paper)}
+
+  /* ---------- Demo Experience button ---------- */
+  .btn-demo{font-family:var(--sans);font-size:15px;font-weight:500;cursor:pointer;padding:14px 30px;border-radius:2px;border:1px solid var(--accent);background:var(--accent);color:var(--paper);transition:opacity .2s}
+  .btn-demo:hover{opacity:.88}
 
   /* ---------- Reveal ---------- */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
@@ -472,8 +564,11 @@
       <a href="#partner" data-zh="合作" data-en="Partners">合作</a>
       <a href="#about" data-zh="关于" data-en="About">关于</a>
     </nav>
+    <div class="nav-search" onclick="openSearch()" title="搜索">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 5 1.49-1.49-5-5zM9.5 14a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+    </div>
     <a href="admin.html" target="_blank" rel="noopener" class="nav-admin" data-zh="管理后台" data-en="Admin">管理后台</a>
-    <a href="#" class="nav-cta" onclick="openConsult();return false;" data-zh="登录 / 合作" data-en="Sign in / Partner">登录 / 合作</a>
+    <span id="userState"></span>
     <button class="menu-btn" id="menuBtn" aria-label="菜单"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -662,7 +757,10 @@
           <div class="qr-cap">Scan to download</div>
         </div>
       </div>
-      <a href="#" class="btn" onclick="openStore();return false;" data-zh="下载 App" data-en="Download App">下载 App</a>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="#" class="btn-demo" onclick="openStore();return false;" data-zh="下载 App" data-en="Download App">下载 App</a>
+        <a href="#" class="btn btn-outline" onclick="showToast('你正在体验 Demo 版本！');return false;" data-zh="在线体验" data-en="Try Online">在线体验</a>
+      </div>
     </div>
   </section>
 
@@ -788,25 +886,80 @@
   </div>
 </div>
 
-<!-- Data Dashboard Overlay (APP清单: 数据后台) -->
-<div class="dash-overlay" id="dashOverlay">
-  <div class="dash-panel">
-    <button class="close" onclick="closeDash()">×</button>
-    <h3 data-zh="数据后台" data-en="Data Dashboard">数据后台 <span class="demo-badge">DEMO</span></h3>
-    <div class="sub" data-zh="演示数据，非真实统计" data-en="Demo data, not real statistics">演示数据，非真实统计</div>
-    <div class="dash-stats">
-      <div class="dash-stat"><div class="d-num">12,847</div><div class="d-lab" data-zh="注册用户" data-en="Registered users">注册用户</div></div>
-      <div class="dash-stat"><div class="d-num">6</div><div class="d-lab" data-zh="覆盖县域" data-en="Covered counties">覆盖县域</div></div>
-      <div class="dash-stat"><div class="d-num">9</div><div class="d-lab" data-zh="数字人" data-en="Digital humans">数字人</div></div>
+<!-- Mock Login Overlay -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-panel">
+    <button class="close" onclick="closeLogin()">×</button>
+    <h3 data-zh="登录華享未来" data-en="Sign in">登录華享未来</h3>
+    <div class="sub" data-zh="选择登录方式体验完整 Demo" data-en="Choose a method to try the full demo">选择登录方式体验完整 Demo</div>
+    <div class="login-btns">
+      <button class="login-btn wechat" onclick="doLogin('wechat')">微信登录</button>
+      <button class="login-btn" onclick="doLogin('phone')">📱 手机号登录</button>
     </div>
-    <div class="dash-bars">
-      <div class="dash-bar"><div class="bar-label">成都</div><div class="bar-track"><div class="bar-fill" style="width:68%"></div></div><div class="bar-val">4,231</div></div>
-      <div class="dash-bar"><div class="bar-label">宜宾</div><div class="bar-track"><div class="bar-fill" style="width:42%"></div></div><div class="bar-val">2,680</div></div>
-      <div class="dash-bar"><div class="bar-label">乐山</div><div class="bar-track"><div class="bar-fill" style="width:35%"></div></div><div class="bar-val">2,105</div></div>
-      <div class="dash-bar"><div class="bar-label">遂宁</div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><div class="bar-val">1,580</div></div>
-      <div class="dash-bar"><div class="bar-label">达州</div><div class="bar-track"><div class="bar-fill" style="width:18%"></div></div><div class="bar-val">1,251</div></div>
-      <div class="dash-bar"><div class="bar-label">其他</div><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><div class="bar-val">1,000</div></div>
+    <div class="login-hint" data-zh="Demo 模式：点击即可体验，无需真实账号" data-en="Demo mode: click to try, no real account needed">Demo 模式：点击即可体验，无需真实账号</div>
+  </div>
+</div>
+
+<!-- Personal Center Overlay -->
+<div class="profile-overlay" id="profileOverlay">
+  <div class="profile-panel">
+    <button class="close" onclick="closeProfile()">×</button>
+    <div class="profile-head">
+      <div class="avatar">张</div>
+      <div><h3>张明远</h3><div class="p-county">默认县域：屏山</div></div>
     </div>
+    <div class="profile-tabs" id="profileTabs">
+      <button class="active" data-ptab="chats">我的对话</button>
+      <button data-ptab="orders">我的订单</button>
+      <button data-ptab="favorites">我的收藏</button>
+      <button data-ptab="coupons">我的优惠券</button>
+    </div>
+    <div class="profile-body" id="profileBody"></div>
+  </div>
+</div>
+
+<!-- Site Search Overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <div class="s-input">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 5 1.49-1.49-5-5zM9.5 14a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+      <input type="text" id="searchInput" placeholder="搜索景点、好物、研学…" oninput="doSearch(this.value)" />
+    </div>
+    <div class="s-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- Share Overlay -->
+<div class="share-overlay" id="shareOverlay">
+  <div class="share-panel">
+    <button class="close" onclick="closeShare()">×</button>
+    <h3>分享</h3>
+    <div class="share-channels">
+      <div class="share-ch" onclick="shareAction('wechat')"><div class="sc-ico" style="background:#07C160">微</div>微信</div>
+      <div class="share-ch" onclick="shareAction('moments')"><div class="sc-ico" style="background:#07C160">圈</div>朋友圈</div>
+      <div class="share-ch" onclick="shareAction('link')"><div class="sc-ico" style="background:var(--ink)">⎘</div>复制链接</div>
+    </div>
+    <div class="share-link-row">
+      <input value="https://mvp.hxfz-group.com" readonly id="shareUrl" />
+      <button onclick="copyShareLink()">复制</button>
+    </div>
+  </div>
+</div>
+
+<!-- Booking Detail Overlay -->
+<div class="booking-overlay" id="bookingOverlay">
+  <div class="booking-panel">
+    <button class="close" onclick="closeBooking()">×</button>
+    <h3 id="bookingTitle">预订详情</h3>
+    <div class="b-sub" id="bookingSub">选择日期与数量，提交后 Demo 模拟下单</div>
+    <label>入住/使用日期</label>
+    <input type="date" id="bookingDate" />
+    <label>数量</label>
+    <select id="bookingQty"><option>1</option><option>2</option><option>3</option><option>4</option></select>
+    <label>联系电话</label>
+    <input type="tel" id="bookingPhone" placeholder="138****8602" />
+    <div class="b-total" id="bookingTotal">¥0</div>
+    <button class="b-submit" onclick="submitBooking()">确认预订</button>
   </div>
 </div>
 
@@ -985,12 +1138,18 @@
   };
 
   var goods = [
-    {zh:'铜河沙琪玛',en:'Tonghe Crisp',src:'assets/image15.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥38',origPrice:'¥58',coupon:'满50减10'},
-    {zh:'佛手陈皮普洱茶',en:'Buddha-hand Pu-erh',src:'assets/image16.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥128',origPrice:'¥168',coupon:'新品9折'},
-    {zh:'干巴牛肉',en:'Dried Beef',src:'assets/image17.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥68',origPrice:'¥88',coupon:''},
-    {zh:'铜河抽纸',en:'Tonghe Tissue',src:'assets/image18.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥19.9',origPrice:'',coupon:''},
-    {zh:'铜河青梅酒',en:'Tonghe Plum Wine',src:'assets/image19.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥88',origPrice:'¥118',coupon:'满100减20'},
-    {zh:'佛手玫瑰红茶',en:'Rose Black Tea',src:'assets/image20.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥98',origPrice:'¥128',coupon:''}
+    {zh:'铜河沙琪玛',en:'Tonghe Crisp',src:'assets/image15.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥38',origPrice:'¥58',coupon:'满50减10',person:'郭小沫'},
+    {zh:'佛手陈皮普洱茶',en:'Buddha-hand Pu-erh',src:'assets/image16.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥128',origPrice:'¥168',coupon:'新品9折',person:'郭小沫'},
+    {zh:'干巴牛肉',en:'Dried Beef',src:'assets/image17.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥68',origPrice:'¥88',coupon:'',person:'郭小沫'},
+    {zh:'屏山腊肉礼盒',en:'Pingshan Cured Meat',src:'assets/image18.png',fromZh:'屏山',fromEn:'Pingshan',price:'¥138',origPrice:'¥168',coupon:'满100减20',person:'江呦呦'},
+    {zh:'屏山竹编工艺品',en:'Pingshan Bamboo Weave',src:'assets/image19.png',fromZh:'屏山',fromEn:'Pingshan',price:'¥89',origPrice:'',coupon:'',person:'江呦呦'},
+    {zh:'沱牌曲酒·子昂典藏',en:'Tuopai Heritage',src:'assets/image20.png',fromZh:'射洪',fromEn:'Shehong',price:'¥298',origPrice:'¥388',coupon:'满300减50',person:'陈子昂'},
+    {zh:'金川雪梨膏',en:'Jinchuan Pear Paste',src:'assets/image15.png',fromZh:'金川',fromEn:'Jinchuan',price:'¥68',origPrice:'¥88',coupon:'买2送1',person:'雪梨宝宝'},
+    {zh:'达州灯影牛肉礼盒',en:'Dazhou Shadow Beef',src:'assets/image16.png',fromZh:'达州',fromEn:'Dazhou',price:'¥168',origPrice:'¥198',coupon:'',person:'巴小虎'},
+    {zh:'峨眉雪芽茶',en:'Emei Snow Bud Tea',src:'assets/image17.png',fromZh:'峨眉',fromEn:'Emei',price:'¥98',origPrice:'¥128',coupon:'满150减20',person:'杜仙仙'},
+    {zh:'遂宁观音素饼',en:'Suining Veg Cake',src:'assets/image18.png',fromZh:'遂宁',fromEn:'Suining',price:'¥36',origPrice:'¥48',coupon:'',person:'遂小荷'},
+    {zh:'富顺豆花蘸水礼盒',en:'Fushun Tofu Sauce',src:'assets/image19.png',fromZh:'富顺',fromEn:'Fushun',price:'¥45',origPrice:'',coupon:'新品8折',person:'文启'},
+    {zh:'铜河青梅酒',en:'Tonghe Plum Wine',src:'assets/image20.png',fromZh:'沙湾',fromEn:'Shawan',price:'¥88',origPrice:'¥118',coupon:'满100减20',person:'郭小沫'}
   ];
 
   var studyIn = [
@@ -1110,14 +1269,17 @@
       var ph = s.img ? '<img src="'+s.img+'" alt="'+s.name+'" loading="lazy">' : '';
       var badge = s.badge ? '<div class="svc-tag">'+s.badge+'</div>' : '';
       var priceHtml = s.price ? '<div class="svc-price">'+s.price+' <small>'+s.priceNote+'</small></div>' : '';
+      var rating = tab!=='guide' ? '<div class="star-row"><span class="stars">★★★★'+(Math.random()>.5?'★':'☆')+'</span><span class="star-count">'+(4.5+Math.random()*.4).toFixed(1)+'</span></div>' : '';
       var btnText = tab==='guide' ? '查看攻略' : (tab==='ticket' ? '立即预订' : '查看详情');
+      var merchant = (tab==='hotel'||tab==='food') ? '<div style="font-size:10.5px;color:var(--mute-2);margin-top:4px">✓ 商家已入驻</div>' : '';
       var d = document.createElement('div');
       d.className='svc-card';
-      d.innerHTML = '<div class="svc-ph">'+ph+badge+'</div>'+
+      d.innerHTML = '<div class="svc-ph" style="position:relative">'+ph+badge+
+        '<div class="share-ico" onclick="openShare(\''+s.name+'\')">⤴</div></div>'+
         '<div class="svc-info"><h3 class="t-zh">'+s.name+'</h3><div class="svc-loc">'+s.loc+'</div>'+
-        '<p class="t-zh">'+s.desc+'</p>'+priceHtml+
-        '<div class="svc-btns"><button class="btn btn-sm" onclick="svcDemoAction(\''+s.name+'\')">'+btnText+'</button>'+
-        (tab!=='guide'?'<button class="btn btn-sm btn-outline" onclick="svcDemoAction(\'收藏\')">收藏</button>':'')+
+        '<p class="t-zh">'+s.desc+'</p>'+rating+merchant+priceHtml+
+        '<div class="svc-btns"><button class="btn btn-sm" onclick="svcAction(\''+s.name+'\',\''+s.price+'\',\''+tab+'\')">'+btnText+'</button>'+
+        (tab!=='guide'?'<button class="btn btn-sm btn-outline" onclick="svcFav(\''+s.name+'\')">收藏</button>':'')+
         '</div></div>';
       svcGrid.appendChild(d);
     });
@@ -1133,23 +1295,30 @@
     };
   });
 
-  function svcDemoAction(name){
-    alert('【Demo 演示】\n「'+name+'」功能暂未上线，正式版将支持在线预订/收藏/购买。');
+  function svcAction(name, price, tab){
+    if(tab==='guide'){ showToast('攻略已打开，祝你旅途愉快！'); return; }
+    openBooking(name, price);
+  }
+  function svcFav(name){
+    showToast('已收藏：'+name);
   }
 
-  // ---- render goods (enhanced with price/buy/coupon) ----
+  // ---- render goods (enhanced with price/buy/coupon/share) ----
+  var cartCount = 0;
   var gg = document.getElementById('goodsGrid');
   function renderGoods(){
     gg.innerHTML='';
     goods.forEach(function(g){
       var couponBadge = g.coupon ? '<div class="coupon-badge">'+g.coupon+'</div>' : '';
       var origPrice = g.origPrice ? '<small>'+g.origPrice+'</small>' : '';
+      var personTag = g.person ? '<div style="font-size:11px;color:var(--accent);margin-top:4px">'+g.person+' 推荐</div>' : '';
       var d = document.createElement('div');
       d.className='good';
-      d.innerHTML = '<div class="ph"><img src="'+g.src+'" alt="'+g.zh+'" loading="lazy">'+couponBadge+'</div>'+
-        '<div class="info"><h3 class="t-zh">'+g.zh+'</h3><div class="from t-zh">'+g.fromZh+' · '+g.en+'</div>'+
+      d.innerHTML = '<div class="ph" style="position:relative"><img src="'+g.src+'" alt="'+g.zh+'" loading="lazy">'+couponBadge+
+        '<div class="share-ico" onclick="openShare(\''+g.zh+'\')">⤴</div></div>'+
+        '<div class="info"><h3 class="t-zh">'+g.zh+'</h3><div class="from t-zh">'+g.fromZh+' · '+g.en+'</div>'+personTag+
         '<div class="price">'+g.price+origPrice+'</div>'+
-        '<div class="good-btns"><button class="btn btn-sm" onclick="buyDemo(\''+g.zh+'\')">加入购物车</button>'+
+        '<div class="good-btns"><button class="btn btn-sm" onclick="addToCart(\''+g.zh+'\')">加入购物车</button>'+
         (g.coupon?'<button class="btn btn-sm btn-outline" onclick="couponDemo(\''+g.coupon+'\')">领券</button>':'')+
         '</div></div>';
       gg.appendChild(d);
@@ -1157,11 +1326,27 @@
   }
   renderGoods();
 
+  function addToCart(name){
+    cartCount++;
+    updateCartBadge();
+    showToast('已加入购物车：'+name);
+  }
+  function updateCartBadge(){
+    var badge = document.querySelector('.ub-cart');
+    if(badge) badge.textContent = cartCount;
+  }
   function buyDemo(name){
-    alert('【Demo 演示】\n「'+name+'」已加入购物车。\n正式版将支持微信支付与配送。');
+    addToCart(name);
   }
   function couponDemo(coupon){
-    alert('【Demo 演示】\n优惠券「'+coupon+'」已领取。\n正式版将自动抵扣结算。');
+    showToast('优惠券「'+coupon+'」已领取，结算时自动抵扣');
+  }
+  function showToast(msg){
+    var t = document.createElement('div');
+    t.style.cssText = 'position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:12px 24px;border-radius:4px;font-size:14px;z-index:200;box-shadow:0 8px 30px rgba(0,0,0,.2);transition:opacity .3s';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(function(){ t.style.opacity='0'; setTimeout(function(){ t.remove(); },300); },2000);
   }
 
   // ---- render study ----
@@ -1263,10 +1448,7 @@
     sendChat();
   }
 
-  // ---- Data Dashboard (APP清单: 数据后台) ----
-  var dashOv = document.getElementById('dashOverlay');
-  function openDash(){ dashOv.classList.add('show'); }
-  function closeDash(){ dashOv.classList.remove('show'); }
+  // (Dashboard Overlay removed — admin.html is the standalone dashboard)
 
   // ---- language switch ----
   function setLang(l){
@@ -1312,9 +1494,9 @@
     document.getElementById('consultForm').style.display='none';
     document.getElementById('consultOk').style.display='block';
   }
-  [cOv,sOv,dashOv].forEach(function(ov){ ov.addEventListener('click', function(e){ if(e.target===ov) ov.classList.remove('show'); }); });
+  [cOv,sOv].forEach(function(ov){ ov.addEventListener('click', function(e){ if(e.target===ov) ov.classList.remove('show'); }); });
   document.addEventListener('keydown', function(e){
-    if(e.key==='Escape'){ cOv.classList.remove('show'); sOv.classList.remove('show'); closeMenu(); closeChat(); closeDash(); }
+    if(e.key==='Escape'){ cOv.classList.remove('show'); sOv.classList.remove('show'); closeMenu(); closeChat(); }
   });
 
   // ---- reveal ----
@@ -1323,8 +1505,168 @@
   }, {threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 
-  // ---- admin shortcut: double-click topbar to open dashboard ----
-  document.querySelector('.topbar').addEventListener('dblclick', function(){ openDash(); });
+  // (admin shortcut removed — use nav link instead)
+
+  // ---- User State (login / profile) ----
+  var isLoggedIn = false;
+  function renderUserState(){
+    var el = document.getElementById('userState');
+    if(isLoggedIn){
+      el.innerHTML = '<span class="user-badge" onclick="openProfile()"><span class="ub-av">张</span>我的<span class="ub-cart" style="display:'+(cartCount>0?'inline':'none')+'">'+cartCount+'</span></span>';
+    } else {
+      el.innerHTML = '<a href="#" class="nav-cta" onclick="openLogin();return false;" data-zh="登录 / 合作" data-en="Sign in / Partner">登录 / 合作</a>';
+    }
+  }
+  renderUserState();
+
+  function openLogin(){ document.getElementById('loginOverlay').classList.add('show'); }
+  function closeLogin(){ document.getElementById('loginOverlay').classList.remove('show'); }
+  function doLogin(method){
+    isLoggedIn = true;
+    closeLogin();
+    renderUserState();
+    showToast(method==='wechat'?'微信登录成功（Demo）':'手机号登录成功（Demo）');
+  }
+
+  // ---- Personal Center ----
+  var profileData = {
+    chats: [
+      {name:'江呦呦·屏山文化使者',sub:'屏山有什么好玩的？',time:'14:23'},
+      {name:'郭小沫·沙湾文化使者',sub:'沙湾干巴牛肉哪里吃？',time:'14:18'},
+      {name:'杜仙仙·峨眉文化使者',sub:'峨眉山徒步路线',time:'昨天'}
+    ],
+    orders: [
+      {name:'屏山金沙江民宿',sub:'9月12-13日 · 1晚',price:'¥536',status:'已支付',cls:'pending'},
+      {name:'铜河沙琪玛 × 5',sub:'沙湾 · 微信支付',price:'¥190',status:'已发货',cls:'done'}
+    ],
+    favorites: [
+      {name:'兴文石海星空帐篷',sub:'兴文 · ¥458/晚起',r:'预订'},
+      {name:'屏山豆花饭',sub:'屏山 · ¥25/人',r:'详情'},
+      {name:'沙湾沫若文化研学',sub:'9月12日出发 · ¥1,280',r:'报名'},
+      {name:'干巴牛肉',sub:'沙湾 · ¥68',r:'购买'}
+    ],
+    coupons: [
+      {val:'¥20',cond:'满100减20',info:'全品类',status:'可使用'},
+      {val:'9折',cond:'新品专享',info:'好物',status:'可使用'}
+    ]
+  };
+  function openProfile(){
+    if(!isLoggedIn){ openLogin(); return; }
+    document.getElementById('profileOverlay').classList.add('show');
+    renderProfileTab('chats');
+  }
+  function closeProfile(){ document.getElementById('profileOverlay').classList.remove('show'); }
+  function renderProfileTab(tab){
+    document.querySelectorAll('#profileTabs button').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-ptab')===tab); });
+    var body = document.getElementById('profileBody');
+    var html = '';
+    if(tab==='chats'){
+      profileData.chats.forEach(function(c){
+        html += '<div class="profile-item"><div class="pi-l"><div class="pi-name">'+c.name+'</div><div class="pi-sub">'+c.sub+'</div></div><div class="pi-r">'+c.time+'</div></div>';
+      });
+    } else if(tab==='orders'){
+      profileData.orders.forEach(function(o){
+        html += '<div class="profile-item"><div class="pi-l"><div class="pi-name">'+o.name+'</div><div class="pi-sub">'+o.sub+'</div></div><div style="display:flex;align-items:center;gap:10px"><span class="pi-r">'+o.price+'</span><span class="pi-status '+o.cls+'">'+o.status+'</span></div></div>';
+      });
+    } else if(tab==='favorites'){
+      profileData.favorites.forEach(function(f){
+        html += '<div class="profile-item"><div class="pi-l"><div class="pi-name">'+f.name+'</div><div class="pi-sub">'+f.sub+'</div></div><span class="pi-r" style="cursor:pointer">'+f.r+' →</span></div>';
+      });
+    } else if(tab==='coupons'){
+      profileData.coupons.forEach(function(c){
+        html += '<div class="coupon-card"><div><div class="cc-val">'+c.val+'</div><div class="cc-info">'+c.info+'</div><div class="cc-cond">'+c.cond+'</div></div><div class="cc-status">'+c.status+'</div></div>';
+      });
+    }
+    body.innerHTML = html;
+  }
+  document.querySelectorAll('#profileTabs button').forEach(function(b){
+    b.onclick = function(){ renderProfileTab(b.getAttribute('data-ptab')); };
+  });
+
+  // ---- Site Search ----
+  function openSearch(){
+    document.getElementById('searchOverlay').classList.add('show');
+    setTimeout(function(){ document.getElementById('searchInput').focus(); },100);
+  }
+  function closeSearch(){ document.getElementById('searchOverlay').classList.remove('show'); }
+  document.getElementById('searchOverlay').addEventListener('click',function(e){ if(e.target===this) closeSearch(); });
+  function doSearch(q){
+    var res = document.getElementById('searchResults');
+    if(!q||q.length<1){ res.innerHTML=''; return; }
+    var results = [];
+    // search services
+    ['hotel','food','ticket','guide'].forEach(function(tab){
+      (svcData[tab]||[]).forEach(function(s){
+        if(s.name.indexOf(q)>-1||s.desc.indexOf(q)>-1||s.loc.indexOf(q)>-1) results.push({cat:'文旅服务',name:s.name,loc:s.loc,icon:'🏨'});
+      });
+    });
+    // search goods
+    goods.forEach(function(g){
+      if(g.zh.indexOf(q)>-1||g.fromZh.indexOf(q)>-1) results.push({cat:'好物',name:g.zh,loc:g.fromZh,icon:'🛒'});
+    });
+    // search study
+    studyIn.forEach(function(s){
+      if(s.zh.indexOf(q)>-1||s.descZh.indexOf(q)>-1) results.push({cat:'研学',name:s.zh,loc:'',icon:'📚'});
+    });
+    var html = '';
+    if(results.length===0){
+      html = '<div class="s-empty">未找到「'+q+'」相关结果</div>';
+    } else {
+      var lastCat = '';
+      results.slice(0,12).forEach(function(r){
+        if(r.cat!==lastCat){ html += '<div class="s-cat">'+r.cat+'</div>'; lastCat=r.cat; }
+        html += '<div class="s-item"><div class="s-ico">'+r.icon+'</div><div><div class="s-t">'+r.name+'</div>'+(r.loc?'<div class="s-loc">'+r.loc+'</div>':'')+'</div></div>';
+      });
+    }
+    res.innerHTML = html;
+  }
+
+  // ---- Share ----
+  function openShare(name){
+    document.getElementById('shareOverlay').classList.add('show');
+  }
+  function closeShare(){ document.getElementById('shareOverlay').classList.remove('show'); }
+  function shareAction(ch){
+    var names = {wechat:'微信好友',moments:'朋友圈',link:'剪贴板'};
+    showToast('已分享到'+names[ch]+'（Demo）');
+    closeShare();
+  }
+  function copyShareLink(){
+    var el = document.getElementById('shareUrl');
+    el.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    showToast('链接已复制');
+    closeShare();
+  }
+
+  // ---- Booking ----
+  var currentBookingPrice = 0;
+  function openBooking(name, priceStr){
+    document.getElementById('bookingTitle').textContent = name;
+    currentBookingPrice = parseInt(priceStr.replace(/[^\d]/g,'')) || 0;
+    document.getElementById('bookingTotal').textContent = '¥'+currentBookingPrice;
+    document.getElementById('bookingDate').value = '';
+    document.getElementById('bookingPhone').value = '';
+    document.getElementById('bookingOverlay').classList.add('show');
+  }
+  function closeBooking(){ document.getElementById('bookingOverlay').classList.remove('show'); }
+  function submitBooking(){
+    var qty = parseInt(document.getElementById('bookingQty').value)||1;
+    var total = currentBookingPrice * qty;
+    closeBooking();
+    showToast('预订成功！合计 ¥'+total+'（Demo 模拟下单）');
+  }
+
+  // ---- Escape key for new overlays ----
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape'){
+      closeLogin(); closeProfile(); closeSearch(); closeShare(); closeBooking();
+    }
+  });
+  [document.getElementById('loginOverlay'),document.getElementById('profileOverlay'),
+   document.getElementById('shareOverlay'),document.getElementById('bookingOverlay')].forEach(function(ov){
+    if(ov) ov.addEventListener('click',function(e){ if(e.target===this) this.classList.remove('show'); });
+  });
 </script>
 </body>
 </html>
