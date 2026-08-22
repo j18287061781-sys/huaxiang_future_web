@@ -127,6 +127,8 @@
   .nav-links a:hover::after{width:100%}
   .nav-cta{font-size:14px;color:var(--ink);border:1px solid var(--line-strong);padding:9px 18px;border-radius:2px;transition:border-color .2s,background .2s;white-space:nowrap}
   .nav-cta:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+  .nav-admin{font-size:13px;color:var(--mute-2);padding:9px 14px;border-radius:2px;transition:color .2s,background .2s;white-space:nowrap;margin-left:auto}
+  .nav-admin:hover{color:var(--accent);background:var(--paper-2)}
   .menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
   .menu-btn span{width:22px;height:1.5px;background:var(--ink);display:block;transition:.3s}
 
@@ -470,6 +472,7 @@
       <a href="#partner" data-zh="合作" data-en="Partners">合作</a>
       <a href="#about" data-zh="关于" data-en="About">关于</a>
     </nav>
+    <a href="admin.html" target="_blank" rel="noopener" class="nav-admin" data-zh="管理后台" data-en="Admin">管理后台</a>
     <a href="#" class="nav-cta" onclick="openConsult();return false;" data-zh="登录 / 合作" data-en="Sign in / Partner">登录 / 合作</a>
     <button class="menu-btn" id="menuBtn" aria-label="菜单"><span></span><span></span><span></span></button>
   </div>
@@ -491,6 +494,7 @@
   <a href="#partner" onclick="closeMenu()">合作</a>
   <a href="#about" onclick="closeMenu()">关于</a>
   <a href="#" class="m-cta" onclick="openConsult();closeMenu();return false;">登录 / 合作</a>
+  <a href="admin.html" target="_blank" rel="noopener" style="margin-top:14px;text-align:center;font-size:14px;color:var(--mute-2);padding:11px;border:1px solid var(--line);border-radius:2px">→ 进入管理后台</a>
 </div>
 
 <main id="top">
