@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>華享未来 · 管理后台</title>
+<meta name="description" content="華享未来县域 AI 文化平台管理后台" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-2:#f8f9fa;
+  --bg-3:#f1f3f4;
+  --hover:#e8eaed;
+  --ink:#202124;
+  --ink-2:#3c4043;
+  --mute:#5f6368;
+  --mute-2:#80868b;
+  --line:#dadce0;
+  --line-2:#e8eaed;
+  --accent:#1a73e8;
+  --accent-bg:#e8f0fe;
+  --accent-2:#174ea6;
+  --green:#1e8e3e;
+  --orange:#f9ab00;
+  --red:#d93025;
+  --sidebar-w:248px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Roboto','Noto Sans SC',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:14px;color:var(--ink);background:var(--bg);line-height:1.5;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font-family:inherit;font-size:14px;color:var(--ink);outline:none}
+
+/* ===== App bar ===== */
+.appbar{
+  height:56px;background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;padding:0 16px 0 8px;position:sticky;top:0;z-index:50;
+}
+.appbar .menu-btn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--mute)}
+.appbar .menu-btn:hover{background:var(--bg-3)}
+.appbar .menu-btn svg{width:20px;height:20px}
+.appbar .brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:500;color:var(--ink);padding:0 14px}
+.appbar .brand .logo{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Google Sans',sans-serif;font-weight:700;font-size:14px}
+.appbar .search{margin:0 auto;width:520px;max-width:50%;display:flex;align-items:center;background:var(--bg-3);border-radius:8px;padding:0 12px;height:40px;color:var(--mute)}
+.appbar .search svg{width:18px;height:18px;margin-right:10px}
+.appbar .search input{background:transparent;border:none;width:100%;height:100%}
+.appbar .right{display:flex;align-items:center;gap:6px;margin-left:auto}
+.appbar .icon-btn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--mute);position:relative}
+.appbar .icon-btn:hover{background:var(--bg-3)}
+.appbar .icon-btn svg{width:20px;height:20px}
+.appbar .icon-btn .dot{position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--red);border-radius:50%;border:2px solid #fff}
+.appbar .avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#1a73e8,#34a853);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:500;font-size:13px;margin:0 8px 0 4px;cursor:pointer}
+
+/* ===== Layout ===== */
+.layout{display:flex;min-height:calc(100vh - 56px)}
+.sidebar{
+  width:var(--sidebar-w);background:var(--bg-2);border-right:1px solid var(--line-2);
+  padding:8px 0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;
+}
+.sidebar .group-title{padding:16px 24px 8px;font-size:12px;font-weight:500;color:var(--mute);letter-spacing:.05em;text-transform:uppercase}
+.sidebar nav a{
+  display:flex;align-items:center;gap:18px;padding:0 24px;height:40px;font-size:14px;
+  color:var(--ink-2);border-radius:0 16px 16px 0;margin-right:12px;font-weight:400;
+}
+.sidebar nav a .ico{width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;color:var(--mute)}
+.sidebar nav a .ico svg{width:18px;height:18px}
+.sidebar nav a .badge{margin-left:auto;background:var(--red);color:#fff;font-size:11px;padding:2px 7px;border-radius:10px;font-weight:500;min-width:18px;text-align:center}
+.sidebar nav a:hover{background:var(--bg-3);text-decoration:none}
+.sidebar nav a.active{background:var(--accent-bg);color:var(--accent);font-weight:500}
+.sidebar nav a.active .ico{color:var(--accent)}
+.sidebar .divider{height:1px;background:var(--line-2);margin:8px 24px}
+.sidebar-foot{padding:16px 24px;font-size:12px;color:var(--mute-2);line-height:1.5}
+
+.main{flex:1;min-width:0;padding:32px 40px 80px;background:var(--bg)}
+.main h1{font-family:'Google Sans','Noto Sans SC',sans-serif;font-size:22px;font-weight:400;margin-bottom:6px;color:var(--ink)}
+.main .sub{color:var(--mute);font-size:14px;margin-bottom:28px}
+.view{display:none}
+.view.active{display:block}
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 18px;
+  border-radius:4px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid transparent;
+  background:var(--accent);color:#fff;transition:background .15s,box-shadow .15s;white-space:nowrap;
+}
+.btn:hover{background:var(--accent-2);box-shadow:0 1px 2px rgba(60,64,67,.3)}
+.btn-outline{background:#fff;color:var(--accent);border-color:var(--line);box-shadow:none}
+.btn-outline:hover{background:var(--accent-bg);border-color:var(--accent);box-shadow:none}
+.btn-text{background:transparent;color:var(--accent);padding:0 8px;box-shadow:none}
+.btn-text:hover{background:var(--accent-bg);box-shadow:none}
+.btn-sm{height:28px;padding:0 12px;font-size:13px}
+.btn-icon{width:36px;padding:0;justify-content:center}
+
+/* ===== KPI cards ===== */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi{background:#fff;border:1px solid var(--line-2);border-radius:8px;padding:20px 22px;position:relative;overflow:hidden}
+.kpi .lab{font-size:13px;color:var(--mute);font-weight:400;margin-bottom:10px}
+.kpi .num{font-family:'Google Sans','Noto Sans SC',sans-serif;font-size:32px;font-weight:400;color:var(--ink);letter-spacing:-.01em;line-height:1.1}
+.kpi .delta{display:inline-flex;align-items:center;font-size:12px;margin-top:8px;font-weight:500}
+.kpi .delta.up{color:var(--green)}
+.kpi .delta.down{color:var(--red)}
+.kpi .ico{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);background:var(--accent-bg)}
+
+/* ===== Panel ===== */
+.panel{background:#fff;border:1px solid var(--line-2);border-radius:8px;margin-bottom:24px}
+.panel-head{
+  padding:18px 24px 14px;display:flex;align-items:flex-start;justify-content:space-between;
+  border-bottom:1px solid var(--line-2);
+}
+.panel-head h3{font-family:'Google Sans','Noto Sans SC',sans-serif;font-size:16px;font-weight:500;color:var(--ink)}
+.panel-head .desc{font-size:13px;color:var(--mute);margin-top:4px;line-height:1.6}
+.panel-body{padding:20px 24px}
+.panel-body.no-pad{padding:0}
+
+/* ===== Filters bar ===== */
+.filters{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:14px 24px;background:var(--bg-2);border-bottom:1px solid var(--line-2)}
+.filters input,.filters select{
+  height:36px;padding:0 14px;border-radius:6px;border:1px solid var(--line);background:#fff;
+}
+.filters input:focus,.filters select:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(26,115,232,.15)}
+.filters input.search{padding-left:38px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235f6368'><path d='M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 5 1.49-1.49-5-5zM9.5 14a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z'/></svg>");background-repeat:no-repeat;background-position:12px center;background-size:18px;width:240px}
+
+/* ===== Tabs ===== */
+.tabs{display:flex;border-bottom:1px solid var(--line-2);padding:0 24px;background:var(--bg-2)}
+.tabs button{
+  font-size:14px;color:var(--mute);padding:14px 18px;background:none;border:none;
+  border-bottom:3px solid transparent;font-weight:500;margin-bottom:-1px;
+}
+.tabs button:hover{color:var(--ink-2);background:var(--bg-3);border-radius:6px 6px 0 0}
+.tabs button.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* ===== Table ===== */
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead th{
+  text-align:left;font-weight:500;color:var(--mute);font-size:12px;letter-spacing:.04em;
+  padding:12px 16px;border-bottom:1px solid var(--line-2);background:var(--bg-2);text-transform:uppercase;
+}
+tbody td{padding:14px 16px;border-bottom:1px solid var(--line-2);color:var(--ink-2);vertical-align:middle}
+tbody tr:hover{background:var(--bg-2)}
+tbody tr:last-child td{border-bottom:none}
+.cell-id{font-family:monospace;color:var(--mute);font-size:13px}
+.cell-num{font-variant-numeric:tabular-nums;text-align:right;font-weight:500;color:var(--ink)}
+.user-cell{display:flex;align-items:center;gap:10px}
+.user-cell .uav{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#1a73e8,#34a853);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:500;font-size:12px;flex-shrink:0}
+.user-cell .uname{font-weight:500;color:var(--ink);line-height:1.2}
+.user-cell .uid{font-size:12px;color:var(--mute-2);line-height:1.2}
+.tag{display:inline-flex;align-items:center;font-size:12px;padding:3px 10px;border-radius:12px;font-weight:500;background:var(--bg-3);color:var(--ink-2)}
+.tag.blue{background:var(--accent-bg);color:var(--accent)}
+.tag.green{background:#e6f4ea;color:var(--green)}
+.tag.orange{background:#fef0e0;color:#b06000}
+.tag.red{background:#fce8e6;color:var(--red)}
+.act-row a{margin-right:8px;font-size:13px}
+
+/* ===== Pagination ===== */
+.pager{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-top:1px solid var(--line-2);font-size:13px;color:var(--mute)}
+.pager .pages{display:flex;gap:6px}
+.pager .pages button{width:32px;height:32px;border-radius:50%;border:1px solid transparent;font-size:13px}
+.pager .pages button:hover{background:var(--bg-3)}
+.pager .pages button.active{background:var(--accent-bg);color:var(--accent);font-weight:500}
+
+/* ===== Charts ===== */
+.chart-row{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut-center .v{font-family:'Google Sans',sans-serif;font-size:28px;font-weight:400}
+.donut-center .l{font-size:12px;color:var(--mute)}
+.donut-wrap{position:relative;width:200px;height:200px;margin:0 auto}
+.donut-legend{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;margin-top:18px;font-size:13px}
+.donut-legend .sw{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:8px;vertical-align:middle}
+
+/* ===== County cards ===== */
+.county-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.county-card{background:#fff;border:1px solid var(--line-2);border-radius:8px;padding:22px 24px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.county-card:hover{border-color:var(--accent);box-shadow:0 1px 4px rgba(60,64,67,.1)}
+.county-card .ct-name{font-family:'Google Sans','Noto Sans SC',sans-serif;font-size:17px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.county-card .ct-tag{font-size:12px;color:var(--mute);margin-bottom:18px;letter-spacing:.04em}
+.county-card .ct-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 18px}
+.county-card .m .v{font-family:'Google Sans',sans-serif;font-size:20px;color:var(--ink);font-weight:400;line-height:1.2}
+.county-card .m .l{font-size:12px;color:var(--mute);margin-top:4px}
+.county-card .bar-track{height:6px;background:var(--bg-3);border-radius:3px;margin-top:14px;overflow:hidden}
+.county-card .bar-fill{height:100%;background:var(--accent);border-radius:3px}
+
+/* ===== Activity item ===== */
+.activity{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--line-2)}
+.activity:last-child{border-bottom:none}
+.activity .ico{width:34px;height:34px;border-radius:50%;background:var(--bg-3);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+.activity .ico svg{width:18px;height:18px}
+.activity .t{font-size:14px;color:var(--ink-2)}
+.activity .t b{color:var(--ink);font-weight:500}
+.activity .ts{font-size:12px;color:var(--mute-2);margin-top:3px}
+
+/* ===== Forms / settings ===== */
+.set-row{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line-2)}
+.set-row:last-child{border-bottom:none}
+.set-row .lh h4{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.set-row .lh p{font-size:13px;color:var(--mute)}
+.toggle{position:relative;width:40px;height:22px;background:var(--mute-2);border-radius:11px;cursor:pointer;transition:.2s;flex-shrink:0}
+.toggle::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle.on{background:var(--accent)}
+.toggle.on::after{left:20px}
+
+/* ===== Inline links / actions ===== */
+.list-item{padding:14px 0;border-bottom:1px solid var(--line-2);display:flex;justify-content:space-between;align-items:center;gap:16px}
+.list-item:last-child{border-bottom:none}
+.list-item .li-l{display:flex;gap:14px;align-items:center;min-width:0;flex:1}
+.list-item .thumb{width:48px;height:48px;border-radius:6px;background:var(--bg-3);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:11px}
+.list-item .thumb img{width:100%;height:100%;object-fit:cover}
+.list-item .li-m{min-width:0;flex:1}
+.list-item .li-t{font-size:14px;color:var(--ink);font-weight:500;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list-item .li-s{font-size:12px;color:var(--mute)}
+.list-item .li-r{display:flex;gap:8px;flex-shrink:0}
+
+/* ===== Tooltip / pagination badge ===== */
+.kbd{
+  display:inline-block;padding:1px 6px;font-family:monospace;font-size:11px;
+  background:var(--bg-3);border:1px solid var(--line);border-radius:3px;color:var(--ink-2);
+}
+
+/* ===== Empty state ===== */
+.empty{padding:60px 20px;text-align:center;color:var(--mute)}
+
+/* ===== Responsive ===== */
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.chart-row{grid-template-columns:1fr}.county-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){
+  .layout{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:relative;top:0;border-right:none;border-bottom:1px solid var(--line-2)}
+  .sidebar nav{display:flex;flex-wrap:wrap;gap:4px;padding:8px 12px}
+  .sidebar nav a{margin-right:0;border-radius:16px;font-size:13px;height:34px;padding:0 12px}
+  .sidebar .group-title,.sidebar .divider,.sidebar-foot{display:none}
+  .main{padding:20px}
+  .kpis{grid-template-columns:1fr}
+  .county-grid{grid-template-columns:1fr}
+  .appbar .search{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== App bar ===== -->
+<header class="appbar">
+  <button class="menu-btn" aria-label="menu">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+  </button>
+  <a href="#dashboard" class="brand">
+    <span class="logo">華</span>
+    <span>管理后台</span>
+  </a>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 5 1.49-1.49-5-5zM9.5 14a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+    <input type="text" placeholder="搜索用户、订单、商品…" />
+  </div>
+  <div class="right">
+    <button class="icon-btn" title="帮助">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14a4 4 0 0 0-4 4h2a2 2 0 1 1 4 0c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5a4 4 0 0 0-4-4z"/></svg>
+    </button>
+    <button class="icon-btn" title="通知">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4a2 2 0 0 0 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4a1.5 1.5 0 1 0-3 0v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+      <span class="dot"></span>
+    </button>
+    <a href="../index.html" target="_blank" class="icon-btn" title="返回官网">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zM19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7z"/></svg>
+    </a>
+    <div class="avatar" title="管理员">管</div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <nav>
+      <a href="#dashboard" data-view="dashboard" class="active">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg></span>
+        <span>仪表盘</span>
+      </a>
+      <a href="#users" data-view="users">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></span>
+        <span>用户</span>
+      </a>
+      <a href="#chats" data-view="chats">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg></span>
+        <span>数字人对话</span>
+        <span class="badge">12</span>
+      </a>
+      <a href="#tourism" data-view="tourism">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 7h-8v6h8V7zm2-4H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 16H3V5h18v14z"/></svg></span>
+        <span>文旅订单</span>
+      </a>
+      <a href="#goods" data-view="goods">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></span>
+        <span>好物订单</span>
+      </a>
+      <a href="#study" data-view="study">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3 1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></span>
+        <span>研学报名</span>
+      </a>
+      <a href="#partners" data-view="partners">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></span>
+        <span>合作申请</span>
+        <span class="badge">3</span>
+      </a>
+      <a href="#counties" data-view="counties">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></span>
+        <span>县域统计</span>
+      </a>
+      <div class="divider"></div>
+      <div class="group-title">运营</div>
+      <a href="#banners" data-view="banners">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.5-7l-3 3.72L9 13.5l-4 5h14l-4.5-7z"/></svg></span>
+        <span>内容 · Banner</span>
+      </a>
+      <a href="#settings" data-view="settings">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65a.5.5 0 0 0 .12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65A.49.49 0 0 0 14 2h-4a.49.49 0 0 0-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1a.5.5 0 0 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.64-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.13.22.39.31.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.05.24.25.42.49.42h4c.24 0 .44-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.22.09.49 0 .61-.22l2-3.46c.13-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></span>
+        <span>系统设置</span>
+      </a>
+    </nav>
+    <div class="sidebar-foot">© 2026 華享未来 · v1.0.0 demo</div>
+  </aside>
+
+  <!-- ===== Main ===== -->
+  <main class="main">
+
+    <!-- ===== Dashboard ===== -->
+    <section class="view active" id="view-dashboard">
+      <h1>仪表盘</h1>
+      <p class="sub">平台核心指标总览 — 演示数据</p>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="lab">注册用户</div>
+          <div class="num">12,847</div>
+          <div class="delta up">▲ 8.2% 较上周</div>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+        </div>
+        <div class="kpi">
+          <div class="lab">今日对话</div>
+          <div class="num">3,421</div>
+          <div class="delta up">▲ 12.4% 较昨日</div>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg></div>
+        </div>
+        <div class="kpi">
+          <div class="lab">本月订单</div>
+          <div class="num">¥182,460</div>
+          <div class="delta up">▲ 24.6% 较上月</div>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7.42 14h11.16c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 23 5H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C5.16 15.37 5 15.83 5 16.5 5 17.88 6.12 19 7.5 19h13v-2H7.42z"/></svg></div>
+        </div>
+        <div class="kpi">
+          <div class="lab">研学报名</div>
+          <div class="num">286</div>
+          <div class="delta down">▼ 3.1% 较上周</div>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3 1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div>
+        </div>
+      </div>
+
+      <div class="chart-row">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h3>近 7 日对话与订单趋势</h3>
+              <div class="desc">蓝线为数字人对话数，橙线为订单数</div>
+            </div>
+            <div>
+              <button class="btn btn-sm btn-outline">导出</button>
+            </div>
+          </div>
+          <div class="panel-body">
+            <svg viewBox="0 0 720 220" width="100%" height="220" id="trendChart"></svg>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h3>县域访问占比</h3>
+              <div class="desc">本月累计访问</div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="donut-wrap">
+              <svg viewBox="0 0 100 100" width="200" height="200">
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#1a73e8" stroke-width="14" stroke-dasharray="120 240" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#34a853" stroke-width="14" stroke-dasharray="68 240" stroke-dashoffset="-120" transform="rotate(-90 50 50)"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#fbbc04" stroke-width="14" stroke-dasharray="48 240" stroke-dashoffset="-188" transform="rotate(-90 50 50)"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#ea4335" stroke-width="14" stroke-dasharray="32 240" stroke-dashoffset="-236" transform="rotate(-90 50 50)"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#9334e6" stroke-width="14" stroke-dasharray="20 240" stroke-dashoffset="-268" transform="rotate(-90 50 50)"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#5f6368" stroke-width="14" stroke-dasharray="12 240" stroke-dashoffset="-288" transform="rotate(-90 50 50)"/>
+              </svg>
+              <div class="donut-center">
+                <div class="v">12,847</div>
+                <div class="l">累计用户</div>
+              </div>
+            </div>
+            <div class="donut-legend">
+              <div><span class="sw" style="background:#1a73e8"></span>沙湾 36%</div>
+              <div><span class="sw" style="background:#34a853"></span>屏山 20%</div>
+              <div><span class="sw" style="background:#fbbc04"></span>兴文 14%</div>
+              <div><span class="sw" style="background:#ea4335"></span>射洪 10%</div>
+              <div><span class="sw" style="background:#9334e6"></span>崇州 6%</div>
+              <div><span class="sw" style="background:#5f6368"></span>其他 14%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div><h3>近期活动</h3></div>
+          <a href="#" class="btn btn-sm btn-text">查看全部</a>
+        </div>
+        <div class="panel-body">
+          <div class="activity"><div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 7h-8v6h8V7z"/></svg></div><div><div class="t"><b>郭小沫</b> 接到一笔订单 — 铜河沙琪玛 × 5</div><div class="ts">12 分钟前 · 沙湾</div></div></div>
+          <div class="activity"><div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5"/></svg></div><div><div class="t">新用户 <b>张明</b> 完成注册 — 默认县域：屏山</div><div class="ts">28 分钟前</div></div></div>
+          <div class="activity"><div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div><div><div class="t"><b>沙湾沫若文化研学</b> 新增 3 笔报名</div><div class="ts">1 小时前 · 出发日期 9 月 12 日</div></div></div>
+          <div class="activity"><div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 9l11 6 9-4.91"/></svg></div><div><div class="t"><b>崇州文旅局</b> 提交合作申请，已分配给你处理</div><div class="ts">2 小时前</div></div></div>
+          <div class="activity"><div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14"/></svg></div><div><div class="t"><b>江呦呦</b> 本周对话量突破 800 次</div><div class="ts">昨天 18:24</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Users ===== -->
+    <section class="view" id="view-users">
+      <h1>用户</h1>
+      <p class="sub">12,847 名注册用户 · 演示数据</p>
+
+      <div class="panel">
+        <div class="filters">
+          <input class="search" type="text" placeholder="按昵称 / 手机号搜索" />
+          <select><option>全部县域</option><option>屏山</option><option>沙湾</option><option>射洪</option><option>兴文</option><option>崇州</option><option>井研</option></select>
+          <select><option>全部状态</option><option>活跃</option><option>沉睡</option></select>
+          <select><option>全部来源</option><option>App</option><option>小程序</option><option>合作导流</option></select>
+          <div style="flex:1"></div>
+          <button class="btn btn-outline">导出</button>
+          <button class="btn">+ 新增用户</button>
+        </div>
+        <table>
+          <thead><tr><th>用户</th><th>县域</th><th>累计对话</th><th>累计消费</th><th>最近活跃</th><th>来源</th><th>状态</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><div class="user-cell"><div class="uav">张</div><div><div class="uname">张明远</div><div class="uid">138****8602</div></div></div></td><td>屏山</td><td>142</td><td class="cell-num">¥1,280</td><td>12 分钟前</td><td><span class="tag blue">App</span></td><td><span class="tag green">活跃</span></td><td><a href="#">查看</a></td></tr>
+            <tr><td><div class="user-cell"><div class="uav" style="background:linear-gradient(135deg,#f9ab00,#34a853)">李</div><div><div class="uname">李诗韵</div><div class="uid">159****4531</div></div></div></td><td>沙湾</td><td>86</td><td class="cell-num">¥640</td><td>1 小时前</td><td><span class="tag blue">小程序</span></td><td><span class="tag green">活跃</span></td><td><a href="#">查看</a></td></tr>
+            <tr><td><div class="user-cell"><div class="uav" style="background:linear-gradient(135deg,#ea4335,#fbbc04)">王</div><div><div class="uname">王梓涵</div><div class="uid">186****7823</div></div></div></td><td>射洪</td><td>34</td><td class="cell-num">¥0</td><td>3 小时前</td><td><span class="tag">合作</span></td><td><span class="tag orange">沉睡</span></td><td><a href="#">查看</a></td></tr>
+            <tr><td><div class="user-cell"><div class="uav" style="background:linear-gradient(135deg,#9334e6,#1a73e8)">陈</div><div><div class="uname">陈子轩</div><div class="uid">137****2098</div></div></div></td><td>兴文</td><td>208</td><td class="cell-num">¥3,420</td><td>5 小时前</td><td><span class="tag blue">App</span></td><td><span class="tag green">活跃</span></td><td><a href="#">查看</a></td></tr>
+            <tr><td><div class="user-cell"><div class="uav" style="background:linear-gradient(135deg,#34a853,#1a73e8)">刘</div><div><div class="uname">刘佳音</div><div class="uid">177****3467</div></div></div></td><td>崇州</td><td>62</td><td class="cell-num">¥420</td><td>昨天</td><td><span class="tag blue">小程序</span></td><td><span class="tag green">活跃</span></td><td><a href="#">查看</a></td></tr>
+            <tr><td><div class="user-cell"><div class="uav" style="background:linear-gradient(135deg,#1a73e8,#ea4335)">赵</div><div><div class="uname">赵崇文</div><div class="uid">133****8810</div></div></div></td><td>井研</td><td>19</td><td class="cell-num">¥128</td><td>2 天前</td><td><span class="tag blue">App</span></td><td><span class="tag orange">沉睡</span></td><td><a href="#">查看</a></td></tr>
+            <tr><td><div class="user-cell"><div class="uav">钱</div><div><div class="uname">钱夫子</div><div class="uid">173****6652</div></div></div></td><td>沙湾</td><td>312</td><td class="cell-num">¥5,680</td><td>昨天 22:14</td><td><span class="tag blue">App</span></td><td><span class="tag green">活跃</span></td><td><a href="#">查看</a></td></tr>
+            <tr><td><div class="user-cell"><div class="uav" style="background:linear-gradient(135deg,#f9ab00,#ea4335)">孙</div><div><div class="uname">孙梅</div><div class="uid">153****7710</div></div></div></td><td>屏山</td><td>94</td><td class="cell-num">¥860</td><td>今天 09:12</td><td><span class="tag">合作</span></td><td><span class="tag green">活跃</span></td><td><a href="#">查看</a></td></tr>
+          </tbody>
+        </table>
+        <div class="pager">
+          <span>显示 1–8 / 12,847 条</span>
+          <div class="pages">
+            <button>‹</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>…</button>
+            <button>1606</button>
+            <button>›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Chats ===== -->
+    <section class="view" id="view-chats">
+      <h1>数字人对话</h1>
+      <p class="sub">9 位数字人 · 共 8,562 条对话 · 演示数据</p>
+
+      <div class="panel no-pad">
+        <div class="tabs">
+          <button class="active">全部</button>
+          <button>陈子昂</button><button>江呦呦</button><button>郭小沫</button><button>杜仙仙</button>
+          <button>雪梨宝宝</button><button>巴小虎</button><button>遂小荷</button><button>雪灵儿</button><button>文启</button>
+        </div>
+        <div class="filters">
+          <input class="search" type="text" placeholder="搜索对话内容" />
+          <select><option>全部满意度</option><option>满意 👍</option><option>一般</option><option>不满意 👎</option></select>
+          <select><option>近 7 天</option><option>今日</option><option>近 30 天</option><option>自定义</option></select>
+          <div style="flex:1"></div>
+          <button class="btn btn-outline">导出 CSV</button>
+        </div>
+        <table>
+          <thead><tr><th>时间</th><th>用户</th><th>数字人</th><th>用户提问</th><th>回答摘要</th><th>满意度</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>14:23</td><td>张明远</td><td><span class="tag" style="background:#2F6B6E;color:#fff">江呦呦·屏山</span></td><td>屏山两日游怎么安排？</td><td>推荐 D1 龙华古镇 + 向家坝，D2 老君山</td><td><span class="tag green">👍 满意</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>14:18</td><td>李诗韵</td><td><span class="tag" style="background:#8B5E34;color:#fff">郭小沫·沙湾</span></td><td>沙湾干巴牛肉哪里买？</td><td>铜河张记 / 郭家大院 / 沙湾夜市</td><td><span class="tag green">👍 满意</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>14:02</td><td>陈子轩</td><td><span class="tag" style="background:#5C6E3F;color:#fff">杜仙仙·峨眉</span></td><td>报国寺禅修课在哪里？</td><td>查知识库，给出具体方位</td><td><span class="tag green">👍 满意</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>13:54</td><td>王梓涵</td><td><span class="tag" style="background:#3D5B80;color:#fff">陈子昂·射洪</span></td><td>陈子昂故里门票？</td><td>读书台免费，金华山¥30</td><td><span class="tag orange">👎 未解决</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>13:48</td><td>钱夫子</td><td><span class="tag" style="background:#A85C4D;color:#fff">雪梨宝宝·金川</span></td><td>金川梨花还有开吗？</td><td>已过花期，附梨花节日期</td><td><span class="tag green">👍 满意</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>13:30</td><td>赵崇文</td><td><span class="tag" style="background:#8E473B;color:#fff">巴小虎·达州</span></td><td>达州灯影牛肉哪个牌子好？</td><td>推荐 3 个本地老字号</td><td><span class="tag green">👍 满意</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>13:14</td><td>孙梅</td><td><span class="tag" style="background:#9C7156;color:#fff">遂小荷·遂宁</span></td><td>圣莲岛荷花几月看？</td><td>7 月最佳，附交通路线</td><td><span class="tag green">👍 满意</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>12:50</td><td>周远山</td><td><span class="tag" style="background:#4A6E8A;color:#fff">雪灵儿·达古</span></td><td>高反怎么办？</td><td>建议 + 严重时下撤方案</td><td><span class="tag orange">一般</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>12:42</td><td>吴清</td><td><span class="tag" style="background:#776848;color:#fff">文启·富顺</span></td><td>富顺文庙收费吗？</td><td>免费开放，附开放时间</td><td><span class="tag green">👍 满意</span></td><td><a href="#">详情</a></td></tr>
+          </tbody>
+        </table>
+        <div class="pager">
+          <span>显示 1–9 / 8,562 条</span>
+          <div class="pages">
+            <button>‹</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>…</button>
+            <button>952</button>
+            <button>›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Tourism orders ===== -->
+    <section class="view" id="view-tourism">
+      <h1>文旅订单</h1>
+      <p class="sub">酒店民宿 · 美食 · 门票 · 团购 · 演示数据</p>
+
+      <div class="panel no-pad">
+        <div class="tabs">
+          <button class="active">全部</button>
+          <button>酒店民宿</button><button>美食</button><button>门票</button><button>团购</button>
+        </div>
+        <div class="filters">
+          <input class="search" type="text" placeholder="搜索订单号 / 商家" />
+          <select><option>全部县域</option><option>屏山</option><option>沙湾</option><option>射洪</option><option>兴文</option><option>崇州</option><option>井研</option></select>
+          <select><option>全部状态</option><option>已支付</option><option>已入住</option><option>已完成</option><option>已退款</option></select>
+          <div style="flex:1"></div>
+          <button class="btn btn-outline">导出</button>
+        </div>
+        <table>
+          <thead><tr><th>订单号</th><th>服务</th><th>县域</th><th>用户</th><th>入住/使用</th><th>金额</th><th>状态</th><th>下单时间</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="cell-id">TT2026082001</td><td>屏山金沙江民宿</td><td>屏山</td><td>张明远</td><td>9 月 12-13 日</td><td class="cell-num">¥536</td><td><span class="tag green">已支付</span></td><td>14:23</td><td><a href="#">详情</a></td></tr>
+            <tr><td class="cell-id">TT2026082002</td><td>沙湾干巴牛肉店</td><td>沙湾</td><td>李诗韵</td><td>9 月 14 日 18:00</td><td class="cell-num">¥136</td><td><span class="tag green">已支付</span></td><td>14:18</td><td><a href="#">详情</a></td></tr>
+            <tr><td class="cell-id">TT2026082003</td><td>兴文石海 + 僰人悬棺联票</td><td>兴文</td><td>陈子轩</td><td>9 月 22 日</td><td class="cell-num">¥672</td><td><span class="tag blue">已入住</span></td><td>13:54</td><td><a href="#">详情</a></td></tr>
+            <tr><td class="cell-id">TT2026082004</td><td>崇州街子古镇套票</td><td>崇州</td><td>刘佳音</td><td>9 月 30 日</td><td class="cell-num">¥128</td><td><span class="tag">已退款</span></td><td>12:48</td><td><a href="#">详情</a></td></tr>
+            <tr><td class="cell-id">TT2026082005</td><td>射洪涪江江景酒店</td><td>射洪</td><td>王梓涵</td><td>10 月 1-3 日</td><td class="cell-num">¥1,164</td><td><span class="tag green">已支付</span></td><td>11:32</td><td><a href="#">详情</a></td></tr>
+            <tr><td class="cell-id">TT2026082006</td><td>屏山豆花饭</td><td>屏山</td><td>孙梅</td><td>9 月 10 日 12:00</td><td class="cell-num">¥25</td><td><span class="tag blue">已完成</span></td><td>10:14</td><td><a href="#">详情</a></td></tr>
+            <tr><td class="cell-id">TT2026082007</td><td>崇州街子古镇山居</td><td>崇州</td><td>周远山</td><td>10 月 6-7 日</td><td class="cell-num">¥656</td><td><span class="tag green">已支付</span></td><td>09:48</td><td><a href="#">详情</a></td></tr>
+            <tr><td class="cell-id">TT2026082008</td><td>井研田园农家乐</td><td>井研</td><td>赵崇文</td><td>9 月 18 日</td><td class="cell-num">¥128</td><td><span class="tag green">已支付</span></td><td>昨天 22:08</td><td><a href="#">详情</a></td></tr>
+          </tbody>
+        </table>
+        <div class="pager">
+          <span>显示 1–8 / 1,234 条</span>
+          <div class="pages">
+            <button>‹</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>…</button>
+            <button>155</button>
+            <button>›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Goods orders ===== -->
+    <section class="view" id="view-goods">
+      <h1>好物订单</h1>
+      <p class="sub">县域好物电商 · 共 ¥182,460 / 月 · 演示数据</p>
+      <div class="kpis" style="grid-template-columns:repeat(4,1fr)">
+        <div class="kpi"><div class="lab">本月订单</div><div class="num">1,082</div><div class="delta up">▲ 18.2%</div></div>
+        <div class="kpi"><div class="lab">客单价</div><div class="num">¥168</div><div class="delta up">▲ 4.4%</div></div>
+        <div class="kpi"><div class="lab">最畅销</div><div class="num" style="font-size:18px">铜河沙琪玛</div><div class="delta up">+ ¥38,420</div></div>
+        <div class="kpi"><div class="lab">优惠券核销</div><div class="num">64%</div><div class="delta down">▼ 2.1%</div></div>
+      </div>
+      <div class="panel no-pad">
+        <div class="filters">
+          <input class="search" type="text" placeholder="搜索订单 / 商品" />
+          <select><option>全部县域</option><option>屏山</option><option>沙湾</option><option>射洪</option><option>兴文</option><option>崇州</option><option>井研</option></select>
+          <select><option>全部状态</option><option>待发货</option><option>已发货</option><option>已完成</option><option>已退款</option></select>
+          <div style="flex:1"></div>
+          <button class="btn btn-outline">导出</button>
+          <button class="btn">+ 添加商品</button>
+        </div>
+        <table>
+          <thead><tr><th>订单号</th><th>商品</th><th>县域</th><th>用户</th><th>数量</th><th>金额</th><th>支付方式</th><th>状态</th><th>下单时间</th></tr></thead>
+          <tbody>
+            <tr><td class="cell-id">GD2026082201</td><td>铜河沙琪玛 × 5</td><td>沙湾</td><td>钱夫子</td><td>5</td><td class="cell-num">¥190</td><td>微信支付</td><td><span class="tag green">已发货</span></td><td>14:42</td></tr>
+            <tr><td class="cell-id">GD2026082202</td><td>屏山腊肉礼盒 × 1</td><td>屏山</td><td>张明远</td><td>1</td><td class="cell-num">¥138</td><td>支付宝</td><td><span class="tag green">已发货</span></td><td>14:18</td></tr>
+            <tr><td class="cell-id">GD2026082203</td><td>佛手陈皮普洱茶 × 2</td><td>沙湾</td><td>李诗韵</td><td>2</td><td class="cell-num">¥230</td><td>微信支付</td><td><span class="tag orange">待发货</span></td><td>13:54</td></tr>
+            <tr><td class="cell-id">GD2026082204</td><td>铜河青梅酒 × 3</td><td>沙湾</td><td>陈子轩</td><td>3</td><td class="cell-num">¥228</td><td>微信支付</td><td><span class="tag">已退款</span></td><td>13:22</td></tr>
+            <tr><td class="cell-id">GD2026082205</td><td>干巴牛肉 × 2</td><td>沙湾</td><td>赵崇文</td><td>2</td><td class="cell-num">¥136</td><td>微信支付</td><td><span class="tag green">已发货</span></td><td>12:48</td></tr>
+            <tr><td class="cell-id">GD2026082206</td><td>峨眉雪芽茶 × 1</td><td>峨眉</td><td>孙梅</td><td>1</td><td class="cell-num">¥98</td><td>微信支付</td><td><span class="tag blue">已完成</span></td><td>11:32</td></tr>
+            <tr><td class="cell-id">GD2026082207</td><td>金川雪梨膏 × 4</td><td>金川</td><td>钱夫子</td><td>4</td><td class="cell-num">¥396</td><td>微信支付</td><td><span class="tag green">已发货</span></td><td>10:14</td></tr>
+            <tr><td class="cell-id">GD2026082208</td><td>灯影牛肉礼盒 × 1</td><td>达州</td><td>赵崇文</td><td>1</td><td class="cell-num">¥168</td><td>微信支付</td><td><span class="tag orange">待发货</span></td><td>09:48</td></tr>
+          </tbody>
+        </table>
+        <div class="pager">
+          <span>显示 1–8 / 1,082 条</span>
+          <div class="pages"><button>‹</button><button class="active">1</button><button>2</button><button>3</button><button>…</button><button>136</button><button>›</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Study ===== -->
+    <section class="view" id="view-study">
+      <h1>研学报名</h1>
+      <p class="sub">4 条活动路线 · 累计 286 名学员 · 演示数据</p>
+      <div class="panel no-pad">
+        <div class="tabs">
+          <button class="active">全部路线</button>
+          <button>已开展</button>
+          <button>可报名</button>
+        </div>
+        <div class="filters">
+          <input class="search" type="text" placeholder="搜索路线名 / 报名学员" />
+          <select><option>全部出发月份</option><option>9 月</option><option>10 月</option><option>11 月</option></select>
+          <div style="flex:1"></div>
+          <button class="btn btn-outline">导出</button>
+          <button class="btn">+ 新增路线</button>
+        </div>
+        <table>
+          <thead><tr><th>路线</th><th>带队数字人</th><th>出发日期</th><th>报名人数</th><th>价格</th><th>负责人</th><th>状态</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>沙湾沫若文化研学</td><td><span class="tag" style="background:#8B5E34;color:#fff">郭小沫</span></td><td>2026-09-12</td><td>32 / 40</td><td class="cell-num">¥1,280</td><td>王老师</td><td><span class="tag green">报名中</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>井研田园书香研学</td><td><span class="tag" style="background:#5C6E3F;color:#fff">杜仙仙</span></td><td>2026-09-20</td><td>28 / 30</td><td class="cell-num">¥1,180</td><td>李老师</td><td><span class="tag green">报名中</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>崇州街子古镇研学</td><td><span class="tag" style="background:#3D5B80;color:#fff">陈子昂</span></td><td>2026-10-02</td><td>14 / 30</td><td class="cell-num">¥1,380</td><td>张老师</td><td><span class="tag blue">已成团</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>兴文喀斯特秘境研学</td><td><span class="tag" style="background:#8E473B;color:#fff">巴小虎</span></td><td>2026-10-15</td><td>18 / 30</td><td class="cell-num">¥1,580</td><td>陈老师</td><td><span class="tag green">报名中</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>金川梨花节研学</td><td><span class="tag" style="background:#A85C4D;color:#fff">雪梨宝宝</span></td><td>—</td><td>0 / 30</td><td class="cell-num">¥1,680</td><td>—</td><td><span class="tag orange">待上线</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>达古冰川研学</td><td><span class="tag" style="background:#4A6E8A;color:#fff">雪灵儿</span></td><td>—</td><td>0 / 25</td><td class="cell-num">¥2,180</td><td>—</td><td><span class="tag orange">待上线</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>遂宁观音故里研学</td><td><span class="tag" style="background:#9C7156;color:#fff">遂小荷</span></td><td>—</td><td>0 / 30</td><td class="cell-num">¥1,480</td><td>—</td><td><span class="tag orange">待上线</span></td><td><a href="#">详情</a></td></tr>
+            <tr><td>富顺才子之乡研学</td><td><span class="tag" style="background:#776848;color:#fff">文启</span></td><td>—</td><td>0 / 30</td><td class="cell-num">¥1,180</td><td>—</td><td><span class="tag orange">待上线</span></td><td><a href="#">详情</a></td></tr>
+          </tbody>
+        </table>
+        <div class="pager">
+          <span>显示 1–8 / 8 条</span>
+          <div class="pages"><button class="active">1</button><button>›</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Partners ===== -->
+    <section class="view" id="view-partners">
+      <h1>合作申请</h1>
+      <p class="sub">3 条待处理 · 共 28 条历史记录 · 演示数据</p>
+      <div class="panel no-pad">
+        <div class="tabs">
+          <button class="active">全部 <span class="tag" style="margin-left:6px">28</span></button>
+          <button>待处理 <span class="tag green" style="margin-left:6px">3</span></button>
+          <button>已通过</button>
+          <button>已驳回</button>
+        </div>
+        <div class="filters">
+          <input class="search" type="text" placeholder="搜索申请方" />
+          <select><option>全部类型</option><option>县域文旅</option><option>文化机构</option><option>品牌方</option><option>媒体</option><option>其他</option></select>
+          <div style="flex:1"></div>
+        </div>
+        <table>
+          <thead><tr><th>申请号</th><th>申请方</th><th>类型</th><th>联系人</th><th>提交时间</th><th>状态</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="cell-id">PT2026082201</td><td><div><b>崇州文旅局</b></div><div style="font-size:12px;color:var(--mute)">关于街子古镇数字人名片合作</div></td><td><span class="tag blue">县域文旅</span></td><td>王主任 · wangcz@chongzhou.gov.cn</td><td>2 小时前</td><td><span class="tag orange">待处理</span></td><td><a href="#">查看 · </a><a href="#">通过</a><a href="#" style="color:var(--red)"> · 驳回</a></td></tr>
+            <tr><td class="cell-id">PT2026082202</td><td><div><b>井研县博物馆</b></div><div style="font-size:12px;color:var(--mute)">雷氏民居数字化项目</div></td><td><span class="tag">文化机构</span></td><td>李馆长 · lijg@jingyanmuseum.cn</td><td>今早 09:22</td><td><span class="tag orange">待处理</span></td><td><a href="#">查看 · </a><a href="#">通过</a><a href="#" style="color:var(--red)"> · 驳回</a></td></tr>
+            <tr><td class="cell-id">PT2026082203</td><td><div><b>川茶集团</b></div><div style="font-size:12px;color:var(--mute)">峨眉禅茶品牌合作意向</div></td><td><span class="tag">品牌方</span></td><td>赵品牌 · zhaopp@chuancha.cn</td><td>昨天 17:14</td><td><span class="tag orange">待处理</span></td><td><a href="#">查看 · </a><a href="#">通过</a><a href="#" style="color:var(--red)"> · 驳回</a></td></tr>
+            <tr><td class="cell-id">PT2026081804</td><td>《四川文旅》杂志</td><td><span class="tag">媒体</span></td><td>陈记者 · chenwp@scwl.cn</td><td>8 月 18 日</td><td><span class="tag green">已通过</span></td><td><a href="#">查看</a></td></tr>
+            <tr><td class="cell-id">PT2026081605</td><td>沙湾文旅投资集团</td><td><span class="tag blue">县域文旅</span></td><td>何总 · hezq@shawantourism.cn</td><td>8 月 16 日</td><td><span class="tag green">已通过</span></td><td><a href="#">查看</a></td></tr>
+            <tr><td class="cell-id">PT2026081206</td><td>某短视频 MCN</td><td><span class="tag">其他</span></td><td>林先生 · lintao@xxx.cn</td><td>8 月 12 日</td><td><span class="tag red">已驳回</span></td><td><a href="#">查看</a></td></tr>
+            <tr><td class="cell-id">PT2026081007</td><td>兴文石海景区</td><td><span class="tag blue">县域文旅</span></td><td>孙经理 · sunjl@xingwen.cn</td><td>8 月 10 日</td><td><span class="tag green">已通过</span></td><td><a href="#">查看</a></td></tr>
+          </tbody>
+        </table>
+        <div class="pager">
+          <span>显示 1–7 / 28 条</span>
+          <div class="pages"><button class="active">1</button><button>2</button><button>›</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Counties ===== -->
+    <section class="view" id="view-counties">
+      <h1>县域统计</h1>
+      <p class="sub">6 个试点县域数据 · 演示</p>
+
+      <div class="county-grid">
+        <div class="county-card">
+          <div class="ct-name">屏山</div>
+          <div class="ct-tag">PINGSHAN · JINSHAJIANG</div>
+          <div class="ct-stats">
+            <div class="m"><div class="v">2,847</div><div class="l">活跃用户</div></div>
+            <div class="m"><div class="v">5,632</div><div class="l">累计对话</div></div>
+            <div class="m"><div class="v">418</div><div class="l">订单数</div></div>
+            <div class="m"><div class="v">¥68,420</div><div class="l">销售</div></div>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:88%;background:#1a73e8"></div></div>
+        </div>
+        <div class="county-card">
+          <div class="ct-name">沙湾</div>
+          <div class="ct-tag">SHAWAN · GUO MORUO</div>
+          <div class="ct-stats">
+            <div class="m"><div class="v">4,231</div><div class="l">活跃用户</div></div>
+            <div class="m"><div class="v">8,562</div><div class="l">累计对话</div></div>
+            <div class="m"><div class="v">682</div><div class="l">订单数</div></div>
+            <div class="m"><div class="v">¥114,860</div><div class="l">销售</div></div>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#1a73e8"></div></div>
+        </div>
+        <div class="county-card">
+          <div class="ct-name">射洪</div>
+          <div class="ct-tag">SHEHONG · CHEN ZIANG</div>
+          <div class="ct-stats">
+            <div class="m"><div class="v">1,580</div><div class="l">活跃用户</div></div>
+            <div class="m"><div class="v">3,210</div><div class="l">累计对话</div></div>
+            <div class="m"><div class="v">216</div><div class="l">订单数</div></div>
+            <div class="m"><div class="v">¥38,420</div><div class="l">销售</div></div>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:62%;background:#1a73e8"></div></div>
+        </div>
+        <div class="county-card">
+          <div class="ct-name">兴文</div>
+          <div class="ct-tag">XINGWEN · KARST</div>
+          <div class="ct-stats">
+            <div class="m"><div class="v">2,105</div><div class="l">活跃用户</div></div>
+            <div class="m"><div class="v">4,168</div><div class="l">累计对话</div></div>
+            <div class="m"><div class="v">324</div><div class="l">订单数</div></div>
+            <div class="m"><div class="v">¥52,180</div><div class="l">销售</div></div>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:74%;background:#1a73e8"></div></div>
+        </div>
+        <div class="county-card">
+          <div class="ct-name">崇州</div>
+          <div class="ct-tag">CHONGZHOU · JIEZI</div>
+          <div class="ct-stats">
+            <div class="m"><div class="v">1,251</div><div class="l">活跃用户</div></div>
+            <div class="m"><div class="v">2,820</div><div class="l">累计对话</div></div>
+            <div class="m"><div class="v">178</div><div class="l">订单数</div></div>
+            <div class="m"><div class="v">¥28,640</div><div class="l">销售</div></div>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:54%;background:#1a73e8"></div></div>
+        </div>
+        <div class="county-card">
+          <div class="ct-name">井研</div>
+          <div class="ct-tag">JINGYAN · SCHOLARS</div>
+          <div class="ct-stats">
+            <div class="m"><div class="v">833</div><div class="l">活跃用户</div></div>
+            <div class="m"><div class="v">1,650</div><div class="l">累计对话</div></div>
+            <div class="m"><div class="v">108</div><div class="l">订单数</div></div>
+            <div class="m"><div class="v">¥16,860</div><div class="l">销售</div></div>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:32%;background:#1a73e8"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Banners ===== -->
+    <section class="view" id="view-banners">
+      <h1>内容 · Banner 管理</h1>
+      <p class="sub">首页轮播 · 数字人 · 文旅服务 · 好物 · 演示</p>
+      <div class="panel no-pad">
+        <div class="tabs">
+          <button class="active">Banner 轮播</button>
+          <button>数字人名单</button>
+          <button>县域橱窗</button>
+          <button>文旅服务</button>
+          <button>好物</button>
+        </div>
+        <div class="filters">
+          <select><option>全部状态</option><option>已发布</option><option>草稿</option><option>已下线</option></select>
+          <div style="flex:1"></div>
+          <button class="btn">+ 新增 Banner</button>
+        </div>
+        <table>
+          <thead><tr><th>标题</th><th>配图</th><th>点击率</th><th>上线时间</th><th>状态</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td><div><b>华享未来 · 县域赋能计划</b></div><div style="font-size:12px;color:var(--mute)">县域赋能 · 数字人 · 文旅</div></td>
+              <td><div class="list-item-thumb" style="width:80px;height:48px"><img src="../site/assets/image2.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:4px"/></div></td>
+              <td>8.4%</td>
+              <td>2026-08-20 09:00</td>
+              <td><span class="tag green">已发布</span></td>
+              <td><a href="#">编辑 · </a><a href="#">下线</a></td>
+            </tr>
+            <tr>
+              <td><div><b>沙湾 · 沫水之滨的文化名片</b></div><div style="font-size:12px;color:var(--mute)">沙湾专版</div></td>
+              <td><div style="width:80px;height:48px"><img src="../site/assets/image4.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:4px"/></div></td>
+              <td>6.1%</td>
+              <td>2026-08-18 10:00</td>
+              <td><span class="tag green">已发布</span></td>
+              <td><a href="#">编辑 · </a><a href="#">下线</a></td>
+            </tr>
+            <tr>
+              <td><div><b>兴文 · 喀斯特秘境等你探索</b></div><div style="font-size:12px;color:var(--mute)">兴文专版</div></td>
+              <td><div style="width:80px;height:48px"><img src="../site/assets/image3.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:4px"/></div></td>
+              <td>5.8%</td>
+              <td>2026-08-15 14:00</td>
+              <td><span class="tag">草稿</span></td>
+              <td><a href="#">编辑 · </a><a href="#">发布</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== Settings ===== -->
+    <section class="view" id="view-settings">
+      <h1>系统设置</h1>
+      <p class="sub">平台配置 · 数字人 · 接口 · 演示</p>
+
+      <div class="panel">
+        <div class="panel-head"><h3>数字人配置</h3></div>
+        <div class="panel-body">
+          <div class="set-row"><div class="lh"><h4>数字人在线</h4><p>关闭后所有对话接口暂停</p></div><div class="toggle on"></div></div>
+          <div class="set-row"><div class="lh"><h4>自动学习</h4><p>基于用户对话迭代知识库</p></div><div class="toggle on"></div></div>
+          <div class="set-row"><div class="lh"><h4>多轮上下文</h4><p>保留 5 轮记忆，超过自动压缩</p></div><div class="toggle on"></div></div>
+          <div class="set-row"><div class="lh"><h4>敏感词过滤</h4><p>开启后将过滤政治/暴力等敏感提问</p></div><div class="toggle on"></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div><h3>关键词回复 · 9 位数字人通用</h3><div class="desc">点击数字人卡片，可维护该数字人专属的知识库与快捷问题</div></div>
+          <button class="btn btn-sm btn-outline">+ 新增关键词</button>
+        </div>
+        <table>
+          <thead><tr><th>关键词</th><th>匹配数字人</th><th>回复摘要</th><th>优先级</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>怎么去</td><td>全部</td><td>智能分地域推荐交通方案</td><td><span class="tag">高</span></td><td><a href="#">编辑</a></td></tr>
+            <tr><td>门票</td><td>全部</td><td>引导到[门票 · 团购]Tab</td><td><span class="tag">高</span></td><td><a href="#">编辑</a></td></tr>
+            <tr><td>非遗</td><td>全部</td><td>展示该县域非遗项目</td><td><span class="tag">中</span></td><td><a href="#">编辑</a></td></tr>
+            <tr><td>研学</td><td>全部</td><td>跳转智进/学出板块</td><td><span class="tag">中</span></td><td><a href="#">编辑</a></td></tr>
+            <tr><td>方言</td><td>江呦呦 / 文启</td><td>切换至当地方言对话模式</td><td><span class="tag orange">试验</span></td><td><a href="#">编辑</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>团队成员</h3></div>
+        <table>
+          <thead><tr><th>成员</th><th>角色</th><th>最后操作</th><th>权限</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><div class="user-cell"><div class="uav">管</div><div><div class="uname">管理员</div><div class="uid">admin@hxfuture.cn</div></div></div></td><td>超级管理员</td><td>刚刚</td><td>全部</td><td><a href="#">管理</a></td></tr>
+            <tr><td><div class="user-cell"><div class="uav" style="background:linear-gradient(135deg,#34a853,#1a73e8)">王</div><div><div class="uname">王编辑</div><div class="uid">wangbj@hxfuture.cn</div></div></div></td><td>内容编辑</td><td>10 分钟前</td><td>Banner / 内容</td><td><a href="#">管理</a></td></tr>
+            <tr><td><div class="user-cell"><div class="uav" style="background:linear-gradient(135deg,#f9ab00,#ea4335)">李</div><div><div class="uname">李客服</div><div class="uid">likf@hxfuture.cn</div></div></div></td><td>客服</td><td>1 小时前</td><td>用户 / 合作申请</td><td><a href="#">管理</a></td></tr>
+            <tr><td><div class="user-cell"><div class="uav" style="background:linear-gradient(135deg,#9334e6,#1a73e8)">陈</div><div><div class="uname">陈运营</div><div class="uid">chenyy@hxfuture.cn</div></div></div></td><td>运营</td><td>2 小时前</td><td>订单 / 好物</td><td><a href="#">管理</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  // ---- hash routing ----
+  var views = ['dashboard','users','chats','tourism','goods','study','partners','counties','banners','settings'];
+  function show(name){
+    views.forEach(function(v){
+      var el = document.getElementById('view-'+v);
+      if(el) el.classList.toggle('active', v===name);
+    });
+    document.querySelectorAll('.sidebar nav a').forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-view')===name);
+    });
+    document.querySelector('.main').scrollTop = 0;
+    window.scrollTo(0,0);
+  }
+  function go(){
+    var h = (location.hash||'#dashboard').slice(1);
+    if(views.indexOf(h)<0) h='dashboard';
+    show(h);
+  }
+  window.addEventListener('hashchange', go);
+  // link delegation
+  document.querySelectorAll('[data-view]').forEach(function(a){
+    a.addEventListener('click', function(){ /* handled by hash */ });
+  });
+  go();
+
+  // ---- tabs ----
+  document.querySelectorAll('.tabs').forEach(function(grp){
+    var btns = grp.querySelectorAll('button');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        btns.forEach(function(x){ x.classList.remove('active'); });
+        b.classList.add('active');
+      });
+    });
+  });
+
+  // ---- toggles ----
+  document.querySelectorAll('.toggle').forEach(function(t){
+    t.addEventListener('click', function(){ t.classList.toggle('on'); });
+  });
+
+  // ---- pagination buttons ----
+  document.querySelectorAll('.pager .pages button').forEach(function(b){
+    b.addEventListener('click', function(){
+      b.parentNode.querySelectorAll('button').forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+    });
+  });
+
+  // ---- draw trend chart (SVG) ----
+  var svg = document.getElementById('trendChart');
+  if(svg){
+    var W=720, H=220, padL=44, padB=28, padT=18, padR=18;
+    var days=['周一','周二','周三','周四','周五','周六','周日'];
+    var chats=[2200,2480,2780,3120,2940,3680,3421];
+    var orders=[42,58,72,68,86,102,89];
+    var maxC = 4000, maxO = 120;
+    var pointsC = chats.map(function(v,i){
+      var x = padL + i*(W-padL-padR)/6;
+      var y = H-padB - (v/maxC)*(H-padT-padB);
+      return [x,y];
+    });
+    var pointsO = orders.map(function(v,i){
+      var x = padL + i*(W-padL-padR)/6;
+      var y = H-padB - (v/maxO)*(H-padT-padB);
+      return [x,y];
+    });
+    var gridLines = '';
+    for(var g=0; g<=4; g++){
+      var y = padT + g*(H-padT-padB)/4;
+      var val = Math.round(maxC - g*maxC/4);
+      gridLines += '<line x1="'+padL+'" y1="'+y+'" x2="'+(W-padR)+'" y2="'+y+'" stroke="#e8eaed" stroke-width="1"/>';
+      gridLines += '<text x="'+(padL-8)+'" y="'+y+'" font-size="11" fill="#5f6368" text-anchor="end" dominant-baseline="middle">'+val+'</text>';
+    }
+    // chats area
+    var pathC = pointsC.map(function(p,i){ return (i===0?'M':'L')+p[0]+' '+p[1]; }).join(' ');
+    var fillC = pathC + ' L '+(W-padR)+' '+(H-padB)+' L '+padL+' '+(H-padB)+' Z';
+    var pathO = pointsO.map(function(p,i){ return (i===0?'M':'L')+p[0]+' '+p[1]; }).join(' ');
+    var fillO = pathO + ' L '+(W-padR)+' '+(H-padB)+' L '+padL+' '+(H-padB)+' Z';
+    var dotsC = pointsC.map(function(p){ return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4" fill="#1a73e8" stroke="#fff" stroke-width="2"/>'; }).join('');
+    var dotsO = pointsO.map(function(p){ return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4" fill="#f9ab00" stroke="#fff" stroke-width="2"/>'; }).join('');
+    var xlabels = days.map(function(d,i){
+      var x = padL + i*(W-padL-padR)/6;
+      return '<text x="'+x+'" y="'+(H-padB+18)+'" font-size="11" fill="#5f6368" text-anchor="middle">'+d+'</text>';
+    }).join('');
+    var svgHtml = '<defs><linearGradient id="gc" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1a73e8" stop-opacity=".25"/><stop offset="1" stop-color="#1a73e8" stop-opacity="0"/></linearGradient><linearGradient id="go" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f9ab00" stop-opacity=".2"/><stop offset="1" stop-color="#f9ab00" stop-opacity="0"/></linearGradient></defs>'
+      + gridLines
+      + '<path d="'+fillC+'" fill="url(#gc)"/>'
+      + '<path d="'+pathC+'" fill="none" stroke="#1a73e8" stroke-width="2.5"/>'
+      + dotsC
+      + '<path d="'+fillO+'" fill="url(#go)"/>'
+      + '<path d="'+pathO+'" fill="none" stroke="#f9ab00" stroke-width="2.5"/>'
+      + dotsO
+      + xlabels
+      + '<g transform="translate('+(W-padR-160)+',12)"><rect width="12" height="12" fill="#1a73e8" rx="2"/><text x="18" y="10" font-size="12" fill="#202124">对话数</text><rect x="78" width="12" height="12" fill="#f9ab00" rx="2"/><text x="96" y="10" font-size="12" fill="#202124">订单数</text></g>';
+    svg.innerHTML = svgHtml;
+  }
+})();
+</script>
+</body>
+</html>

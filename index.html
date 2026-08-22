@@ -178,6 +178,11 @@
   .person .info .role{font-family:var(--latin);font-size:11px;letter-spacing:.05em;color:var(--accent);font-weight:500}
   .person .info .role-zh{font-size:12.5px;color:var(--accent);letter-spacing:.04em;font-weight:500}
   .person .info p{font-size:13.5px;color:var(--mute);font-weight:300;margin-top:12px;line-height:1.65}
+  .person .info .role-line{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
+  .person .info .alias{font-family:var(--serif);font-size:13.5px;font-weight:600;letter-spacing:.02em}
+  .person .info .role-line .dot{color:var(--mute-2);font-size:11px}
+  .person .info .role-line .county{font-family:var(--latin);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-2)}
+  .person .info .goods-hint{font-size:11.5px;color:var(--mute-2);margin-top:10px;letter-spacing:.02em;border-top:1px dashed var(--line);padding-top:10px}
   .person .chat-btn{
     display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;
     color:var(--accent);border:1px solid var(--accent);padding:7px 16px;border-radius:2px;
@@ -823,16 +828,112 @@
   ];
 
   var people = [
-    {zh:'陈子昂',en:'Chen Ziang',roleZh:'射洪文化使者',photo:'assets/image5.png',descZh:'涪江之畔的诗骨，带你走进子昂故里的文脉。',descEn:'The poet-soul of the Fujiang River, guiding you through the literary heritage of Shehong.'},
-    {zh:'江呦呦',en:'Jiang Youyou',roleZh:'屏山文化使者',photo:'assets/image6.png',descZh:'金沙江畔的引路人，为你讲解屏山的古镇与山河。',descEn:'Your guide along the Jinsha River, explaining Pingshan\'s old towns and mountains.'},
-    {zh:'郭小沫',en:'Guo Xiaomo',roleZh:'沙湾文化使者',photo:'assets/image7.png',descZh:'沫水之滨的讲述者，串联沙湾的烟火与名人。',descEn:'A storyteller by the Moshui River, weaving Shawan\'s life and luminaries together.'},
-    {zh:'杜仙仙',en:'Du Xianxian',roleZh:'峨眉文化使者',photo:'assets/image8.png',descZh:'峨眉山下的灵秀之声，邀你共览禅意与风光。',descEn:'A graceful voice beneath Mount Emei, inviting you to its Zen and scenery.'},
-    {zh:'雪梨宝宝',en:'Xueli Baby',roleZh:'金川文化使者',photo:'assets/image9.png',descZh:'雪梨花开的地方，陪你认识金川的山水人家。',descEn:'Where pear blossoms open, accompanying you through Jinchuan\'s landscapes and homes.'},
-    {zh:'巴小虎',en:'Ba Xiaohu',roleZh:'达州文化使者',photo:'assets/image10.png',descZh:'巴山渠水的热络伙伴，带你逛达州的市井与风味。',descEn:'A warm companion of the Bashan hills, showing you Dazhou\'s streets and flavors.'},
-    {zh:'遂小荷',en:'Sui Xiaohe',roleZh:'遂宁文化使者',photo:'assets/image11.png',descZh:'涪江女儿，细说遂宁的莲城故事与静好。',descEn:'Daughter of the Fujiang, telling Suining\'s lotus-city tales and quiet beauty.'},
-    {zh:'雪灵儿',en:'Xue Linger',roleZh:'达古冰川守望者',photo:'assets/image12.png',descZh:'达古冰川的守望者，讲述高原的纯净与传说。',descEn:'Guardian of the Daggu Glacier, telling of the plateau\'s purity and legend.'},
-    {zh:'文启',en:'Wen Qi',roleZh:'富顺文化使者',photo:'assets/image13.png',descZh:'才子之乡的引路少年，带你看富顺的文风与豆香。',descEn:'A young guide from the land of scholars, showing Fushun\'s literary air and bean aroma.'}
+    {zh:'陈子昂',en:'Chen Ziang',roleZh:'射洪文化使者',alias:'诗酒射洪',accent:'#3D5B80',photo:'assets/image5.png',descZh:'涪江之畔的诗骨，带你走进子昂故里的文脉。',descEn:'The poet-soul of the Fujiang River, guiding you through the literary heritage of Shehong.',county:'射洪',goodsCount:6},
+    {zh:'江呦呦',en:'Jiang Youyou',roleZh:'屏山文化使者',alias:'金沙江畔',accent:'#2F6B6E',photo:'assets/image6.png',descZh:'金沙江畔的引路人，为你讲解屏山的古镇与山河。',descEn:'Your guide along the Jinsha River, explaining Pingshan\'s old towns and mountains.',county:'屏山',goodsCount:4},
+    {zh:'郭小沫',en:'Guo Xiaomo',roleZh:'沙湾文化使者',alias:'沫水之滨',accent:'#8B5E34',photo:'assets/image7.png',descZh:'沫水之滨的讲述者，串联沙湾的烟火与名人。',descEn:'A storyteller by the Moshui River, weaving Shawan\'s life and luminaries together.',county:'沙湾',goodsCount:5},
+    {zh:'杜仙仙',en:'Du Xianxian',roleZh:'峨眉文化使者',alias:'峨眉禅意',accent:'#5C6E3F',photo:'assets/image8.png',descZh:'峨眉山下的灵秀之声，邀你共览禅意与风光。',descEn:'A graceful voice beneath Mount Emei, inviting you to its Zen and scenery.',county:'峨眉',goodsCount:3},
+    {zh:'雪梨宝宝',en:'Xueli Baby',roleZh:'金川文化使者',alias:'雪梨之乡',accent:'#A85C4D',photo:'assets/image9.png',descZh:'雪梨花开的地方，陪你认识金川的山水人家。',descEn:'Where pear blossoms open, accompanying you through Jinchuan\'s landscapes and homes.',county:'金川',goodsCount:3},
+    {zh:'巴小虎',en:'Ba Xiaohu',roleZh:'达州文化使者',alias:'巴山渠水',accent:'#8E473B',photo:'assets/image10.png',descZh:'巴山渠水的热络伙伴，带你逛达州的市井与风味。',descEn:'A warm companion of the Bashan hills, showing you Dazhou\'s streets and flavors.',county:'达州',goodsCount:3},
+    {zh:'遂小荷',en:'Sui Xiaohe',roleZh:'遂宁文化使者',alias:'观音故里',accent:'#9C7156',photo:'assets/image11.png',descZh:'涪江女儿，细说遂宁的莲城故事与静好。',descEn:'Daughter of the Fujiang, telling Suining\'s lotus-city tales and quiet beauty.',county:'遂宁',goodsCount:3},
+    {zh:'雪灵儿',en:'Xue Linger',roleZh:'达古冰川守望者',alias:'高原守望',accent:'#4A6E8A',photo:'assets/image12.png',descZh:'达古冰川的守望者，讲述高原的纯净与传说。',descEn:'Guardian of the Daggu Glacier, telling of the plateau\'s purity and legend.',county:'黑水',goodsCount:3},
+    {zh:'文启',en:'Wen Qi',roleZh:'富顺文化使者',alias:'豆香才子',accent:'#776848',photo:'assets/image13.png',descZh:'才子之乡的引路少年，带你看富顺的文风与豆香。',descEn:'A young guide from the land of scholars, showing Fushun\'s literary air and bean aroma.',county:'富顺',goodsCount:3}
   ];
+
+  // 独立知识库 — 每人独立接口 (APP清单: 每个数字人有专属接口)
+  var peopleChat = {
+    '陈子昂': {
+      greeting: '前不见古人，后不见来者。我是子昂书童，关于诗酒射洪，知无不言。',
+      quick: ['陈子昂故里怎么走','射洪美食推荐','涪江诗酒路线','射洪非遗'],
+      replies: {
+        '陈子昂故里怎么走':'陈子昂故里在射洪市金华镇。从成都出发：\n🚄 高铁至射洪站，再打车约15分钟\n🚗 自驾：成巴高速→射洪出口，约2.5h\n\n读书台、金华山道观、涪江沿江带，是核心三站。',
+        '射洪美食推荐':'射洪四大名吃：\n🔥 沱牌曲酒 — 诗酒之乡的魂\n🔥 射洪牛肉 — 麻辣鲜香\n🔥 涪江野生鱼 — 江鲜清蒸为一绝\n🔥 子昂宴 — 一桌诗酒故事',
+        '涪江诗酒路线':'一日路线推荐：\n上午：陈子昂读书台 → 金华山道观\n中午：沱牌酒镇酒家午餐\n下午：涪江沿江诗酒步道\n傍晚：沱牌酒厂夜景\n\n这条线算是射洪的"诗酒双绝"，适合慢慢走～',
+        '射洪非遗':'射洪非遗有三宝：\n🎭 子昂传说 — 口传文学的国家级非遗\n🍶 沱牌曲酒传统酿造 — 沿用《齐民要术》古法\n🎵 涪江船工号子 — 江畔生活的声音记忆\n\n研学课程里都有深度体验～'
+      }
+    },
+    '江呦呦': {
+      greeting: '你好呀！我是江呦呦，金沙江畔长大的屏山娃儿。',
+      quick: ['屏山有什么好玩的','推荐屏山美食','屏山古镇怎么去','屏山有什么非遗'],
+      replies: {
+        '屏山有什么好玩的':'屏山最值得去的几个地方：\n\n1. 龙华古镇 — 千年古驿，青石板路保存完好\n2. 向家坝观景台 — 金沙江最壮阔的河段\n3. 老君山 — 原始森林步道，适合轻徒步\n\n需要我推荐行程吗？😊',
+        '推荐屏山美食':'屏山美食可太多了！\n\n🔥 豆花饭 — 石磨现磨，蘸水是灵魂\n🔥 屏山腊肉 — 金沙江畔柴火慢熏\n🔥 土火锅 — 高山土鸡配时蔬\n\n到了古镇一定要尝尝豆花饭，那是老屏山的味道。',
+        '屏山古镇怎么去':'从成都出发：\n🚄 高铁：成都→宜宾西（约1.5h），转大巴约40分钟\n🚗 自驾：成都→成宜高速→屏山（约3h）\n\n古镇不收门票，建议住一晚，清晨的龙华古镇最安静最美。',
+        '屏山有什么非遗':'屏山的非遗项目很丰富：\n\n🎭 龙华女子踩桥 — 每年正月十六的千年民俗\n🏺 屏山竹编 — 精细如丝的编织工艺\n🎵 金沙江号子 — 船工文化的活化石\n\n这些非遗项目在我们的研学课程里都有深度体验哦！'
+      }
+    },
+    '郭小沫': {
+      greeting: '你好！我是郭小沫，跟郭沫若先生同姓同乡。沙湾的事，我都略知一二～',
+      quick: ['郭沫若故居在哪','沙湾干巴牛肉哪里吃','沙湾古镇怎么逛','沙湾非遗手艺'],
+      replies: {
+        '郭沫若故居在哪':'郭沫若故居在沙湾城区绥山山麓，是一座中式四合院。\n📍 高铁：成都南→乐山站，再打车到沙湾约30分钟\n📍 自驾：成都→乐山高速→沙湾，约1.5h\n\n故居旁边就是郭沫若纪念馆和铜河记忆馆，可以连着逛。',
+        '沙湾干巴牛肉哪里吃':'沙湾干巴牛肉推荐三个地方：\n🥩 老字号「铜河张记」 — 干巴牛肉始创店\n🥩 「郭家大院」酒家 — 配沱酒一绝\n🥩 沙湾古镇铜河夜市 — 现切现卖\n\n真空包装的可以带回家，送给长辈最合适～',
+        '沙湾古镇怎么逛':'沙湾古城不大，建议这样走：\n上午：郭沫若故居 → 绥山挹爽门\n中午：铜河沿岸品尝干巴牛肉\n下午：铜河记忆馆 → 沫水书院\n傍晚：铜河畔看夕阳\n\n两天一夜更尽兴，可以体验铜河夜游。',
+        '沙湾非遗手艺':'沙湾的非遗手艺很值得看：\n🏺 沙湾豆腐干 — 三百年传统工艺\n🧵 绥山绣 — 川西绣法的代表\n🎵 铜河号子 — 沫水的声音\n\n沙湾的研学课程里都有手艺体验环节，欢迎来玩～'
+      }
+    },
+    '杜仙仙': {
+      greeting: '阿弥陀佛～我是杜仙仙。峨眉的云海、禅院、素斋，等你来听。',
+      quick: ['峨眉山徒步路线','峨眉云海几月看','禅修体验哪里有','峨眉素斋推荐'],
+      replies: {
+        '峨眉山徒步路线':'峨眉山分高山区和金顶区，向你推荐两条：\n⛰️ 经典：报国寺→清音阁→一线天→洪椿坪→九十九道拐→金顶（2天）\n⛰️ 轻量：清音阁→一线天→生态猴区→万年寺（1天）\n\n山下还有凤栖山步道可以选哦～',
+        '峨眉云海几月看':'看云海最佳季节：\n☁️ 11月—次年3月 — 概率最高\n☁️ 早上5:30—7:00 — 金顶日出后的云海最美\n☁️ 雨天过后放晴 — 必现云瀑\n\n山上温度低，记得带羽绒服～',
+        '禅修体验哪里有':'峨眉山的禅修体验推荐三处：\n🧘 报国寺 — 入门级禅修课\n🧘 大佛禅院 — 系统禅修课程\n🧘 仙峰寺 — 山中闭关，限提前预约\n\n可以根据你的时间选择，初学者建议报国寺一日体验。',
+        '峨眉素斋推荐':'峨眉素斋推荐：\n🥗 报国寺素斋餐厅 — 经典禅意素餐\n🥗 伏虎寺素斋 — 山中怀石\n🥗 圣水阁素饼 — 现烤外带\n\n素斋以"仿荤"出名，雪魔芋、笋干面很受欢迎。'
+      }
+    },
+    '雪梨宝宝': {
+      greeting: '嗨嗨～我是雪梨宝宝！金川梨花一开，整个高原都是甜味～',
+      quick: ['金川梨花几月开','雪梨哪里买','嘉绒藏族文化','金川海拔多少'],
+      replies: {
+        '金川梨花几月开':'金川梨花是高原春天最美的花事之一！\n🌸 3月中—4月初 — 万亩梨花同时盛开\n🌸 最佳机位：沙耳乡、咯尔乡、曾达乡\n🌸 梨花节一般 3月18日开幕\n\n风一吹，梨花雪一样落下，拍照根本停不下来～',
+        '雪梨哪里买':'金川雪梨有三宝：\n🍐 雪梨汁多 — 皮薄肉嫩\n🍐 雪梨膏 — 古法熬制，秋冬季润肺\n🍐 雪梨干 — 零食泡水都行\n\n推荐找产地认证的——我们商城上"雪梨宝宝严选"的就是哦！',
+        '嘉绒藏族文化':'嘉绒藏族主要分布在金川、马尔康一带：\n⛩️ 语言 — 嘉绒语，自成一支\n⛩️ 服饰 — 头饰繁复，银饰工艺一绝\n⛩️ 锅庄 — 围着篝火跳的圆圈舞\n⛩️ 民居 — 碉楼 + 寨子\n\n来金川不仅可以看梨花，还能深度体验嘉绒文化～',
+        '金川海拔多少':'金川海拔约 2000—3500 米：\n🏔️ 县城金川镇 — 约2170m\n🏔️ 沙耳乡 — 约2680m\n🏔️ 最高点 — 可达3500m\n\n高原反应预防建议：\n✅ 提前一周服红景天\n✅ 到达后头两天不剧烈运动\n✅ 多喝温水，多睡觉\n\n带老人小孩来的话，可以先在县城适应一晚～'
+      }
+    },
+    '巴小虎': {
+      greeting: '老乡好！我是巴小虎，巴山渠水的扛把子。',
+      quick: ['达州美食推荐','真佛山在哪','巴山夜景哪里看','巴文化遗址'],
+      replies: {
+        '达州美食推荐':'达州三大美食招牌：\n🔥 灯影牛肉 — 薄如纸，透光可见\n🔥 巴山腊肉 — 柴火熏制，肥而不腻\n🔥 渠县黄花 — 高山冷水黄花，清香脆嫩\n\n夜市推荐「中心广场」那一带，市井气最浓～',
+        '真佛山在哪':'真佛山在达州宣汉县，名字来源于"真、善、美"三字佛意。\n📍 自驾：成都→达州→宣汉，约4.5h\n📍 高铁：成都→达州，再转大巴1h到宣汉\n\n山上有真佛寺、钟鼓楼、碑林。最佳季节是春秋。',
+        '巴山夜景哪里看':'"巴山夜雨"是达州最有诗意的夜色：\n🌧️ 推荐地：凤凰山观景台、巴渠河畔、州河南滨\n🌧️ 最佳时段：傍晚—入夜前\n\n雨天、雾天、雨后放晴都各有味道，建议留一夜，慢慢看～',
+        '巴文化遗址':'达州是巴文化核心区：\n🏛️ 罗家坝遗址 — 战国巴人墓群，国家文物\n🏛️ 宣汉巴人悬棺 — 巴人丧葬奇观\n🏛️ 万源保卫战遗址 — 红色教育基地\n\n研学线路建议：罗家坝 + 巴人悬棺一日连走～'
+      }
+    },
+    '遂小荷': {
+      greeting: '你好呀，我是小荷。涪江边长大的遂宁女儿，最爱荷花与素饼～',
+      quick: ['遂宁荷花几月开','观音故里在哪','涪江夜游怎么坐','遂宁素饼'],
+      replies: {
+        '遂宁荷花几月开':'遂宁的荷花从 6 月开到 9 月：\n🌷 6月中—7月初 — 最佳观赏期\n🌷 推荐地：圣莲岛、观音湖湿地\n🌷 圣莲岛荷花节 6月20日开幕\n\n湖上看荷花的感觉，比岸上美得多哦～',
+        '观音故里在哪':'观音故里在遂宁灵泉寺、广德寺一带：\n🙏 灵泉寺 — 观音道场，千年古刹\n🙏 广德寺 — 皇家禅林\n🙏 圣莲岛 — 观音文化主题岛\n\n成都出发高铁约1.5h，周末两日游最合适～',
+        '涪江夜游怎么坐':'涪江夜游是遂宁的金牌项目：\n🚢 船型 — 普通画舫 / 豪华游船\n🚢 时间 — 每天晚 19:00—21:00\n🚢 价格 — 普通¥98/人，豪华¥168/人\n\n建议提前一天小程序预约哦，节假日常常满员～',
+        '遂宁素饼':'遂宁观音素饼是省非遗：\n🍪「天弘素饼」 — 老字号\n🍪「观音素饼坊」 — 现做现烤\n🍪「禅意.素礼盒」 — 礼盒装最合适送礼\n\n素饼以"豆沙、玫瑰、椒盐"三个口味最经典～'
+      }
+    },
+    '雪灵儿': {
+      greeting: '你好，我是雪灵儿。达古冰川的守望者，为你讲高原的故事。',
+      quick: ['达古冰川门票','高原反应怎么办','冰川最佳季节','达古红路线'],
+      replies: {
+        '达古冰川门票':'达古冰川门票信息：\n🎫 旺季（4—10月）¥198 + 观光车¥90\n🎫 淡季（11—3月）¥120 + 观光车¥70\n🎫 缆车 — 索道¥180往返\n\n全年开放，但冬季山顶可能封路，建议提前查天气～',
+        '高原反应怎么办':'高原反应预防与应对：\n💊 提前1周服红景天或高原安\n💊 到达首日不洗头、不剧烈运动\n💊 多喝温水，少食多餐\n💊 严重时（头痛呕吐）立即下撤就医\n\n达古冰川山下住宿点海拔约3000m，金顶4800m。建议分两天适应～',
+        '冰川最佳季节':'达古冰川最佳游览季节：\n❄️ 10月—次年4月 — 雪景最盛\n❄️ 9月底—10月初 — 彩林最好看\n❄️ 7月—8月 — 山花季，温度舒适\n\n如果你想要雪，就冬季来；如果想避暑，就夏季来～',
+        '达古红路线':'达古冰川的红色文化：\n🌟 1935年红军翻越达古雪山\n🌟 山上有"红军湖"、"红色教育基地"\n🌟 可以参观"红军万岁"石碑\n\n研学课程会把冰川奇观 + 红色记忆结合在一起，欢迎来体验～'
+      }
+    },
+    '文启': {
+      greeting: '你好！我是文启，富顺才子之乡的小书童。',
+      quick: ['富顺文庙怎么游','富顺豆花哪家好','才子之乡典故','沱江风光'],
+      replies: {
+        '富顺文庙怎么游':'富顺文庙是四川保存最完整的文庙之一：\n📜 始建于北宋景祐二年（1035年）\n📜 大成殿、戟门、棂星门、泮池一应俱全\n📜 自驾：成都→自贡→富顺，约3h\n\n建议你上午去，文庙早晨光影特别美～',
+        '富顺豆花哪家好':'富顺豆花店推荐：\n🥢 富顺老字号「周豆花」— 沾水配方三十年\n🥢 「钟豆花」 — 早晨现磨\n🥢 农贸市场 — 最市井的本味\n\n富顺豆花蘸水是关键，建议自己体验现场调～',
+        '才子之乡典故':'富顺有"才子之乡"美誉：\n📖 北宋"江阳四谏"之四人均出富顺\n📖 历代进士 261 人、举人 412 人\n📖 富顺文庙见证教育传奇\n\n明清时，富顺人考中进士的数量远超周边，厉害到被称"富顺才子甲西蜀"～',
+        '沱江风光':'沱江流经富顺：\n🌊 富顺段 — 江面开阔，可看晨雾\n🌊 推荐地：文庙对岸滨江路、狮市古镇\n🌊 玩法 — 江边喝茶、夜游船、拍晚霞\n\n沱江沿岸也是富顺人的乡愁，记得带走我们的礼盒哦～'
+      }
+    }
+  };
+
+  var currentChatPerson = people[1]; // 默认江呦呦
 
   var counties = [
     {zh:'屏山',en:'Pingshan',tag:'PINGSHAN',photo:'assets/image14.png',descZh:'金沙江畔的千年古镇，见证向家坝的浩渺与一方水土的乡愁。',descEn:'An ancient town by the Jinsha River, holding the vastness of Xiangjiaba and a homeland\'s longing.',tags:['景点','酒店','美食','非遗'],mapKeyword:'屏山县'},
@@ -900,13 +1001,7 @@
     {zh:'线下研学',en:'On-site Study Tours',descZh:'以小程序预约入口承接，覆盖沙湾、井研、崇州、兴文等县域路线。',descEn:'Bookable via the mini-program, covering routes in Shawan, Jingyan, Chongzhou and Xingwen.',soon:'小程序预约'}
   ];
 
-  // ---- Digital Human Chat Responses (APP清单) ----
-  var chatResponses = {
-    '屏山有什么好玩的？': '屏山最值得去的几个地方：\n\n1. 龙华古镇 — 千年古驿，青石板路保存完好\n2. 向家坝观景台 — 金沙江最壮阔的河段\n3. 老君山 — 原始森林步道，适合轻徒步\n\n需要我推荐行程吗？😊',
-    '推荐屏山美食': '屏山美食可太多了！\n\n🔥 豆花饭 — 石磨现磨，蘸水是灵魂\n🔥 屏山腊肉 — 金沙江畔柴火慢熏\n🔥 土火锅 — 高山土鸡配时蔬\n\n到了古镇一定要尝尝豆花饭，那是老屏山的味道。',
-    '屏山古镇怎么去？': '从成都出发：\n🚄 高铁：成都→宜宾西（约1.5h），转大巴约40分钟\n🚗 自驾：成都→成宜高速→屏山（约3h）\n\n古镇不收门票，建议住一晚，清晨的龙华古镇最安静最美。',
-    '屏山有什么非遗？': '屏山的非遗项目很丰富：\n\n🎭 龙华女子踩桥 — 每年正月十六的千年民俗\n🏺 屏山竹编 — 精细如丝的编织工艺\n🎵 金沙江号子 — 船工文化的活化石\n\n这些非遗项目在我们的研学课程里都有深度体验哦！'
-  };
+  // ---- Digital Human Chat — 由 peopleChat 字典按人切换 (APP清单) ----
 
   var currentChatPerson = people[1]; // 默认江呦呦
 
@@ -958,18 +1053,21 @@
     pl.appendChild(d);
   });
 
-  // ---- render people (with chat button) ----
+  // ---- render people (with accent strip + alias + county) ----
   var pg = document.getElementById('peopleGrid');
   function renderPeople(){
     pg.innerHTML='';
     people.forEach(function(p,i){
       var d = document.createElement('div');
       d.className='person';
+      d.setAttribute('data-accent', p.accent);
       var ph = p.photo ? '<img src="'+p.photo+'" alt="'+p.zh+'" loading="lazy">' : '';
-      d.innerHTML = '<div class="ph">'+ph+'<span class="mono">'+p.zh.charAt(0)+'</span></div>'+
-        '<div class="info"><h3><span class="t-zh">'+p.zh+'</span><span class="role-zh t-zh">'+p.roleZh+'</span></h3>'+
+      d.innerHTML = '<div class="ph" style="border-top:3px solid '+p.accent+'">'+ph+'<span class="mono" style="color:'+p.accent+'">'+p.zh.charAt(0)+'</span></div>'+
+        '<div class="info"><h3><span class="t-zh">'+p.zh+'</span></h3>'+
+        '<div class="role-line t-zh"><span class="alias" style="color:'+p.accent+'">'+p.alias+'</span><span class="dot">·</span><span class="county">'+p.county+'</span></div>'+
         '<p class="t-zh">'+p.descZh+'</p>'+
-        '<div class="chat-btn" onclick="openChatWith('+i+')">💬 和'+p.zh+'对话</div></div>';
+        '<div class="goods-hint t-zh">推荐 '+p.goodsCount+' 款好物 · 独立知识库已就绪</div>'+
+        '<div class="chat-btn" onclick="openChatWith('+i+')">💬 和 '+p.zh+' 对话</div></div>';
       pg.appendChild(d);
     });
   }
@@ -1103,12 +1201,25 @@
   }
   function openChatWith(idx){
     currentChatPerson = people[idx] || people[1];
-    document.getElementById('chatAvatar').src = currentChatPerson.photo || 'assets/image6.png';
-    document.getElementById('chatName').textContent = currentChatPerson.zh;
-    document.getElementById('chatRole').textContent = currentChatPerson.roleZh;
-    document.getElementById('chatInput').placeholder = '问我关于'+currentChatPerson.roleZh.replace('文化使者','').replace('守望者','')+'的一切…';
+    var p = currentChatPerson;
+    var pc = peopleChat[p.zh] || {};
+    document.getElementById('chatAvatar').src = p.photo || 'assets/image6.png';
+    document.getElementById('chatName').textContent = p.zh;
+    document.getElementById('chatRole').textContent = p.roleZh;
+    // accent stripe on chat panel
+    document.getElementById('chatPanel').style.borderTop = '3px solid '+p.accent;
+    document.getElementById('chatInput').placeholder = '问 '+p.zh+' 关于 '+p.county+' 的一切…';
     var body = document.getElementById('chatBody');
-    body.innerHTML = '<div class="chat-msg bot">你好！我是'+currentChatPerson.zh+'，'+currentChatPerson.descZh+'想了解什么？</div>';
+    body.innerHTML = '<div class="chat-msg bot">'+pc.greeting+'</div>';
+    // render quick chips
+    var qc = document.getElementById('chatQuick');
+    qc.innerHTML = '';
+    (pc.quick || []).forEach(function(q){
+      var s = document.createElement('span');
+      s.textContent = q;
+      s.setAttribute('onclick', "sendQuick('"+q+"')");
+      qc.appendChild(s);
+    });
     chatPanel.classList.add('show');
     chatOpen = true;
   }
@@ -1123,16 +1234,19 @@
     var body = document.getElementById('chatBody');
     body.innerHTML += '<div class="chat-msg user">'+msg+'</div>';
     input.value = '';
-    // find matching response or default
+    var pc = peopleChat[currentChatPerson.zh] || {};
+    var replies = pc.replies || {};
     var reply = null;
-    for(var key in chatResponses){
-      if(msg.indexOf(key.replace('？','').substring(0,4)) > -1 || msg.indexOf(key.substring(0,3)) > -1){
-        reply = chatResponses[key];
-        break;
+    // exact match first
+    if(replies[msg]) reply = replies[msg];
+    if(!reply){
+      // substring match: find first reply key contained in user msg
+      for(var key in replies){
+        if(msg.indexOf(key.substring(0,4)) > -1){ reply = replies[key]; break; }
       }
     }
     if(!reply){
-      reply = '感谢你的提问！我是'+currentChatPerson.zh+'，关于这个问题，我还在学习中。你可以试试问我关于景点、美食、交通或非遗方面的问题～';
+      reply = '感谢你的提问！我是'+currentChatPerson.zh+'，关于'+currentChatPerson.county+'的问题，我还在学习中。你可以点击下面的快捷问题试试～';
     }
     setTimeout(function(){
       body.innerHTML += '<div class="chat-msg bot">'+reply.replace(/\n/g,'<br>')+'</div>';
